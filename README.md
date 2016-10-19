@@ -1,3 +1,1 @@
-An improved version of the ingenious http://doai.io/. 
-
-We're releasing this for OA Week. See this [development doc](https://docs.google.com/document/d/1BJgYWar_2jKZYm4NB0m8yGtJpg7ODtK1U26_LPpWPKM/edit) for roadmap and comments.
+Has a bunch of oaDOI stuff in it, so will require some work to get it acutally blanked out and ready to build a new thing on it. But still, better than starting from scratch.
