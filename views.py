@@ -8,54 +8,9 @@ from flask import g
 
 import json
 import os
-import logging
 import sys
 
 from app import app
-
-import product
-import oa_scrape
-
-
-logger = logging.getLogger("views")
-
-
-def json_dumper(obj):
-    """
-    if the obj has a to_dict() function we've implemented, uses it to get dict.
-    from http://stackoverflow.com/a/28174796
-    """
-    try:
-        return obj.to_dict()
-    except AttributeError:
-        return obj.__dict__
-
-
-def json_resp(thing):
-    json_str = json.dumps(thing, sort_keys=True, default=json_dumper, indent=4)
-
-    if request.path.endswith(".json") and (os.getenv("FLASK_DEBUG", False) == "True"):
-        logger.info(u"rendering output through debug_api.html template")
-        resp = make_response(render_template(
-            'debug_api.html',
-            data=json_str))
-        resp.mimetype = "text/html"
-    else:
-        resp = make_response(json_str, 200)
-        resp.mimetype = "application/json"
-    return resp
-
-
-def abort_json(status_code, msg):
-    body_dict = {
-        "HTTP_status_code": status_code,
-        "message": msg,
-        "error": True
-    }
-    resp_string = json.dumps(body_dict, sort_keys=True, indent=4)
-    resp = make_response(resp_string, status_code)
-    resp.mimetype = "application/json"
-    abort(resp)
 
 
 #support CORS
@@ -72,90 +27,29 @@ def add_crossdomain_header(resp):
 
 
 @app.before_request
-def redirect_www_to_naked_domain():
-    if request.url.startswith("http://www.oadoi.org"):
+def do_before_request():
+    pass
+    # if request.url.startswith("http://www.oadoi.org"):
+    #
+    #     new_url = request.url.replace(
+    #         "http://www.oadoi.org",
+    #         "http://oadoi.org"
+    #     )
+    #     return redirect(new_url, 301)  # permanent
+    #
+    # g.use_cache = True
+    # if ('no-cache', u'') in request.args.items():
+    #     g.use_cache = False
+    #     print "NOT USING CACHE"
 
-        new_url = request.url.replace(
-            "http://www.oadoi.org",
-            "http://oadoi.org"
-        )
-        return redirect(new_url, 301)  # permanent
-
-    g.use_cache = True
-    if ('no-cache', u'') in request.args.items():
-        g.use_cache = False
-        print "NOT USING CACHE"
 
 
-@app.route('/tests')
-def tests_endpoint():
-    my_tests = oa_scrape.Tests()
-    my_tests.run()
-    return render_template(
-        'tests.html',
-        tests=my_tests
-    )
-
-@app.route('/')
-def index_endpoint():
+@app.route("/<path:page>")  # from http://stackoverflow.com/a/14023930/226013
+@app.route("/")
+def index_endpoint(path="index", page=""):
     return render_template(
         'index.html'
     )
-
-
-def run_from_biblio(**biblio):
-    my_product = product.build_product(g.use_cache, **biblio)
-    my_collection = product.Collection()
-    my_collection.products = [my_product]
-    my_collection.set_fulltext_urls(g.use_cache)
-    return my_collection
-
-
-@app.route("/v1/publication/doi/<path:doi>", methods=["GET"])
-def get_publication_doi_endpoint(doi):
-    request_biblio = {"doi": doi}
-    my_collection = run_from_biblio(**request_biblio)
-    return jsonify({"results": my_collection.to_dict()})
-
-
-@app.route("/v1/publication", methods=["GET"])
-def get_publication_biblio_endpoint():
-    request_biblio = {}
-    for (k, v) in request.args.iteritems():
-        request_biblio[k] = v
-    my_collection = run_from_biblio(**request_biblio)
-    return jsonify({"results": my_collection.to_dict()})
-
-
-@app.route("/v1/publications", methods=["POST"])
-def post_publications_endpoint():
-    products = []
-    body = request.json
-    if "dois" in body:
-        if len(body["dois"]) > 25:
-            abort_json(413, "max number of DOIs is 25")
-        for doi in body["dois"]:
-            products += [product.build_product(g.use_cache, **{"doi": doi})]
-
-    elif "biblios" in body:
-        for biblio in body["biblios"]:
-            products += [product.build_product(g.use_cache, **biblio)]
-
-    my_collection = product.Collection()
-    my_collection.products = products
-    my_collection.set_fulltext_urls()
-    return jsonify({"results": my_collection.to_dict()})
-
-
-@app.route("/<path:doi>", methods=["GET"])
-def get_doi_redirect_endpoint(doi):
-    if not doi or not doi.startswith("10."):
-        abort_json(404, "is not a doi")
-
-    request_biblio = {"doi": doi}
-    my_collection = run_from_biblio(**request_biblio)
-    my_product = my_collection.products[0]
-    return redirect(my_product.best_redirect_url, 302)  # 302 is temporary redirect
 
 
 if __name__ == "__main__":

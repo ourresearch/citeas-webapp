@@ -1,8 +1,5 @@
-import datetime
 import time
 import unicodedata
-import sqlalchemy
-import logging
 import math
 import bisect
 import re
@@ -106,22 +103,6 @@ def conversational_number(number):
     return short_number + " " + unit
 
 
-
-def safe_commit(db):
-    try:
-        db.session.commit()
-        return True
-    except (KeyboardInterrupt, SystemExit):
-        # let these ones through, don't save anything to db
-        raise
-    except sqlalchemy.exc.DataError:
-        db.session.rollback()
-        print u"sqlalchemy.exc.DataError on commit.  rolling back."
-    except Exception:
-        db.session.rollback()
-        print u"generic exception in commit.  rolling back."
-        logging.exception("commit error")
-    return False
 
 
 
