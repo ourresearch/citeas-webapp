@@ -6,6 +6,7 @@
 @navBarHeight: 100px;
 
 body {
+  font-family: roboto;
   a {
     text-decoration: none;
     &:hover {
@@ -78,6 +79,54 @@ div.page.landing {
         padding: 10px;
       }
 
+    }
+  }
+}
+
+.page.landing {
+
+  .content {
+    width: 800px;
+    @media @mobile {
+      width: auto;
+    }
+
+    .tagline {
+      font-weight: 300;
+      line-height: 1.4;
+      h1 {
+        font-size: 50px;
+        font-weight: 300;
+        margin-bottom: 0;
+      }
+      p.subtagline {
+        margin-top: 10px;
+        font-size: 26px;
+      }
+    }
+
+    .user-input {
+      margin-top: 70px;
+      .input-row {
+        md-input-container {
+          padding-right: 70px;
+          .go {
+            display: inline-block;
+            font-size: 20px;
+            position: absolute;
+            top:-12px;
+            right: 0;
+          }
+
+        }
+
+        //.submit {
+        //  margin: 20px 20px 0 0;
+        //  font-size: 16px;
+        //  padding: 3px 16px;
+        //  float: right;
+        //}
+      }
     }
   }
 }

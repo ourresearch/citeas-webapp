@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import "animate.css";
 body {
+  font-family: roboto;
   height: auto;
   background: #fff;
   line-height: 1.9;
@@ -77,4 +78,38 @@ div.page.landing div.top-screen {
     font-size: 16px;
     padding: 10px;
   }
+}
+.page.landing .content {
+  width: 800px;
+}
+@media only screen and (max-width: 992px) {
+  .page.landing .content {
+    width: auto;
+  }
+}
+.page.landing .content .tagline {
+  font-weight: 300;
+  line-height: 1.4;
+}
+.page.landing .content .tagline h1 {
+  font-size: 50px;
+  font-weight: 300;
+  margin-bottom: 0;
+}
+.page.landing .content .tagline p.subtagline {
+  margin-top: 10px;
+  font-size: 26px;
+}
+.page.landing .content .user-input {
+  margin-top: 70px;
+}
+.page.landing .content .user-input .input-row md-input-container {
+  padding-right: 70px;
+}
+.page.landing .content .user-input .input-row md-input-container .go {
+  display: inline-block;
+  font-size: 20px;
+  position: absolute;
+  top: -12px;
+  right: 0;
 }

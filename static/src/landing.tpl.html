@@ -1,8 +1,43 @@
 <div class="page landing">
     <div class="top-screen" layout="row" layout-align="center center">
         <div class="content">
-            <h1>Hello there, world!</h1>
+            <div class="tagline">
+                <h1>All research products deserve credit.</h1>
+                <p class="subtagline">
+                    Get the correct citation for diverse research products,
+                    from software and datasets to preprints and articles.
+                </p>
+            </div>
+
+
+            <div class="user-input">
+                <div class="input-row">
+                    <md-input-container md-no-float
+                                        class="md-block example-selected-{{ main.exampleSelected }}"
+                                        flex-gt-sm="">
+                        <label>Paste a URL or DOI</label>
+                        <input ng-model="main.id">
+
+                        <md-button ng-show="main.id"
+                                   ng-class="{fadeOut: !main.id}"
+                                   class="md-fab md-mini md-primary go animated fadeInRightBig">
+                            <i class="fa fa-arrow-right"></i>
+                        </md-button>
+
+                        <!--
+                        <md-button class="md-raised md-primary submit" type="submit">
+                            Get the citation
+                        </md-button>
+                        -->
+                    </md-input-container>
+                </div>
+            </div>
+
         </div>
+
+
+
+
     </div>
 
 </div>
