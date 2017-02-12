@@ -1,6 +1,80 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import "animate.css";
+body {
+  height: auto;
+  background: #fff;
+  line-height: 1.9;
+  font-size: 18px;
+}
+body a {
+  text-decoration: none;
+}
+body a:hover {
+  text-decoration: underline;
+}
 div.page.landing div.top-screen {
   height: 100vh;
-  background: red;
+  background: #fff;
+}
+.nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  height: 100px;
+}
+@media only screen and (max-width: 992px) {
+  .nav {
+    padding: 0 5px;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .nav {
+    height: 80px;
+  }
+}
+.nav a.main-logo {
+  dispay: block;
+  margin-left: 20px;
+  opacity: 1;
+}
+@media only screen and (max-width: 992px) {
+  .nav a.main-logo {
+    margin: 0 0 0 10px;
+  }
+}
+.nav a.main-logo img {
+  width: 150px;
+}
+@media only screen and (max-width: 992px) {
+  .nav a.main-logo img {
+    width: 100px;
+  }
+}
+.nav .spacer {
+  flex: 1;
+}
+.nav .links {
+  display: flex;
+  height: 100%;
+  align-items: flex-start;
+}
+@media only screen and (max-width: 992px) {
+  .nav .links {
+    align-items: center;
+  }
+}
+.nav .links a {
+  display: block;
+  color: #999;
+  padding: 20px;
+}
+@media only screen and (max-width: 992px) {
+  .nav .links a {
+    font-size: 16px;
+    padding: 10px;
+  }
 }

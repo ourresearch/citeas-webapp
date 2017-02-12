@@ -2,12 +2,82 @@
 @import "animate.css";
 @mobile: ~"only screen and (max-width: 992px)";
 
+
+@navBarHeight: 100px;
+
 body {
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  height: auto;
+
+  background: #fff;
+  line-height: 1.9;
+  font-size: 18px;
 }
 
 div.page.landing {
   div.top-screen {
     height: 100vh;
-    background: red;
+    background: #fff;
+  }
+}
+
+
+
+
+.nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  padding: 0 20px;
+  @media @mobile {
+    padding: 0 5px;
+  }
+  display: flex;
+  align-items: center;
+  height: @navBarHeight;
+  @media @mobile {
+    height: @navBarHeight - 20px;
+  }
+  a.main-logo {
+    dispay: block;
+    margin-left: 20px;
+    opacity: 1;
+    @media @mobile {
+      margin: 0 0 0 10px;
+    }
+    img {
+      width: 150px;
+      @media @mobile {
+        width: 100px;
+      }
+    }
+  }
+  .spacer {
+    flex: 1;
+  }
+  .links {
+    display: flex;
+    height: 100%;
+    align-items: flex-start;
+    @media @mobile {
+      align-items: center;
+    }
+    a {
+      display: block;
+      color: #999;
+      padding: 20px;
+      @media @mobile {
+        font-size: 16px;
+        padding: 10px;
+      }
+
+    }
   }
 }
