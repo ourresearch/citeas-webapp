@@ -16,7 +16,8 @@ angular.module('app', [
     'numFormat',
 
     // pages
-    "landing"
+    "landing",
+    "citePage"
 
 ]);
 
@@ -133,6 +134,39 @@ angular.module('app').controller('AppCtrl', function(
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+angular.module('citePage', [
+    'ngRoute',
+    'ngMessages'
+])
+
+    .config(function ($routeProvider) {
+        $routeProvider.when('/cite/:projectId*', {
+            templateUrl: "cite-page.tpl.html",
+            controller: "CitePageCtrl"
+        })
+    })
+
+
+
+
+
+
+    .controller("CitePageCtrl", function ($scope, $routeParams) {
+
+        console.log("i am the cite page ctrl", $routeParams)
+
+    })
 
 
 
@@ -277,7 +311,14 @@ angular.module("numFormat", [])
 
         }
     });
-angular.module('templates.app', ['landing.tpl.html', 'page-not-found.tpl.html']);
+angular.module('templates.app', ['cite-page.tpl.html', 'landing.tpl.html', 'page-not-found.tpl.html']);
+
+angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("cite-page.tpl.html",
+    "<div class=\"page cite-page\">\n" +
+    "    <h1>citation!</h1>\n" +
+    "</div>");
+}]);
 
 angular.module("landing.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("landing.tpl.html",
