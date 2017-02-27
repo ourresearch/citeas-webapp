@@ -1,9 +1,94 @@
-angular.module('templates.app', ['cite-page.tpl.html', 'landing.tpl.html', 'page-not-found.tpl.html']);
+angular.module('templates.app', ['about.tpl.html', 'cite-page.tpl.html', 'landing.tpl.html', 'page-not-found.tpl.html']);
+
+angular.module("about.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("about.tpl.html",
+    "<div class=\"page about\" layout=\"row\" layout-align=\"center center\">\n" +
+    "    <div class=\"content\">\n" +
+    "        <h2>About</h2>\n" +
+    "        <div class=\"text\">\n" +
+    "            <p>\n" +
+    "                CiteAs is a way to\n" +
+    "                help get the correct citation for diverse research products,\n" +
+    "                from software and datasets to preprints and articles.\n" +
+    "            </p>\n" +
+    "            <p>\n" +
+    "                It's part of a larger grant, funded by the Alfred P. Sloan Foundation,\n" +
+    "                to help scholars who share reusable\n" +
+    "                research software get credit for their work.\n" +
+    "            </p>\n" +
+    "            <p>\n" +
+    "                CiteAs is a collaboration between\n" +
+    "                <a href=\"http://james.howison.name/\">James Howison</a> at the\n" +
+    "                University of Texas-Austin, and\n" +
+    "                <a href=\"http://impactstory.org/about\">Impactstory.</a>\n" +
+    "            </p>\n" +
+    "\n" +
+    "\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "</div>");
+}]);
 
 angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("cite-page.tpl.html",
-    "<div class=\"page cite-page\">\n" +
-    "    <h1>citation!</h1>\n" +
+    "<div class=\"page cite-page\" layout=\"row\" layout-align=\"center center\">\n" +
+    "\n" +
+    "    <div class=\"content\">\n" +
+    "        <div class=\"main\">\n" +
+    "            <div class=\"loading\"\n" +
+    "                 ng-show=\"apiResp=='loading'\">\n" +
+    "                <span class=\"label\">Building your citation&hellip;</span>\n" +
+    "                <md-progress-linear md-mode=\"indeterminate\"></md-progress-linear>\n" +
+    "            </div>\n" +
+    "\n" +
+    "            <div class=\"error\" ng-show=\"apiResp=='error'\">\n" +
+    "                <h2>Sorry!</h2>\n" +
+    "                <div class=\"text\">\n" +
+    "                    We weren't able to figure out a citation for this research product.\n" +
+    "                    We're in active development and hopefully this particular case will\n" +
+    "                    be working soon. Feel free to\n" +
+    "                    <a href=\"mailto:team@impactstory.org\">let us know</a> and we'll\n" +
+    "                    look into it.\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "\n" +
+    "            <div class=\"citation animated fadeIn\" ng-show=\"apiResp.citation\">\n" +
+    "\n" +
+    "                <div class=\"heading\" layout=\"row\" layout-align=\"space-between center\">\n" +
+    "                    <div class=\"label\">Citation:</div>\n" +
+    "                    <div class=\"style\">\n" +
+    "                        <span class=\"ti-label\">Style:</span>\n" +
+    "                        <span class=\"style-name\">Harvard</span>\n" +
+    "                        <a href=\"/\" class=\"change\" ng-click=\"changeStyle()\">(change)</a>\n" +
+    "                    </div>\n" +
+    "                </div>\n" +
+    "\n" +
+    "                <div class=\"text\">\n" +
+    "                    {{ apiResp.citation }}\n" +
+    "                </div>\n" +
+    "\n" +
+    "                <div class=\"controls\" layout=\"row\" layout-align=\"left center\">\n" +
+    "                    <md-button ng-click=\"export()\">\n" +
+    "                        <i class=\"fa fa-download\"></i>\n" +
+    "                        Export\n" +
+    "                    </md-button>\n" +
+    "                    <md-button ng-href=\"mailto:team@impactstory.org\">\n" +
+    "                        <i class=\"fa fa-bullhorn\"></i>\n" +
+    "                        Report bug\n" +
+    "                    </md-button>\n" +
+    "                    <md-button ng-href=\"{{ apiUrl }}\">\n" +
+    "                        <i class=\"fa fa-cogs\"></i>\n" +
+    "                        Show in API\n" +
+    "                    </md-button>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "\n" +
+    "        </div>\n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "    </div>\n" +
+    "\n" +
     "</div>");
 }]);
 
@@ -30,6 +115,7 @@ angular.module("landing.tpl.html", []).run(["$templateCache", function($template
     "                        <input ng-model=\"main.id\">\n" +
     "\n" +
     "                        <md-button ng-show=\"main.id\"\n" +
+    "                                   ng-click=\"submit()\"\n" +
     "                                   ng-class=\"{fadeOut: !main.id}\"\n" +
     "                                   class=\"md-fab md-mini md-primary go animated fadeInRightBig\">\n" +
     "                            <i class=\"fa fa-arrow-right\"></i>\n" +

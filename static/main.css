@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import "animate.css";
+html {
+  background: #fff;
+}
 body {
   font-family: roboto;
   height: auto;
@@ -12,6 +15,10 @@ body a {
 }
 body a:hover {
   text-decoration: underline;
+}
+body h2 {
+  font-weight: 300;
+  margin: 0;
 }
 div.page.landing div.top-screen {
   height: 100vh;
@@ -112,4 +119,40 @@ div.page.landing div.top-screen {
   position: absolute;
   top: -12px;
   right: 0;
+}
+.page.cite-page {
+  height: 100vh;
+}
+.page.cite-page .content {
+  max-width: 800px;
+}
+.page.cite-page .content .citation {
+  line-height: 1.3;
+}
+.page.cite-page .content .citation .heading .label {
+  font-size: 24px;
+  font-weight: bold;
+  display: none;
+}
+.page.cite-page .content .citation .heading .style {
+  margin-left: 20px;
+  font-size: 24px;
+  text-align: left;
+}
+.page.cite-page .content .citation .heading .style .change {
+  font-size: 12px;
+}
+.page.cite-page .content .citation .text {
+  border: 1px solid #ddd;
+  border-right: none;
+  border-left: none;
+  padding: 20px;
+  margin: 10px 0;
+  font-size: 35px;
+}
+.page.about {
+  height: 100vh;
+}
+.page.about .content {
+  max-width: 800px;
 }

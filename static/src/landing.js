@@ -16,6 +16,11 @@ angular.module('landing', [
             controller: "LandingPageCtrl"
         })
     })
+    .config(function ($routeProvider) {
+        $routeProvider.when('/about', {
+            templateUrl: "about.tpl.html"
+        })
+    })
 
 
 
@@ -36,9 +41,16 @@ angular.module('landing', [
 
 
     .controller("LandingPageCtrl", function ($scope,
+                                             $location,
                                              $timeout) {
 
+        $scope.main = {}
+
         console.log("i am the landing page ctrl")
+        $scope.submit = function(){
+            console.log("submit!", $scope.main.id)
+            $location.path("/cite/" + $scope.main.id)
+        }
 
     })
 

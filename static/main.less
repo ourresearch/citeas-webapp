@@ -5,6 +5,10 @@
 
 @navBarHeight: 100px;
 
+html {
+  background: #fff;
+}
+
 body {
   font-family: roboto;
   a {
@@ -18,6 +22,11 @@ body {
   background: #fff;
   line-height: 1.9;
   font-size: 18px;
+  
+  h2 {
+    font-weight: 300;
+    margin: 0;
+  }
 }
 
 div.page.landing {
@@ -130,3 +139,67 @@ div.page.landing {
     }
   }
 }
+
+.page.cite-page {
+  height: 100vh;
+  .content {
+    max-width: 800px;
+    .citation {
+      line-height: 1.3;
+
+      .heading {
+        .label {
+          font-size: 24px;
+          font-weight: bold;
+          display: none;
+        }
+        .style {
+          margin-left: 20px;
+          font-size: 24px;
+          text-align: left;
+          .change {
+            font-size: 12px;
+          }
+        }
+      }
+
+      .text {
+        border: 1px solid #ddd;
+        border-right: none;
+        border-left: none;
+        padding: 20px;
+        margin: 10px 0;
+        font-size: 35px;
+      }
+
+      .controls {
+
+      }
+
+
+    }
+  }
+}
+
+
+.page.about {
+  height: 100vh;
+  .content {
+    max-width: 800px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

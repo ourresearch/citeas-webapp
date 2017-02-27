@@ -15,9 +15,30 @@ angular.module('citePage', [
 
 
 
-    .controller("CitePageCtrl", function ($scope, $routeParams) {
+    .controller("CitePageCtrl", function ($scope, $routeParams, $http) {
 
-        console.log("i am the cite page ctrl", $routeParams)
+
+
+        var url = "http://api.citeas.org/product/" + $routeParams.projectId
+        $scope.apiUrl = url
+        $scope.apiResp = "loading"
+
+        $http.get(url).success(function(resp){
+            console.log("response from api yay", resp)
+            $scope.apiResp = resp
+        }).error(function(resp){
+            console.log("bad response from api", resp)
+            $scope.apiResp = "error"
+        })
+
+        $scope.changeStyle = function(){
+            alert("this feature coming later...")
+            return false
+        }
+        $scope.export = function(){
+            alert("this feature coming later...")
+            return false
+        }
 
     })
 
