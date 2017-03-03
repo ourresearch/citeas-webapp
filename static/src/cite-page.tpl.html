@@ -30,8 +30,7 @@
                     </div>
                 </div>
 
-                <div class="text">
-                    {{ apiResp.citation }}
+                <div class="text" ng-bind-html="trustHtml(apiResp.citation)">
                 </div>
 
                 <div class="controls" layout="row" layout-align="left center">

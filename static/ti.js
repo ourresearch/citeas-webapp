@@ -409,8 +409,7 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                    </div>\n" +
     "                </div>\n" +
     "\n" +
-    "                <div class=\"text\">\n" +
-    "                    {{ apiResp.citation }}\n" +
+    "                <div class=\"text\" ng-bind-html=\"trustHtml(apiResp.citation)\">\n" +
     "                </div>\n" +
     "\n" +
     "                <div class=\"controls\" layout=\"row\" layout-align=\"left center\">\n" +
@@ -475,7 +474,7 @@ angular.module("landing.tpl.html", []).run(["$templateCache", function($template
     "                    </md-input-container>\n" +
     "                </div>\n" +
     "                <div class=\"example\">\n" +
-    "                    <div class=\"content animated\" ng-hide=\"main.id\" ng-class=\"{fadeOut: main.id, fadeIn: !main.id}\">\n" +
+    "                    <div class=\"content\">\n" +
     "                        <span class=\"label\">Want an example? Try</span>\n" +
     "                        <span class=\"url\">\n" +
     "                            http://yt-project.org\n" +
