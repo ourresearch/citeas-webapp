@@ -119,6 +119,13 @@ div.page.landing {
       .input-row {
         md-input-container {
           padding-right: 70px;
+          margin-bottom: 0;
+
+          // for some reason this adds lots of bottom spacing.
+          // we're not using it, so remove.
+          .md-errors-spacer {
+            display: none;
+          }
           .go {
             display: inline-block;
             font-size: 20px;
@@ -128,13 +135,17 @@ div.page.landing {
           }
 
         }
-
-        //.submit {
-        //  margin: 20px 20px 0 0;
-        //  font-size: 16px;
-        //  padding: 3px 16px;
-        //  float: right;
-        //}
+      }
+      .example {
+        margin-left: 5px;
+        height: 20px;
+        font-size: 14px;
+        .label {
+          font-weight: 300;
+        }
+        .url {
+          color: #333;
+        }
       }
     }
   }

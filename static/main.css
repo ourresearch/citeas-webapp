@@ -112,6 +112,10 @@ div.page.landing div.top-screen {
 }
 .page.landing .content .user-input .input-row md-input-container {
   padding-right: 70px;
+  margin-bottom: 0;
+}
+.page.landing .content .user-input .input-row md-input-container .md-errors-spacer {
+  display: none;
 }
 .page.landing .content .user-input .input-row md-input-container .go {
   display: inline-block;
@@ -119,6 +123,17 @@ div.page.landing div.top-screen {
   position: absolute;
   top: -12px;
   right: 0;
+}
+.page.landing .content .user-input .example {
+  margin-left: 5px;
+  height: 20px;
+  font-size: 14px;
+}
+.page.landing .content .user-input .example .label {
+  font-weight: 300;
+}
+.page.landing .content .user-input .example .url {
+  color: #333;
 }
 .page.cite-page {
   height: 100vh;

@@ -474,6 +474,14 @@ angular.module("landing.tpl.html", []).run(["$templateCache", function($template
     "                        -->\n" +
     "                    </md-input-container>\n" +
     "                </div>\n" +
+    "                <div class=\"example\">\n" +
+    "                    <div class=\"content animated\" ng-hide=\"main.id\" ng-class=\"{fadeOut: main.id, fadeIn: !main.id}\">\n" +
+    "                        <span class=\"label\">Want an example? Try</span>\n" +
+    "                        <span class=\"url\">\n" +
+    "                            http://yt-project.org\n" +
+    "                        </span>\n" +
+    "                    </div>\n" +
+    "                </div>\n" +
     "            </div>\n" +
     "\n" +
     "        </div>\n" +
