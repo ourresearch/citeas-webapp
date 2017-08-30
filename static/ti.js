@@ -398,13 +398,12 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                </div>\n" +
     "            </div>\n" +
     "\n" +
-    "            <div class=\"citation animated fadeIn\" ng-show=\"apiResp.citation\">\n" +
+    "            <div class=\"citation animated fadeIn\" ng-show=\"apiResp.citations\">\n" +
     "\n" +
     "                Style:\n" +
     "                <select ng-model=\"selectedCitation\"\n" +
-    "                               ng-options=\"y.style_fullname for (x, y) in apiResp.citation\">\n" +
+    "                               ng-options=\"y.style_fullname for (x, y) in apiResp.citations\">\n" +
     "                </select>\n" +
-    "\n" +
     "\n" +
     "                <div class=\"text\" ng-bind-html=\"selectedCitation.citation\">\n" +
     "                </div>\n" +

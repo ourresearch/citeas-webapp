@@ -19,13 +19,12 @@
                 </div>
             </div>
 
-            <div class="citation animated fadeIn" ng-show="apiResp.citation">
+            <div class="citation animated fadeIn" ng-show="apiResp.citations">
 
                 Style:
                 <select ng-model="selectedCitation"
-                               ng-options="y.style_fullname for (x, y) in apiResp.citation">
+                               ng-options="y.style_fullname for (x, y) in apiResp.citations">
                 </select>
-
 
                 <div class="text" ng-bind-html="selectedCitation.citation">
                 </div>
