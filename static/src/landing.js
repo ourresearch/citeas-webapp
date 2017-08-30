@@ -21,7 +21,11 @@ angular.module('landing', [
             templateUrl: "about.tpl.html"
         })
     })
-
+    .config(function ($routeProvider) {
+        $routeProvider.when('/api', {
+            templateUrl: "api.tpl.html"
+        })
+    })
 
 
 

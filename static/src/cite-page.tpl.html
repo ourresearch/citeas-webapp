@@ -21,10 +21,16 @@
 
             <div class="citation animated fadeIn" ng-show="apiResp.citations">
 
-                Style:
-                <select ng-model="selectedCitation"
-                               ng-options="y.style_fullname for (x, y) in apiResp.citations">
-                </select>
+                <div>
+                    We've found the recommended citation for <a href="{{ apiResp.url }}">{{ apiResp.name }}</a>.
+                </div>
+
+                <div>
+                    Citation style:
+                    <select ng-model="selectedCitation"
+                                   ng-options="y.style_fullname for (x, y) in apiResp.citations">
+                    </select>
+                    </div>
 
                 <div class="text" ng-bind-html="selectedCitation.citation">
                 </div>
@@ -46,7 +52,6 @@
             </div>
 
         </div>
-
 
 
     </div>
