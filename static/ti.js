@@ -400,17 +400,13 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "\n" +
     "            <div class=\"citation animated fadeIn\" ng-show=\"apiResp.citation\">\n" +
     "\n" +
-    "                <div class=\"heading\" layout=\"row\" layout-align=\"space-between center\">\n" +
-    "                    <div class=\"label\">Citation:</div>\n" +
-    "                    <div class=\"style\">\n" +
-    "                        <span class=\"ti-label\">Style:</span>\n" +
-    "                        <span class=\"style-name\">Harvard</span>\n" +
-    "                        <a href=\"/\" class=\"change\" ng-click=\"changeStyle()\">(change)</a>\n" +
-    "                    </div>\n" +
-    "                </div>\n" +
+    "                Style:\n" +
+    "                <select ng-model=\"selectedCitation\"\n" +
+    "                               ng-options=\"y.style_fullname for (x, y) in apiResp.citation\">\n" +
+    "                </select>\n" +
     "\n" +
-    "                <div class=\"text\">\n" +
-    "                    {{ apiResp.citation }}\n" +
+    "\n" +
+    "                <div class=\"text\" ng-bind-html=\"selectedCitation.citation\">\n" +
     "                </div>\n" +
     "\n" +
     "                <div class=\"controls\" layout=\"row\" layout-align=\"left center\">\n" +

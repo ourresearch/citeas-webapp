@@ -21,17 +21,13 @@
 
             <div class="citation animated fadeIn" ng-show="apiResp.citation">
 
-                <div class="heading" layout="row" layout-align="space-between center">
-                    <div class="label">Citation:</div>
-                    <div class="style">
-                        <span class="ti-label">Style:</span>
-                        <span class="style-name">Harvard</span>
-                        <a href="/" class="change" ng-click="changeStyle()">(change)</a>
-                    </div>
-                </div>
+                Style:
+                <select ng-model="selectedCitation"
+                               ng-options="y.style_fullname for (x, y) in apiResp.citation">
+                </select>
 
-                <div class="text">
-                    {{ apiResp.citation }}
+
+                <div class="text" ng-bind-html="selectedCitation.citation">
                 </div>
 
                 <div class="controls" layout="row" layout-align="left center">
