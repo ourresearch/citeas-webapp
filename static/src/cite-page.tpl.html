@@ -19,18 +19,20 @@
                 </div>
             </div>
 
-            <div class="citation animated fadeIn" ng-show="apiResp.citation">
+            <div class="citation animated fadeIn" ng-show="apiResp.citations">
 
-                <div class="heading" layout="row" layout-align="space-between center">
-                    <div class="label">Citation:</div>
-                    <div class="style">
-                        <span class="ti-label">Style:</span>
-                        <span class="style-name">Harvard</span>
-                        <a href="/" class="change" ng-click="changeStyle()">(change)</a>
-                    </div>
+                <div>
+                    We've found the recommended citation for <a href="{{ apiResp.url }}">{{ apiResp.name }}</a>.
                 </div>
 
-                <div class="text" ng-bind-html="trustHtml(apiResp.citation)">
+                <div>
+                    Citation style:
+                    <select ng-model="selectedCitation"
+                                   ng-options="y.style_fullname for (x, y) in apiResp.citations">
+                    </select>
+                    </div>
+
+                <div class="text" ng-bind-html="selectedCitation.citation">
                 </div>
 
                 <div class="controls" layout="row" layout-align="left center">
@@ -50,7 +52,6 @@
             </div>
 
         </div>
-
 
 
     </div>

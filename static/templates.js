@@ -1,4 +1,4 @@
-angular.module('templates.app', ['about.tpl.html', 'cite-page.tpl.html', 'landing.tpl.html', 'page-not-found.tpl.html']);
+angular.module('templates.app', ['about.tpl.html', 'api.tpl.html', 'cite-page.tpl.html', 'landing.tpl.html', 'page-not-found.tpl.html']);
 
 angular.module("about.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("about.tpl.html",
@@ -29,6 +29,21 @@ angular.module("about.tpl.html", []).run(["$templateCache", function($templateCa
     "</div>");
 }]);
 
+angular.module("api.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("api.tpl.html",
+    "<div class=\"page api\" layout=\"row\" layout-align=\"center center\">\n" +
+    "    <div class=\"content\">\n" +
+    "        <h2>API</h2>\n" +
+    "        <div class=\"text\">\n" +
+    "            <p>\n" +
+    "                This is where the API docs will go.\n" +
+    "            </p>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "</div>\n" +
+    "");
+}]);
+
 angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("cite-page.tpl.html",
     "<div class=\"page cite-page\" layout=\"row\" layout-align=\"center center\">\n" +
@@ -52,18 +67,20 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                </div>\n" +
     "            </div>\n" +
     "\n" +
-    "            <div class=\"citation animated fadeIn\" ng-show=\"apiResp.citation\">\n" +
+    "            <div class=\"citation animated fadeIn\" ng-show=\"apiResp.citations\">\n" +
     "\n" +
-    "                <div class=\"heading\" layout=\"row\" layout-align=\"space-between center\">\n" +
-    "                    <div class=\"label\">Citation:</div>\n" +
-    "                    <div class=\"style\">\n" +
-    "                        <span class=\"ti-label\">Style:</span>\n" +
-    "                        <span class=\"style-name\">Harvard</span>\n" +
-    "                        <a href=\"/\" class=\"change\" ng-click=\"changeStyle()\">(change)</a>\n" +
-    "                    </div>\n" +
+    "                <div>\n" +
+    "                    We've found the recommended citation for <a href=\"{{ apiResp.url }}\">{{ apiResp.name }}</a>.\n" +
     "                </div>\n" +
     "\n" +
-    "                <div class=\"text\" ng-bind-html=\"trustHtml(apiResp.citation)\">\n" +
+    "                <div>\n" +
+    "                    Citation style:\n" +
+    "                    <select ng-model=\"selectedCitation\"\n" +
+    "                                   ng-options=\"y.style_fullname for (x, y) in apiResp.citations\">\n" +
+    "                    </select>\n" +
+    "                    </div>\n" +
+    "\n" +
+    "                <div class=\"text\" ng-bind-html=\"selectedCitation.citation\">\n" +
     "                </div>\n" +
     "\n" +
     "                <div class=\"controls\" layout=\"row\" layout-align=\"left center\">\n" +
@@ -83,7 +100,6 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "            </div>\n" +
     "\n" +
     "        </div>\n" +
-    "\n" +
     "\n" +
     "\n" +
     "    </div>\n" +
@@ -126,14 +142,6 @@ angular.module("landing.tpl.html", []).run(["$templateCache", function($template
     "                        </md-button>\n" +
     "                        -->\n" +
     "                    </md-input-container>\n" +
-    "                </div>\n" +
-    "                <div class=\"example\">\n" +
-    "                    <div class=\"content\">\n" +
-    "                        <span class=\"label\">Want an example? Try</span>\n" +
-    "                        <span class=\"url\">\n" +
-    "                            http://yt-project.org\n" +
-    "                        </span>\n" +
-    "                    </div>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "\n" +
