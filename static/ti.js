@@ -527,35 +527,27 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                    </div>\n" +
     "                </div>\n" +
     "\n" +
+    "\n" +
+    "                <div class=\"citation-options\">\n" +
+    "                    <span class=\"label\">Cite this project as:</span>\n" +
+    "                    <md-input-container>\n" +
+    "                        <md-select ng-model=\"user.selectedCitation\">\n" +
+    "                            <md-option ng-repeat=\"myCitationObj in apiResp.citations\"\n" +
+    "                                       ng-value=\"myCitationObj\">\n" +
+    "                            {{ myCitationObj.style_fullname }}\n" +
+    "                            </md-option>\n" +
+    "                        </md-select>\n" +
+    "                    </md-input-container>\n" +
+    "\n" +
+    "                </div>\n" +
+    "\n" +
     "                <div class=\"text\" ng-bind-html=\"user.selectedCitation.citation\">\n" +
     "                </div>\n" +
     "\n" +
     "\n" +
-    "                <md-input-container>\n" +
-    "                    <label>Style:</label>\n" +
-    "                    <md-select ng-model=\"user.selectedCitation\">\n" +
-    "                        <md-option ng-repeat=\"myCitationObj in apiResp.citations\"\n" +
-    "                                   ng-value=\"myCitationObj\">\n" +
-    "                        {{ myCitationObj.style_fullname }}\n" +
-    "                        </md-option>\n" +
-    "                    </md-select>\n" +
-    "                </md-input-container>\n" +
     "\n" +
     "\n" +
-    "                <div class=\"controls\" layout=\"row\" layout-align=\"left center\">\n" +
-    "                    <md-button ng-click=\"export()\">\n" +
-    "                        <i class=\"fa fa-download\"></i>\n" +
-    "                        Export\n" +
-    "                    </md-button>\n" +
-    "                    <md-button ng-href=\"mailto:team@impactstory.org\">\n" +
-    "                        <i class=\"fa fa-bullhorn\"></i>\n" +
-    "                        Report bug\n" +
-    "                    </md-button>\n" +
-    "                    <md-button ng-href=\"{{ apiUrl }}\">\n" +
-    "                        <i class=\"fa fa-cogs\"></i>\n" +
-    "                        Show in API\n" +
-    "                    </md-button>\n" +
-    "                </div>\n" +
+    "\n" +
     "            </div>\n" +
     "\n" +
     "        </div>\n" +
