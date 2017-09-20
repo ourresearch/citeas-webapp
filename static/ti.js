@@ -104,6 +104,22 @@ angular.module('app').controller('AppCtrl', function(
     }
 
 
+    $scope.productMetadata = {}
+    $scope.setCitationMetaTags = function(metadata){
+
+        console.log("setting product metadata", metadata)
+
+        $scope.productMetadata = metadata
+
+        // force Zotero to check the page for metadata
+        var ev = document.createEvent('HTMLEvents');
+        ev.initEvent('ZoteroItemUpdated', true, true);
+        document.dispatchEvent(ev);
+    }
+
+
+
+
     $rootScope.$on('$routeChangeSuccess', function(next, current){
         $scope.global.template = current.loadedTemplateUrl
             .replace("/", "-")
@@ -145,7 +161,7 @@ angular.module('app').controller('AppCtrl', function(
 
 
 
-var resp =
+var stubbedResp =
 {
   "citations": [
     {
@@ -258,33 +274,63 @@ angular.module('citePage', [
 
     .controller("CitePageCtrl", function ($scope, $routeParams, $http) {
 
-
-
+        // define stuff
         var url = "http://api.citeas.org/product/" + $routeParams.projectId
         $scope.apiUrl = url
         $scope.apiResp = "loading"
         $scope.user = {}
 
+        // load the data from the API
+        load()
+        var apiResp
 
-        //$http.get(url).success(function(resp){
-        //    console.log("response from api yay", resp)
-        //    $scope.apiResp = resp
-        //}).error(function(resp){
-        //    console.log("bad response from api", resp)
-        //    $scope.apiResp = "error"
-        //})
-
-        $scope.apiResp = resp
-        $scope.user.selectedCitation = resp.citations[0]
+        // just for testing
+        onDataLoad(stubbedResp)
 
 
-        $scope.changeStyle = function(){
-            alert("this feature coming later...")
-            return false
+        // call once the API has returned a good response
+        function onDataLoad(resp) {
+            apiResp = resp
+            $scope.apiResp = apiResp
+            $scope.user.selectedCitation = resp.citations[0]
+            $scope.setCitationMetaTags(apiResp.metadata)
+
+
+
+
         }
-        $scope.export = function(){
-            alert("this feature coming later...")
-            return false
+
+        function load(){
+            //$http.get(url).success(function(resp){
+            //    console.log("response from api yay", resp)
+            //    $scope.apiResp = resp
+            //}).error(function(resp){
+            //    console.log("bad response from api", resp)
+            //    $scope.apiResp = "error"
+            //})
+
+        }
+
+
+        $scope.saveAs = function(format){
+            var extensions = {
+                endnote: "enw",
+                refworks: "ris",
+                bibtex: "bibtex"
+            }
+
+            var myExt = extensions[format]
+            var myExportObj = apiResp.exports.find(function(expObj){
+                return expObj.export_name == myExt
+            })
+
+            console.log("export obj", myExportObj)
+
+            var filename = "citation." + myExportObj.export_name
+            var fileMime = "text/" + format
+
+            // using external download.js library
+            download(myExportObj.export, filename, fileMime)
         }
 
     })
@@ -542,6 +588,14 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                </div>\n" +
     "\n" +
     "                <div class=\"text\" ng-bind-html=\"user.selectedCitation.citation\">\n" +
+    "                </div>\n" +
+    "\n" +
+    "                <div class=\"download\">\n" +
+    "                    <span class=\"download-links\">\n" +
+    "                        <span class=\"download\" ng-click=\"saveAs('endnote')\">Endnote</span>\n" +
+    "                        <span class=\"download\" ng-click=\"saveAs('refworks')\">Refworks</span>\n" +
+    "                        <span class=\"download\" ng-click=\"saveAs('bibtex')\">BibTeX</span>\n" +
+    "                    </span>\n" +
     "                </div>\n" +
     "\n" +
     "\n" +

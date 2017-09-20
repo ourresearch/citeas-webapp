@@ -94,6 +94,14 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                <div class=\"text\" ng-bind-html=\"user.selectedCitation.citation\">\n" +
     "                </div>\n" +
     "\n" +
+    "                <div class=\"download\">\n" +
+    "                    <span class=\"download-links\">\n" +
+    "                        <span class=\"download\" ng-click=\"saveAs('endnote')\">Endnote</span>\n" +
+    "                        <span class=\"download\" ng-click=\"saveAs('refworks')\">Refworks</span>\n" +
+    "                        <span class=\"download\" ng-click=\"saveAs('bibtex')\">BibTeX</span>\n" +
+    "                    </span>\n" +
+    "                </div>\n" +
+    "\n" +
     "\n" +
     "\n" +
     "\n" +

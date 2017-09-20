@@ -104,6 +104,22 @@ angular.module('app').controller('AppCtrl', function(
     }
 
 
+    $scope.productMetadata = {}
+    $scope.setCitationMetaTags = function(metadata){
+
+        console.log("setting product metadata", metadata)
+
+        $scope.productMetadata = metadata
+
+        // force Zotero to check the page for metadata
+        var ev = document.createEvent('HTMLEvents');
+        ev.initEvent('ZoteroItemUpdated', true, true);
+        document.dispatchEvent(ev);
+    }
+
+
+
+
     $rootScope.$on('$routeChangeSuccess', function(next, current){
         $scope.global.template = current.loadedTemplateUrl
             .replace("/", "-")
