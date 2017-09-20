@@ -145,6 +145,100 @@ angular.module('app').controller('AppCtrl', function(
 
 
 
+var resp =
+{
+  "citations": [
+    {
+      "citation": "Wickham, H., & RStudio.  (n.d.). stringr: Simple, Consistent Wrappers for Common String Operations. <i>R package version 1.2.0.9000</i>. Retrieved from https://CRAN.R-project.org/package=stringr",
+      "style_fullname": "American Psychological Association 6th edition",
+      "style_shortname": "apa"
+    },
+    {
+      "citation": "Wickham, H. & RStudio, stringr: Simple, Consistent Wrappers for Common String Operations. <i>R package version 1.2.0.9000</i>. Available at: https://CRAN.R-project.org/package=stringr.",
+      "style_fullname": "Harvard Reference format 1 (author-date)",
+      "style_shortname": "harvard1"
+    },
+    {
+      "citation": "1.Wickham, H. & RStudio. stringr: Simple, Consistent Wrappers for Common String Operations. <i>R package version 1.2.0.9000</i>",
+      "style_fullname": "Nature",
+      "style_shortname": "nature"
+    },
+    {
+      "citation": "Wickham, Hadley, and RStudio. \u201cStringr: Simple, Consistent Wrappers for Common String Operations\u201d. <i>R package version 1.2.0.9000</i>. Web. <https://CRAN.R-project.org/package=stringr>...",
+      "style_fullname": "Modern Language Association 7th edition (with URL)",
+      "style_shortname": "modern-language-association-with-url"
+    },
+    {
+      "citation": "Wickham, Hadley, and RStudio. n.d.. \u201cStringr: Simple, Consistent Wrappers for Common String Operations\u201d. <i>R Package Version 1.2.0.9000</i>. https://CRAN.R-project.org/package=stringr.",
+      "style_fullname": "Chicago Manual of Style 16th edition (author-date)",
+      "style_shortname": "chicago-author-date"
+    },
+    {
+      "citation": "1. Wickham H, RStudio. stringr: Simple, Consistent Wrappers for Common String Operations [Internet]. R package version 1.2.0.9000.. Available from: https://CRAN.R-project.org/package=stringr",
+      "style_fullname": "Vancouver",
+      "style_shortname": "vancouver"
+    }
+  ],
+  "doi": null,
+  "exports": [
+    {
+      "export": "container-title,URL,type,title,note,year,id,author\nR package version 1.2.0.9000,https://CRAN.R-project.org/package=stringr,Manual,stringr: Simple, Consistent Wrappers for Common String Operations,R package version 1.2.0.9000,2017,ITEM-1,[{'suffix': u'', 'given': u'Hadley', 'family': u'Wickham'}, {'family': u'RStudio'}]",
+      "export_name": "csv"
+    },
+    {
+      "export": "%T stringr: Simple, Consistent Wrappers for Common String Operations\n%J R package version 1.2.0.9000\n%V \n%N \n%P \n%D 2009\n%I \n%A Wickham, Hadley\n%A RStudio, ",
+      "export_name": "enw"
+    },
+    {
+      "export": "T1 stringr: Simple, Consistent Wrappers for Common String Operations\nJO R package version 1.2.0.9000\nVL \nIS \nSP \nV1 2009\nPB \nA1 Wickham, Hadley\nA1 RStudio, ",
+      "export_name": "ris"
+    },
+    {
+      "export": "@article{piwowar2007sharing,\n              title={Sharing detailed research data is associated with increased citation rate},\n              author={Piwowar, Heather A and Day, Roger S and Fridsma, Douglas B},\n              journal={PloS one},\n              volume={2},\n              number={3},\n              pages={e308},\n              year={2007},\n              publisher={Public Library of Science}\n            }\n            ",
+      "export_name": "bibtex"
+    }
+  ],
+  "metadata": {
+    "URL": "https://CRAN.R-project.org/package=stringr",
+    "author": [
+      {
+        "family": "Wickham",
+        "given": "Hadley",
+        "suffix": ""
+      },
+      {
+        "family": "RStudio"
+      }
+    ],
+    "container-title": "R package version 1.2.0.9000",
+    "id": "ITEM-1",
+    "note": "R package version 1.2.0.9000",
+    "title": "stringr: Simple, Consistent Wrappers for Common String Operations",
+    "type": "Manual",
+    "year": "2017"
+  },
+  "name": "stringr: Simple, Consistent Wrappers for Common String Operations",
+  "provenance": [
+    {
+      "context": "base library url",
+      "location": "http://api.citeas.org/product/https://cran.r-project.org/web/packages/stringr",
+      "source_type": "request parameters"
+    },
+    {
+      "context": "GitHub URL",
+      "location": "http://cran.r-project.org/web/packages/stringr",
+      "source_type": "webpage content"
+    },
+    {
+      "context": "GitHub DESCRIPTION file",
+      "location": "https://github.com/tidyverse/stringr/raw/master/DESCRIPTION",
+      "source_type": "DESCRIPTION metadata"
+    }
+  ],
+  "url": "https://github.com/tidyverse/stringr"
+}
+
+
 angular.module('citePage', [
     'ngRoute',
     'ngMessages'
@@ -169,14 +263,20 @@ angular.module('citePage', [
         var url = "http://api.citeas.org/product/" + $routeParams.projectId
         $scope.apiUrl = url
         $scope.apiResp = "loading"
+        $scope.user = {}
 
-        $http.get(url).success(function(resp){
-            console.log("response from api yay", resp)
-            $scope.apiResp = resp
-        }).error(function(resp){
-            console.log("bad response from api", resp)
-            $scope.apiResp = "error"
-        })
+
+        //$http.get(url).success(function(resp){
+        //    console.log("response from api yay", resp)
+        //    $scope.apiResp = resp
+        //}).error(function(resp){
+        //    console.log("bad response from api", resp)
+        //    $scope.apiResp = "error"
+        //})
+
+        $scope.apiResp = resp
+        $scope.user.selectedCitation = resp.citations[0]
+
 
         $scope.changeStyle = function(){
             alert("this feature coming later...")
@@ -396,7 +496,7 @@ angular.module("api.tpl.html", []).run(["$templateCache", function($templateCach
 
 angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("cite-page.tpl.html",
-    "<div class=\"page cite-page\" layout=\"row\" layout-align=\"center center\">\n" +
+    "<div class=\"page cite-page\">\n" +
     "\n" +
     "    <div class=\"content\">\n" +
     "        <div class=\"main\">\n" +
@@ -418,20 +518,29 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "            </div>\n" +
     "\n" +
     "            <div class=\"citation animated fadeIn\" ng-show=\"apiResp.citations\">\n" +
-    "\n" +
-    "                <div>\n" +
-    "                    We've found the recommended citation for <a href=\"{{ apiResp.url }}\">{{ apiResp.name }}</a>.\n" +
-    "                </div>\n" +
-    "\n" +
-    "                <div>\n" +
-    "                    Citation style:\n" +
-    "                    <select ng-model=\"selectedCitation\"\n" +
-    "                                   ng-options=\"y.style_fullname for (x, y) in apiResp.citations\">\n" +
-    "                    </select>\n" +
+    "                <div class=\"heading\">\n" +
+    "                    <h1>\n" +
+    "                        {{ apiResp.name }}\n" +
+    "                    </h1>\n" +
+    "                    <div class=\"metadata\">\n" +
+    "                        <a href=\"{{ apiResp.url }}\"><i class=\"fa fa-external-link\"></i> view website</a>\n" +
     "                    </div>\n" +
-    "\n" +
-    "                <div class=\"text\" ng-bind-html=\"selectedCitation.citation\">\n" +
     "                </div>\n" +
+    "\n" +
+    "                <div class=\"text\" ng-bind-html=\"user.selectedCitation.citation\">\n" +
+    "                </div>\n" +
+    "\n" +
+    "\n" +
+    "                <md-input-container>\n" +
+    "                    <label>Style:</label>\n" +
+    "                    <md-select ng-model=\"user.selectedCitation\">\n" +
+    "                        <md-option ng-repeat=\"myCitationObj in apiResp.citations\"\n" +
+    "                                   ng-value=\"myCitationObj\">\n" +
+    "                        {{ myCitationObj.style_fullname }}\n" +
+    "                        </md-option>\n" +
+    "                    </md-select>\n" +
+    "                </md-input-container>\n" +
+    "\n" +
     "\n" +
     "                <div class=\"controls\" layout=\"row\" layout-align=\"left center\">\n" +
     "                    <md-button ng-click=\"export()\">\n" +
@@ -492,6 +601,22 @@ angular.module("landing.tpl.html", []).run(["$templateCache", function($template
     "                        </md-button>\n" +
     "                        -->\n" +
     "                    </md-input-container>\n" +
+    "                </div>\n" +
+    "                <div class=\"example\">\n" +
+    "                    <div class=\"content\">\n" +
+    "                        <div class=\"label\">Or try these examples</div>\n" +
+    "                        <ul class=\"examples\">\n" +
+    "                            <li>\n" +
+    "                                <a href=\"/cite/http://yt-project.org\">http://yt-project.org</a>\n" +
+    "                            </li>\n" +
+    "                            <li>\n" +
+    "                                <a href=\"/cite/https://cran.r-project.org/web/packages/stringr\">https://cran.r-project.org/web/packages/stringr</a>\n" +
+    "                            </li>\n" +
+    "                            <li>\n" +
+    "                                <a href=\"/cite/http://yt-project.org\">yt-project.org</a>\n" +
+    "                            </li>\n" +
+    "                        </ul>\n" +
+    "                    </div>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "\n" +

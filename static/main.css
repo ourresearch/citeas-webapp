@@ -16,6 +16,9 @@ body a {
 body a:hover {
   text-decoration: underline;
 }
+body h1 {
+  font-weight: 300;
+}
 body h2 {
   font-weight: 300;
   margin: 0;
@@ -136,10 +139,20 @@ div.page.landing div.top-screen {
   color: #333;
 }
 .page.cite-page {
-  height: 100vh;
+  padding-top: 100px;
 }
 .page.cite-page .content {
   max-width: 800px;
+  margin: 0 auto;
+}
+.page.cite-page .content div.heading h1 {
+  margin-bottom: 0;
+}
+.page.cite-page .content div.heading div.metadata {
+  font-size: 14px;
+}
+.page.cite-page .content div.heading div.metadata a {
+  color: #333;
 }
 .page.cite-page .content .citation {
   line-height: 1.3;

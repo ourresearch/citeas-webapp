@@ -1,4 +1,4 @@
-<div class="page cite-page" layout="row" layout-align="center center">
+<div class="page cite-page">
 
     <div class="content">
         <div class="main">
@@ -20,20 +20,29 @@
             </div>
 
             <div class="citation animated fadeIn" ng-show="apiResp.citations">
-
-                <div>
-                    We've found the recommended citation for <a href="{{ apiResp.url }}">{{ apiResp.name }}</a>.
-                </div>
-
-                <div>
-                    Citation style:
-                    <select ng-model="selectedCitation"
-                                   ng-options="y.style_fullname for (x, y) in apiResp.citations">
-                    </select>
+                <div class="heading">
+                    <h1>
+                        {{ apiResp.name }}
+                    </h1>
+                    <div class="metadata">
+                        <a href="{{ apiResp.url }}"><i class="fa fa-external-link"></i> view website</a>
                     </div>
-
-                <div class="text" ng-bind-html="selectedCitation.citation">
                 </div>
+
+                <div class="text" ng-bind-html="user.selectedCitation.citation">
+                </div>
+
+
+                <md-input-container>
+                    <label>Style:</label>
+                    <md-select ng-model="user.selectedCitation">
+                        <md-option ng-repeat="myCitationObj in apiResp.citations"
+                                   ng-value="myCitationObj">
+                        {{ myCitationObj.style_fullname }}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+
 
                 <div class="controls" layout="row" layout-align="left center">
                     <md-button ng-click="export()">

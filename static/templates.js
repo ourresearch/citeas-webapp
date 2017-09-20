@@ -46,7 +46,7 @@ angular.module("api.tpl.html", []).run(["$templateCache", function($templateCach
 
 angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("cite-page.tpl.html",
-    "<div class=\"page cite-page\" layout=\"row\" layout-align=\"center center\">\n" +
+    "<div class=\"page cite-page\">\n" +
     "\n" +
     "    <div class=\"content\">\n" +
     "        <div class=\"main\">\n" +
@@ -68,20 +68,29 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "            </div>\n" +
     "\n" +
     "            <div class=\"citation animated fadeIn\" ng-show=\"apiResp.citations\">\n" +
-    "\n" +
-    "                <div>\n" +
-    "                    We've found the recommended citation for <a href=\"{{ apiResp.url }}\">{{ apiResp.name }}</a>.\n" +
-    "                </div>\n" +
-    "\n" +
-    "                <div>\n" +
-    "                    Citation style:\n" +
-    "                    <select ng-model=\"selectedCitation\"\n" +
-    "                                   ng-options=\"y.style_fullname for (x, y) in apiResp.citations\">\n" +
-    "                    </select>\n" +
+    "                <div class=\"heading\">\n" +
+    "                    <h1>\n" +
+    "                        {{ apiResp.name }}\n" +
+    "                    </h1>\n" +
+    "                    <div class=\"metadata\">\n" +
+    "                        <a href=\"{{ apiResp.url }}\"><i class=\"fa fa-external-link\"></i> view website</a>\n" +
     "                    </div>\n" +
-    "\n" +
-    "                <div class=\"text\" ng-bind-html=\"selectedCitation.citation\">\n" +
     "                </div>\n" +
+    "\n" +
+    "                <div class=\"text\" ng-bind-html=\"user.selectedCitation.citation\">\n" +
+    "                </div>\n" +
+    "\n" +
+    "\n" +
+    "                <md-input-container>\n" +
+    "                    <label>Style:</label>\n" +
+    "                    <md-select ng-model=\"user.selectedCitation\">\n" +
+    "                        <md-option ng-repeat=\"myCitationObj in apiResp.citations\"\n" +
+    "                                   ng-value=\"myCitationObj\">\n" +
+    "                        {{ myCitationObj.style_fullname }}\n" +
+    "                        </md-option>\n" +
+    "                    </md-select>\n" +
+    "                </md-input-container>\n" +
+    "\n" +
     "\n" +
     "                <div class=\"controls\" layout=\"row\" layout-align=\"left center\">\n" +
     "                    <md-button ng-click=\"export()\">\n" +
@@ -142,6 +151,22 @@ angular.module("landing.tpl.html", []).run(["$templateCache", function($template
     "                        </md-button>\n" +
     "                        -->\n" +
     "                    </md-input-container>\n" +
+    "                </div>\n" +
+    "                <div class=\"example\">\n" +
+    "                    <div class=\"content\">\n" +
+    "                        <div class=\"label\">Or try these examples</div>\n" +
+    "                        <ul class=\"examples\">\n" +
+    "                            <li>\n" +
+    "                                <a href=\"/cite/http://yt-project.org\">http://yt-project.org</a>\n" +
+    "                            </li>\n" +
+    "                            <li>\n" +
+    "                                <a href=\"/cite/https://cran.r-project.org/web/packages/stringr\">https://cran.r-project.org/web/packages/stringr</a>\n" +
+    "                            </li>\n" +
+    "                            <li>\n" +
+    "                                <a href=\"/cite/http://yt-project.org\">yt-project.org</a>\n" +
+    "                            </li>\n" +
+    "                        </ul>\n" +
+    "                    </div>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "\n" +
