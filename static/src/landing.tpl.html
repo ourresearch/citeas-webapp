@@ -11,7 +11,7 @@
 
 
             <div class="user-input">
-                <div class="input-row">
+                <form class="input-row" ng-submit="submit()">
                     <md-input-container md-no-float
                                         class="md-block example-selected-{{ main.exampleSelected }}"
                                         flex-gt-sm="">
@@ -19,7 +19,6 @@
                         <input ng-model="main.id">
 
                         <md-button ng-show="main.id"
-                                   ng-click="submit()"
                                    ng-class="{fadeOut: !main.id}"
                                    class="md-fab md-mini md-primary go animated fadeInRightBig">
                             <i class="fa fa-arrow-right"></i>
@@ -31,10 +30,11 @@
                         </md-button>
                         -->
                     </md-input-container>
-                </div>
+                </form>
+
                 <div class="example">
                     <div class="content">
-                        <div class="label">Or try these examples</div>
+                        <div class="label">Examples:</div>
                         <ul class="examples">
                             <li>
                                 <a href="/cite/http://yt-project.org">http://yt-project.org</a>
@@ -43,7 +43,7 @@
                                 <a href="/cite/https://cran.r-project.org/web/packages/stringr">https://cran.r-project.org/web/packages/stringr</a>
                             </li>
                             <li>
-                                <a href="/cite/http://yt-project.org">yt-project.org</a>
+                                <a href="/cite/http://yt-project.org">10.5281/zenodo.160400</a>
                             </li>
                         </ul>
                     </div>

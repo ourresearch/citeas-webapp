@@ -109,9 +109,10 @@ angular.module('citePage', [
 
 
 
-    .controller("CitePageCtrl", function ($scope, $routeParams, $http) {
+    .controller("CitePageCtrl", function ($scope, $mdDialog, $mdToast, $routeParams, $http) {
 
         // define stuff
+        var apiResp
         var url = "http://api.citeas.org/product/" + $routeParams.projectId
         $scope.apiUrl = url
         $scope.apiResp = "loading"
@@ -119,10 +120,9 @@ angular.module('citePage', [
 
         // load the data from the API
         load()
-        var apiResp
 
         // just for testing
-        onDataLoad(stubbedResp)
+        //onDataLoad(stubbedResp)
 
 
         // call once the API has returned a good response
@@ -132,20 +132,33 @@ angular.module('citePage', [
             $scope.user.selectedCitation = resp.citations[0]
             $scope.setCitationMetaTags(apiResp.metadata)
 
-
-
-
         }
 
         function load(){
-            //$http.get(url).success(function(resp){
-            //    console.log("response from api yay", resp)
-            //    $scope.apiResp = resp
-            //}).error(function(resp){
-            //    console.log("bad response from api", resp)
-            //    $scope.apiResp = "error"
-            //})
+            $http.get(url).success(function(resp){
+                console.log("response from api yay", resp)
+                onDataLoad(resp)
+            }).error(function(resp){
+                console.log("bad response from api", resp)
+                $scope.apiResp = "error"
+            })
 
+        }
+
+        $scope.copy = function(){
+            copyText("citation")
+            var toast = $mdToast.simple()
+                  .textContent('Copied to clipboard')
+                  .action('OK')
+
+            $mdToast.show(toast)
+        }
+
+        var originatorEv;
+        $scope.openMenu = function($mdOpenMenu, ev){
+            originatorEv = ev;
+            console.log("open menu")
+            $mdOpenMenu(ev);
         }
 
 

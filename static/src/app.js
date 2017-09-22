@@ -150,6 +150,21 @@ angular.module('app').controller('AppCtrl', function(
 
 
 
+// from https://stackoverflow.com/a/34503498/226013
+function copyText(element) {
+    //Before we copy, we are going to select the text.
+    var text = document.getElementById(element);
+    var selection = window.getSelection();
+    var range = document.createRange();
+    range.selectNodeContents(text);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    //add to clipboard.
+    document.execCommand('copy');
+    selection.removeAllRanges();
+
+}
+
 
 
 

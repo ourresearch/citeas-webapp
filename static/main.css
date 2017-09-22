@@ -132,11 +132,19 @@ div.page.landing div.top-screen {
   height: 20px;
   font-size: 14px;
 }
-.page.landing .content .user-input .example .label {
+.page.landing .content .user-input .example div.content div.label {
   font-weight: 300;
+  display: inline;
 }
-.page.landing .content .user-input .example .url {
-  color: #333;
+.page.landing .content .user-input .example div.content ul.examples {
+  display: inline;
+  margin-top: 0;
+  padding: 0 0 0 10px;
+  line-height: 1.3;
+}
+.page.landing .content .user-input .example div.content ul.examples li {
+  margin: 0 15px 0 0;
+  display: inline;
 }
 .page.cite-page {
   padding-top: 150px;
@@ -162,9 +170,10 @@ div.page.landing div.top-screen {
   align-items: center;
   justify-content: space-between;
 }
-.page.cite-page .content .citation-options span.label {
-  font-size: 26px;
-  font-weight: 300;
+.page.cite-page .content .citation-options h2.label {
+  display: inline;
+  font-weight: bold;
+  font-size: 18px;
 }
 .page.cite-page .content .citation-options md-input-container {
   margin: 0;
@@ -174,9 +183,22 @@ div.page.landing div.top-screen {
   line-height: 1.3;
 }
 .page.cite-page .content .citation .text {
-  padding: 10px 0 0 20px;
+  padding: 0px 0 0 0px;
   margin: 10px 0;
   font-size: 16px;
+}
+.page.cite-page .content .citation div.under-citation {
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.page.cite-page .content .citation div.under-citation div.more-actions .provenance {
+  display: none;
+}
+.page.cite-page .content .citation div.provenance {
+  display: none;
+  padding-top: 80px;
 }
 .page.about {
   height: 100vh;

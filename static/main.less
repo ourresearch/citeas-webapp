@@ -142,11 +142,21 @@ div.page.landing {
         margin-left: 5px;
         height: 20px;
         font-size: 14px;
-        .label {
-          font-weight: 300;
-        }
-        .url {
-          color: #333;
+        div.content {
+          div.label {
+            font-weight: 300;
+            display: inline;
+          }
+          ul.examples {
+            display: inline;
+            margin-top: 0;
+            padding: 0 0 0 10px;
+            line-height: 1.3;
+            li {
+              margin: 0 15px 0 0;
+              display: inline;
+            }
+          }
         }
       }
     }
@@ -175,9 +185,10 @@ div.page.landing {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      span.label {
-        font-size: 26px;
-        font-weight: 300;
+      h2.label {
+        display: inline;
+        font-weight: bold;
+        font-size: 18px;
       }
 
       md-input-container {
@@ -194,13 +205,32 @@ div.page.landing {
         //border: 1px solid #ddd;
         //border-right: none;
         //border-left: none;
-        padding: 10px 0 0 20px;
+        padding: 0px 0 0 0px;
         margin: 10px 0;
         font-size: 16px;
       }
 
-      .controls {
+      div.under-citation {
+        font-size: 13px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
+        div.export-options {
+          //margin-left: -18px;
+        }
+
+        div.more-actions {
+          .provenance {
+            display: none;
+          }
+        }
+
+      }
+
+      div.provenance {
+        display: none;
+        padding-top: 80px;
       }
 
 

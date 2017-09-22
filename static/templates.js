@@ -79,7 +79,7 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "\n" +
     "\n" +
     "                <div class=\"citation-options\">\n" +
-    "                    <span class=\"label\">Cite this project as:</span>\n" +
+    "                    <h2 class=\"label\">Cite this project as:</h2>\n" +
     "                    <md-input-container>\n" +
     "                        <md-select ng-model=\"user.selectedCitation\">\n" +
     "                            <md-option ng-repeat=\"myCitationObj in apiResp.citations\"\n" +
@@ -91,15 +91,97 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "\n" +
     "                </div>\n" +
     "\n" +
-    "                <div class=\"text\" ng-bind-html=\"user.selectedCitation.citation\">\n" +
+    "                <div id=\"citation\" class=\"text\" ng-bind-html=\"user.selectedCitation.citation\">\n" +
     "                </div>\n" +
     "\n" +
-    "                <div class=\"download\">\n" +
-    "                    <span class=\"download-links\">\n" +
-    "                        <span class=\"download\" ng-click=\"saveAs('endnote')\">Endnote</span>\n" +
-    "                        <span class=\"download\" ng-click=\"saveAs('refworks')\">Refworks</span>\n" +
-    "                        <span class=\"download\" ng-click=\"saveAs('bibtex')\">BibTeX</span>\n" +
-    "                    </span>\n" +
+    "                <div class=\"under-citation\">\n" +
+    "                    <div class=\"export-options\">\n" +
+    "\n" +
+    "                        <md-button ng-click=\"copy()\" class=\"md-raised\">\n" +
+    "                            <i class=\"fa fa-clipboard\"></i>\n" +
+    "                            Copy\n" +
+    "                        </md-button>\n" +
+    "\n" +
+    "\n" +
+    "                        <md-menu>\n" +
+    "                            <md-button ng-click=\"openMenu($mdOpenMenu, $event)\">\n" +
+    "                                <i class=\"fa fa-download\"></i>\n" +
+    "                                Download\n" +
+    "                            </md-button>\n" +
+    "\n" +
+    "                            <md-menu-content width=\"4\">\n" +
+    "                                <md-menu-item>\n" +
+    "                                    <md-button ng-click=\"saveAs('endnote')\">\n" +
+    "                                        Endnote\n" +
+    "                                    </md-button>\n" +
+    "                                </md-menu-item>\n" +
+    "\n" +
+    "                                <md-menu-item>\n" +
+    "                                    <md-button ng-click=\"saveAs('refworks')\">\n" +
+    "                                        Refworks\n" +
+    "                                    </md-button>\n" +
+    "                                </md-menu-item>\n" +
+    "\n" +
+    "                                <md-menu-item>\n" +
+    "                                    <md-button ng-click=\"saveAs('bibtex')\">\n" +
+    "                                        BibTeX\n" +
+    "                                    </md-button>\n" +
+    "                                </md-menu-item>\n" +
+    "\n" +
+    "                            </md-menu-content>\n" +
+    "                        </md-menu>\n" +
+    "\n" +
+    "                    </div>\n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "                    <div class=\"more-actions\">\n" +
+    "                        <a class=\"action\" href=\"http://api.citeas.org/product/{{ apiResp.url }}\">\n" +
+    "                            <i class=\"fa fa-cog\"></i> view in API\n" +
+    "                        </a>\n" +
+    "                        <span class=\"action provenance\">\n" +
+    "                            <i class=\"fa fa-map\"></i>\n" +
+    "                            Provenance\n" +
+    "                        </span>\n" +
+    "                    </div>\n" +
+    "                </div>\n" +
+    "\n" +
+    "\n" +
+    "                <div class=\"provenance\">\n" +
+    "                    <!--\n" +
+    "                    <h2>Citation provenance</h2>\n" +
+    "                    -->\n" +
+    "                    <div class=\"subheader\">Here's trail we followed to find this citation:</div>\n" +
+    "                    <div class=\"steps\">\n" +
+    "                        <div class=\"step\" ng-repeat=\"step in apiResp.provenance\" ng-if=\"apiResp.provenance.length > 1\">\n" +
+    "\n" +
+    "\n" +
+    "                            <span class=\"first-step\" ng-if=\"$first\">\n" +
+    "                                We started with the\n" +
+    "                            </span>\n" +
+    "\n" +
+    "                            <!-- middle of 3 or more -->\n" +
+    "                            <span class=\"middle-step\" ng-if=\"!$first && !$last && apiResp.provenance.length > 2\">\n" +
+    "                                From there we followed a link to this\n" +
+    "                            </span>\n" +
+    "\n" +
+    "                            <!-- last of two -->\n" +
+    "                            <span class=\"last-step\" ng-if=\"$last\" ng-if=\"$last && apiResp.provenance.length == 2\">\n" +
+    "                                We followed a link from there, finding the best citation metadata in the\n" +
+    "                            </span>\n" +
+    "                            \n" +
+    "                            <!-- last of several -->\n" +
+    "                            <span class=\"last-step\" ng-if=\"$last && apiResp.provenance.length > 2\">\n" +
+    "                                Finally, we found the best citation metadata in the\n" +
+    "                            </span>\n" +
+    "                            \n" +
+    "                            <!-- the actual link -->\n" +
+    "                            <a href=\"{{ step.location }}\">{{ step.context }}</a>\n" +
+    "\n" +
+    "                        </div>\n" +
+    "                    </div>\n" +
+    "\n" +
+    "\n" +
     "                </div>\n" +
     "\n" +
     "\n" +
@@ -131,7 +213,7 @@ angular.module("landing.tpl.html", []).run(["$templateCache", function($template
     "\n" +
     "\n" +
     "            <div class=\"user-input\">\n" +
-    "                <div class=\"input-row\">\n" +
+    "                <form class=\"input-row\" ng-submit=\"submit()\">\n" +
     "                    <md-input-container md-no-float\n" +
     "                                        class=\"md-block example-selected-{{ main.exampleSelected }}\"\n" +
     "                                        flex-gt-sm=\"\">\n" +
@@ -139,7 +221,6 @@ angular.module("landing.tpl.html", []).run(["$templateCache", function($template
     "                        <input ng-model=\"main.id\">\n" +
     "\n" +
     "                        <md-button ng-show=\"main.id\"\n" +
-    "                                   ng-click=\"submit()\"\n" +
     "                                   ng-class=\"{fadeOut: !main.id}\"\n" +
     "                                   class=\"md-fab md-mini md-primary go animated fadeInRightBig\">\n" +
     "                            <i class=\"fa fa-arrow-right\"></i>\n" +
@@ -151,10 +232,11 @@ angular.module("landing.tpl.html", []).run(["$templateCache", function($template
     "                        </md-button>\n" +
     "                        -->\n" +
     "                    </md-input-container>\n" +
-    "                </div>\n" +
+    "                </form>\n" +
+    "\n" +
     "                <div class=\"example\">\n" +
     "                    <div class=\"content\">\n" +
-    "                        <div class=\"label\">Or try these examples</div>\n" +
+    "                        <div class=\"label\">Examples:</div>\n" +
     "                        <ul class=\"examples\">\n" +
     "                            <li>\n" +
     "                                <a href=\"/cite/http://yt-project.org\">http://yt-project.org</a>\n" +
@@ -163,7 +245,7 @@ angular.module("landing.tpl.html", []).run(["$templateCache", function($template
     "                                <a href=\"/cite/https://cran.r-project.org/web/packages/stringr\">https://cran.r-project.org/web/packages/stringr</a>\n" +
     "                            </li>\n" +
     "                            <li>\n" +
-    "                                <a href=\"/cite/http://yt-project.org\">yt-project.org</a>\n" +
+    "                                <a href=\"/cite/http://yt-project.org\">10.5281/zenodo.160400</a>\n" +
     "                            </li>\n" +
     "                        </ul>\n" +
     "                    </div>\n" +

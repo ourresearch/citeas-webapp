@@ -31,7 +31,7 @@
 
 
                 <div class="citation-options">
-                    <span class="label">Cite this project as:</span>
+                    <h2 class="label">Cite this project as:</h2>
                     <md-input-container>
                         <md-select ng-model="user.selectedCitation">
                             <md-option ng-repeat="myCitationObj in apiResp.citations"
@@ -43,15 +43,97 @@
 
                 </div>
 
-                <div class="text" ng-bind-html="user.selectedCitation.citation">
+                <div id="citation" class="text" ng-bind-html="user.selectedCitation.citation">
                 </div>
 
-                <div class="download">
-                    <span class="download-links">
-                        <span class="download" ng-click="saveAs('endnote')">Endnote</span>
-                        <span class="download" ng-click="saveAs('refworks')">Refworks</span>
-                        <span class="download" ng-click="saveAs('bibtex')">BibTeX</span>
-                    </span>
+                <div class="under-citation">
+                    <div class="export-options">
+
+                        <md-button ng-click="copy()" class="md-raised">
+                            <i class="fa fa-clipboard"></i>
+                            Copy
+                        </md-button>
+
+
+                        <md-menu>
+                            <md-button ng-click="openMenu($mdOpenMenu, $event)">
+                                <i class="fa fa-download"></i>
+                                Download
+                            </md-button>
+
+                            <md-menu-content width="4">
+                                <md-menu-item>
+                                    <md-button ng-click="saveAs('endnote')">
+                                        Endnote
+                                    </md-button>
+                                </md-menu-item>
+
+                                <md-menu-item>
+                                    <md-button ng-click="saveAs('refworks')">
+                                        Refworks
+                                    </md-button>
+                                </md-menu-item>
+
+                                <md-menu-item>
+                                    <md-button ng-click="saveAs('bibtex')">
+                                        BibTeX
+                                    </md-button>
+                                </md-menu-item>
+
+                            </md-menu-content>
+                        </md-menu>
+
+                    </div>
+
+
+
+                    <div class="more-actions">
+                        <a class="action" href="http://api.citeas.org/product/{{ apiResp.url }}">
+                            <i class="fa fa-cog"></i> view in API
+                        </a>
+                        <span class="action provenance">
+                            <i class="fa fa-map"></i>
+                            Provenance
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="provenance">
+                    <!--
+                    <h2>Citation provenance</h2>
+                    -->
+                    <div class="subheader">Here's trail we followed to find this citation:</div>
+                    <div class="steps">
+                        <div class="step" ng-repeat="step in apiResp.provenance" ng-if="apiResp.provenance.length > 1">
+
+
+                            <span class="first-step" ng-if="$first">
+                                We started with the
+                            </span>
+
+                            <!-- middle of 3 or more -->
+                            <span class="middle-step" ng-if="!$first && !$last && apiResp.provenance.length > 2">
+                                From there we followed a link to this
+                            </span>
+
+                            <!-- last of two -->
+                            <span class="last-step" ng-if="$last" ng-if="$last && apiResp.provenance.length == 2">
+                                We followed a link from there, finding the best citation metadata in the
+                            </span>
+                            
+                            <!-- last of several -->
+                            <span class="last-step" ng-if="$last && apiResp.provenance.length > 2">
+                                Finally, we found the best citation metadata in the
+                            </span>
+                            
+                            <!-- the actual link -->
+                            <a href="{{ step.location }}">{{ step.context }}</a>
+
+                        </div>
+                    </div>
+
+
                 </div>
 
 
