@@ -46,6 +46,8 @@ div.page.landing {
   top: 0;
   right: 0;
   left: 0;
+  background: rgba(256, 256, 256, .96);
+  z-index: 9999;
 
   padding: 0 20px;
   @media @mobile {
@@ -229,8 +231,22 @@ div.page.landing {
       }
 
       div.provenance {
-        display: none;
-        padding-top: 80px;
+        padding: 80px 0;
+        .step {
+          display:flex;
+          margin: 10px 0;
+          &.success-false {
+            color: #999;
+            a {
+              color: #999;
+              text-decoration: line-through;
+            }
+          }
+          .icon {
+            margin-right: 5px;
+          }
+        }
+
       }
 
 

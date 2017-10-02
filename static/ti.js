@@ -672,35 +672,44 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "\n" +
     "\n" +
     "                <div class=\"provenance\">\n" +
-    "                    <!--\n" +
-    "                    <h2>Citation provenance</h2>\n" +
-    "                    -->\n" +
     "                    <div class=\"subheader\">Here's trail we followed to find this citation:</div>\n" +
     "                    <div class=\"steps\">\n" +
-    "                        <div class=\"step\" ng-repeat=\"step in apiResp.provenance\" ng-if=\"apiResp.provenance.length > 1\">\n" +
+    "                        <div class=\"step-wrapper\" ng-repeat=\"step in apiResp.provenance\">\n" +
+    "                            <div class=\"input step success-{{ step.success }}\" ng-show=\"step.provenance_step_type=='InputProvenanceStep'\">\n" +
+    "                                <div class=\"icon\">\n" +
+    "                                    <i class=\"fa fa-keyboard-o\"></i>\n" +
+    "                                </div>\n" +
+    "                                <div class=\"type\">\n" +
+    "                                    {{ step.source_type }}\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
     "\n" +
+    "                            <div class=\"link step success-{{ step.success }}\" ng-show=\"step.provenance_step_type=='LinkProvenanceStep'\">\n" +
+    "                                <div class=\"icon\">\n" +
+    "                                    <i class=\"fa fa-link\"></i>\n" +
+    "                                </div>\n" +
+    "                                <div class=\"type\">\n" +
+    "                                    <a href=\"{{ step.location }}\">{{ step.source_type }}</a>\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
     "\n" +
-    "                            <span class=\"first-step\" ng-if=\"$first\">\n" +
-    "                                We started with the\n" +
-    "                            </span>\n" +
+    "                            <div class=\"string step success-{{ step.success }}\" ng-show=\"step.provenance_step_type=='StringProvenanceStep'\">\n" +
+    "                                <div class=\"icon\">\n" +
+    "                                    <i class=\"fa fa-file-text-o\"></i>\n" +
+    "                                </div>\n" +
+    "                                <div class=\"type\">\n" +
+    "                                    <a href=\"{{ step.location }}\">{{ step.source_type }}</a>\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
     "\n" +
-    "                            <!-- middle of 3 or more -->\n" +
-    "                            <span class=\"middle-step\" ng-if=\"!$first && !$last && apiResp.provenance.length > 2\">\n" +
-    "                                From there we followed a link to this\n" +
-    "                            </span>\n" +
-    "\n" +
-    "                            <!-- last of two -->\n" +
-    "                            <span class=\"last-step\" ng-if=\"$last\" ng-if=\"$last && apiResp.provenance.length == 2\">\n" +
-    "                                We followed a link from there, finding the best citation metadata in the\n" +
-    "                            </span>\n" +
-    "                            \n" +
-    "                            <!-- last of several -->\n" +
-    "                            <span class=\"last-step\" ng-if=\"$last && apiResp.provenance.length > 2\">\n" +
-    "                                Finally, we found the best citation metadata in the\n" +
-    "                            </span>\n" +
-    "                            \n" +
-    "                            <!-- the actual link -->\n" +
-    "                            <a href=\"{{ step.location }}\">{{ step.context }}</a>\n" +
+    "                            <div class=\"string step success-{{ step.success }}\" ng-show=\"step.provenance_step_type=='MetadataProvenanceStep'\">\n" +
+    "                                <div class=\"icon\">\n" +
+    "                                    <i class=\"fa fa-check\"></i>\n" +
+    "                                </div>\n" +
+    "                                <div class=\"type\">\n" +
+    "                                    {{ step.source_type }}\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
     "\n" +
     "                        </div>\n" +
     "                    </div>\n" +
@@ -746,6 +755,7 @@ angular.module("landing.tpl.html", []).run(["$templateCache", function($template
     "\n" +
     "                        <md-button ng-show=\"main.id\"\n" +
     "                                   ng-class=\"{fadeOut: !main.id}\"\n" +
+    "                                   ng-click=\"submit()\"\n" +
     "                                   class=\"md-fab md-mini md-primary go animated fadeInRightBig\">\n" +
     "                            <i class=\"fa fa-arrow-right\"></i>\n" +
     "                        </md-button>\n" +
