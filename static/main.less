@@ -231,60 +231,59 @@ div.page.landing {
       }
 
       div.provenance {
-        padding: 80px 0;
+        padding: 50px 0 0 20px;
+        margin: 50px 0;
+        border-top: 1px solid #ddd;
+        h2 {
+          font-weight: bold;
+          font-size: 18px;
+        }
         .steps {
           .step {
-            margin: 15px 0;
-            display: flex;
-            align-items: center;
             &.success-false {
               opacity: .5;
             }
-            .success-icon {
-              font-size: 24px;
-              &.true {
-                color: green;
-              }
-              &.false {
-                color: #999;
-              }
-            }
-
-            .step-info {
-              margin-left: 10px;
-              .intro {
-                font-size: 14px;
-              }
-              .main {
-                font-weight: bold;
-                a {
-                  font-weight: normal;
-                  padding: 1px 5px;
-                  display: inline-block;
-                  border-radius: 3px;
-                  font-size: 10px;
-                  border: 1px solid #999;
-                  vertical-align: 3px;
-                  color: #333;
-                  &:hover {
-                    text-decoration: none;
-                  }
-
+            .step-container {
+              margin: 25px 0;
+              display: flex;
+              align-items: center;
+              .success-icon {
+                font-size: 24px;
+                &.true {
+                  color: green;
+                }
+                &.false {
+                  color: #999;
                 }
               }
-              .url {
-                font-size: 12px;
+
+              .step-info {
+                margin-left: 10px;
+                .intro {
+                  font-size: 14px;
+                }
+                .main {
+                  font-weight: bold;
+                  a {
+                    font-weight: normal;
+                    padding: 1px;
+                    font-size: 14px;
+                    opacity: .7;
+                    &:hover {
+                      text-decoration: none;
+                      opacity: 1;
+                    }
+
+                  }
+                }
+                .url {
+                  font-size: 12px;
+                }
               }
-
-
             }
-
           }
         }
-
       }
-
-
     }
   }
 }
