@@ -100,44 +100,49 @@
 
 
                 <div class="provenance">
-                    <div class="subheader">Here's trail we followed to find this citation:</div>
+                    <h2>Citation Provenance</h2>
                     <div class="steps">
-                        <div class="step-wrapper" ng-repeat="step in apiResp.provenance">
-                            <div class="input step success-{{ step.success }}" ng-show="step.provenance_step_type=='InputProvenanceStep'">
-                                <div class="icon">
-                                    <i class="fa fa-keyboard-o"></i>
-                                </div>
-                                <div class="type">
-                                    {{ step.source_type }}
-                                </div>
+                        <div class="step success-{{ step.has_content }}"
+                             ng-hide="(step.parent_step_name == 'UserInputStep' && !step.has_content) || $first"
+                             ng-repeat="step in apiResp.provenance">
+                            <div class="success-icon true" ng-show="step.has_content">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            <div class="success-icon false" ng-show="!step.has_content">
+                                <i class="fa fa-times"></i>
                             </div>
 
-                            <div class="link step success-{{ step.success }}" ng-show="step.provenance_step_type=='LinkProvenanceStep'">
-                                <div class="icon">
-                                    <i class="fa fa-link"></i>
+                            <div class="step-info">
+                                <div class="intro">
+                                    Looking in the
+                                    <span class="parent-step">{{ step.parent_subject }},</span>
+                                    we
+                                    <span ng-show="step.has_content">found</span>
+                                    <span ng-show="!step.has_content">didn't find</span>
+                                    <span class="proxy-found" ng-show="step.found_via_proxy_type=='link'">
+                                        a link to a
+                                    </span>
+                                    <span class="proxy-found" ng-show="step.found_via_proxy_type=='doi'">
+                                        a DOI.
+                                    </span>
                                 </div>
-                                <div class="type">
-                                    <a href="{{ step.location }}">{{ step.source_type }}</a>
+
+                                <div class="main">
+                                    <span class="name">
+                                        {{ step.subject }}
+                                    </span>
+                                    <a href="{{ step.more_info_url }}" class="learn-more">learn more</a>
                                 </div>
+                                <div class="url">
+                                    <a href="{{ step.content_url }}" ng-show="step.has_content" class="learn-more">
+                                        {{ step.content_url }}
+                                    </a>
+                                </div>
+
+
                             </div>
 
-                            <div class="string step success-{{ step.success }}" ng-show="step.provenance_step_type=='StringProvenanceStep'">
-                                <div class="icon">
-                                    <i class="fa fa-file-text-o"></i>
-                                </div>
-                                <div class="type">
-                                    <a href="{{ step.location }}">{{ step.source_type }}</a>
-                                </div>
-                            </div>
 
-                            <div class="string step success-{{ step.success }}" ng-show="step.provenance_step_type=='MetadataProvenanceStep'">
-                                <div class="icon">
-                                    <i class="fa fa-check"></i>
-                                </div>
-                                <div class="type">
-                                    {{ step.source_type }}
-                                </div>
-                            </div>
 
                         </div>
                     </div>

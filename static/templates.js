@@ -148,44 +148,49 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "\n" +
     "\n" +
     "                <div class=\"provenance\">\n" +
-    "                    <div class=\"subheader\">Here's trail we followed to find this citation:</div>\n" +
+    "                    <h2>Citation Provenance</h2>\n" +
     "                    <div class=\"steps\">\n" +
-    "                        <div class=\"step-wrapper\" ng-repeat=\"step in apiResp.provenance\">\n" +
-    "                            <div class=\"input step success-{{ step.success }}\" ng-show=\"step.provenance_step_type=='InputProvenanceStep'\">\n" +
-    "                                <div class=\"icon\">\n" +
-    "                                    <i class=\"fa fa-keyboard-o\"></i>\n" +
-    "                                </div>\n" +
-    "                                <div class=\"type\">\n" +
-    "                                    {{ step.source_type }}\n" +
-    "                                </div>\n" +
+    "                        <div class=\"step success-{{ step.has_content }}\"\n" +
+    "                             ng-hide=\"(step.parent_step_name == 'UserInputStep' && !step.has_content) || $first\"\n" +
+    "                             ng-repeat=\"step in apiResp.provenance\">\n" +
+    "                            <div class=\"success-icon true\" ng-show=\"step.has_content\">\n" +
+    "                                <i class=\"fa fa-check\"></i>\n" +
+    "                            </div>\n" +
+    "                            <div class=\"success-icon false\" ng-show=\"!step.has_content\">\n" +
+    "                                <i class=\"fa fa-times\"></i>\n" +
     "                            </div>\n" +
     "\n" +
-    "                            <div class=\"link step success-{{ step.success }}\" ng-show=\"step.provenance_step_type=='LinkProvenanceStep'\">\n" +
-    "                                <div class=\"icon\">\n" +
-    "                                    <i class=\"fa fa-link\"></i>\n" +
+    "                            <div class=\"step-info\">\n" +
+    "                                <div class=\"intro\">\n" +
+    "                                    Looking in the\n" +
+    "                                    <span class=\"parent-step\">{{ step.parent_subject }},</span>\n" +
+    "                                    we\n" +
+    "                                    <span ng-show=\"step.has_content\">found</span>\n" +
+    "                                    <span ng-show=\"!step.has_content\">didn't find</span>\n" +
+    "                                    <span class=\"proxy-found\" ng-show=\"step.found_via_proxy_type=='link'\">\n" +
+    "                                        a link to a\n" +
+    "                                    </span>\n" +
+    "                                    <span class=\"proxy-found\" ng-show=\"step.found_via_proxy_type=='doi'\">\n" +
+    "                                        a DOI.\n" +
+    "                                    </span>\n" +
     "                                </div>\n" +
-    "                                <div class=\"type\">\n" +
-    "                                    <a href=\"{{ step.location }}\">{{ step.source_type }}</a>\n" +
+    "\n" +
+    "                                <div class=\"main\">\n" +
+    "                                    <span class=\"name\">\n" +
+    "                                        {{ step.subject }}\n" +
+    "                                    </span>\n" +
+    "                                    <a href=\"{{ step.more_info_url }}\" class=\"learn-more\">learn more</a>\n" +
     "                                </div>\n" +
+    "                                <div class=\"url\">\n" +
+    "                                    <a href=\"{{ step.content_url }}\" ng-show=\"step.has_content\" class=\"learn-more\">\n" +
+    "                                        {{ step.content_url }}\n" +
+    "                                    </a>\n" +
+    "                                </div>\n" +
+    "\n" +
+    "\n" +
     "                            </div>\n" +
     "\n" +
-    "                            <div class=\"string step success-{{ step.success }}\" ng-show=\"step.provenance_step_type=='StringProvenanceStep'\">\n" +
-    "                                <div class=\"icon\">\n" +
-    "                                    <i class=\"fa fa-file-text-o\"></i>\n" +
-    "                                </div>\n" +
-    "                                <div class=\"type\">\n" +
-    "                                    <a href=\"{{ step.location }}\">{{ step.source_type }}</a>\n" +
-    "                                </div>\n" +
-    "                            </div>\n" +
     "\n" +
-    "                            <div class=\"string step success-{{ step.success }}\" ng-show=\"step.provenance_step_type=='MetadataProvenanceStep'\">\n" +
-    "                                <div class=\"icon\">\n" +
-    "                                    <i class=\"fa fa-check\"></i>\n" +
-    "                                </div>\n" +
-    "                                <div class=\"type\">\n" +
-    "                                    {{ step.source_type }}\n" +
-    "                                </div>\n" +
-    "                            </div>\n" +
     "\n" +
     "                        </div>\n" +
     "                    </div>\n" +
