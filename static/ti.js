@@ -287,7 +287,12 @@ angular.module('citePage', [
 
 
 
-    .controller("CitePageCtrl", function ($scope, $mdDialog, $mdToast, $routeParams, $http) {
+    .controller("CitePageCtrl", function ($scope,
+                                          $mdDialog,
+                                          $mdToast,
+                                          $routeParams,
+                                          $location,
+                                          $http) {
 
         // define stuff
         var apiResp
@@ -341,13 +346,18 @@ angular.module('citePage', [
 
         $scope.modify = function(){
             console.log("modify!")
-            $mdDialog.show(
-                $mdDialog.alert()
+            var myAlert = $mdDialog.confirm()
                     .clickOutsideToClose(true)
                     .title("Are you the owner of this software project?")
                     .textContent("If so, you can modify this citation by editing metadata associated with the project.")
-                    .ok("Learn how")
+                    .ok("Learn more")
+                    .cancel("Dismiss")
 
+            $mdDialog.show(myAlert).then(
+                function(){
+                    console.log("success function")
+                    $location.url("modify-your-citation")
+                }
             )
         }
 
