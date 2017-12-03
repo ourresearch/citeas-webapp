@@ -858,7 +858,38 @@ angular.module("modify-your-citation.tpl.html", []).run(["$templateCache", funct
     "    <div class=\"content\">\n" +
     "        <h2>Modify a citation to your software project</h2>\n" +
     "        <div class=\"text\">\n" +
-    "            <p>Here will be information on how to modify the citation for a software project. Check back in a day or two.</p>\n" +
+    "            <p>\n" +
+    "                The CiteAs system uses a variety of web-based searches to try to discover the best way to cite a given software project (or, in due time, datasets and articles as well). We search lots of places including GitHub, CRAN, the project source code, project web pages; eventually, we'll also search the scholarly itself. You can learn more about the algorithms and sources on our\n" +
+    "                <a href=\"how-we-seearch\">page about how we search.</a>\n" +
+    "            </p>\n" +
+    "\n" +
+    "            <p>\n" +
+    "                This automated approach scales well. However, sometimes it delivers a \"preferred\" citation that isn't what project authors or maintainers really want.\n" +
+    "            </p>\n" +
+    "\n" +
+    "            <p>\n" +
+    "                When this happens, you can change the preferred citation for your project by adding or modifying project metadata. Part of the point of CiteAs, in fact, is to incent project authors to improve project metadata, bringing it in line with an emerging set of best-practice standards. For more on these standards and why they matter, check out the work of the\n" +
+    "                <a href=\"https://www.software.ac.uk/\">Software Sustainability Institute,</a> the <a\n" +
+    "                    href=\"https://www.force11.org/group/software-citation-implementation-working-group\">FORCE11 Software Citation Implementation Working Group.</a>\n" +
+    "            </p>\n" +
+    "\n" +
+    "            <p>\n" +
+    "                So, now that we've got that all out of the way, here are your options for changing how CiteAs suggests people cite your project:\n" +
+    "\n" +
+    "            </p>\n" +
+    "\n" +
+    "            <ul>\n" +
+    "                <li>\n" +
+    "                   Mint a DOI for your project <a href=\"https://guides.github.com/activities/citable-code/\">using Zenodo</a> or a similar service. Assign the citation metadata you want used to that record. You can then paste your DOI somewhere associated with your project (a README file, your project web page) and CiteAs will use the DOI metadata in creating the preferred citation.\n" +
+    "                </li>\n" +
+    "                <li>\n" +
+    "                    Create a <a href=\"https://github.com/codemeta/codemeta\">CodeMeta</a> file for your project and put your preferred citation information in that.\n" +
+    "                </li>\n" +
+    "                <li>\n" +
+    "                    If your project is an R package, put your preferred citation information in an <a\n" +
+    "                        href=\"http://r-pkgs.had.co.nz/inst.html#inst-citation\">R CITATION file</a>\n" +
+    "                </li>\n" +
+    "            </ul>\n" +
     "\n" +
     "\n" +
     "\n" +
