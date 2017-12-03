@@ -413,6 +413,11 @@ angular.module('landing', [
             templateUrl: "api.tpl.html"
         })
     })
+    .config(function ($routeProvider) {
+        $routeProvider.when('/modify-your-citation', {
+            templateUrl: "modify-your-citation.tpl.html"
+        })
+    })
 
 
 
@@ -534,7 +539,7 @@ angular.module("numFormat", [])
 
         }
     });
-angular.module('templates.app', ['about.tpl.html', 'api.tpl.html', 'cite-page.tpl.html', 'landing.tpl.html', 'page-not-found.tpl.html']);
+angular.module('templates.app', ['about.tpl.html', 'api.tpl.html', 'cite-page.tpl.html', 'landing.tpl.html', 'modify-your-citation.tpl.html', 'page-not-found.tpl.html']);
 
 angular.module("about.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("about.tpl.html",
@@ -835,6 +840,20 @@ angular.module("landing.tpl.html", []).run(["$templateCache", function($template
     "\n" +
     "</div>\n" +
     "");
+}]);
+
+angular.module("modify-your-citation.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("modify-your-citation.tpl.html",
+    "<div class=\"page modify-your-citation\">\n" +
+    "    <div class=\"content\">\n" +
+    "        <h2>Modify a citation to your software project</h2>\n" +
+    "        <div class=\"text\">\n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "</div>");
 }]);
 
 angular.module("page-not-found.tpl.html", []).run(["$templateCache", function($templateCache) {
