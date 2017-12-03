@@ -307,6 +307,7 @@ angular.module("modify-your-citation.tpl.html", []).run(["$templateCache", funct
     "    <div class=\"content\">\n" +
     "        <h2>Modify a citation to your software project</h2>\n" +
     "        <div class=\"text\">\n" +
+    "            <p>Here will be information on how to modify the citation for a software project. Check back in a day or two.</p>\n" +
     "\n" +
     "\n" +
     "\n" +
