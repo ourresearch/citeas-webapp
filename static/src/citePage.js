@@ -161,6 +161,18 @@ angular.module('citePage', [
             $mdOpenMenu(ev);
         }
 
+        $scope.modify = function(){
+            console.log("modify!")
+            $mdDialog.show(
+                $mdDialog.alert()
+                    .clickOutsideToClose(true)
+                    .title("Are you the owner of this software project?")
+                    .textContent("If so, you can modify this citation by editing metadata associated with the project.")
+                    .ok("Learn how")
+
+            )
+        }
+
 
         $scope.saveAs = function(format){
             var extensions = {

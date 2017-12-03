@@ -33,7 +33,7 @@ div.page.landing div.top-screen {
   right: 0;
   left: 0;
   background: rgba(255, 255, 255, 0.96);
-  z-index: 9999;
+  z-index: 60;
   padding: 0 20px;
   display: flex;
   align-items: center;
@@ -195,8 +195,8 @@ div.page.landing div.top-screen {
   justify-content: space-between;
   align-items: center;
 }
-.page.cite-page .content .citation div.under-citation div.more-actions .provenance {
-  display: none;
+.page.cite-page .content .citation div.under-citation div.more-actions .modify {
+  margin-right: 10px;
 }
 .page.cite-page .content .citation div.provenance {
   padding: 50px 0 0 20px;

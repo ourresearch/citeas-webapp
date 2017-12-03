@@ -136,13 +136,15 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "\n" +
     "\n" +
     "                    <div class=\"more-actions\">\n" +
+    "                        <span class=\"action modify\">\n" +
+    "                            <a href=\"\" class=\"action\" ng-click=\"modify()\">\n" +
+    "                                <i class=\"fa fa-pencil\"></i>\n" +
+    "                                Modify\n" +
+    "                            </a>\n" +
+    "                        </span>\n" +
     "                        <a class=\"action\" href=\"http://api.citeas.org/product/{{ apiResp.url }}\">\n" +
     "                            <i class=\"fa fa-cog\"></i> view in API\n" +
     "                        </a>\n" +
-    "                        <span class=\"action provenance\">\n" +
-    "                            <i class=\"fa fa-map\"></i>\n" +
-    "                            Provenance\n" +
-    "                        </span>\n" +
     "                    </div>\n" +
     "                </div>\n" +
     "\n" +
