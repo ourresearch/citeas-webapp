@@ -6,9 +6,123 @@
                 CiteAs uses a pattern of web-based searches to try to discover and represent the best way to cite a given scholarly artifact.
             </p>
 
+            <p>
+                We start by examining the input.
+            </p>
 
+            <h3>
+                Does the input look like a
+                <a href="" ng-click="stepInfo('CrossrefResponseStep')" class="learn-more">
+                    DOI
+                </a>
+                ?
 
+            </h3>
+            <ul>
+                <li>
+                    Suggest a citation using the DOI metadata.
+                </li>
+            </ul>
+            <h3>Does the input look like the URL for a
+                <a href="" ng-click="stepInfo('GithubRepoStep')" class="learn-more">
+                    GitHub repository
+                </a>
+                ?
+            </h3>
+            <ul>
+                <li>
+                    Does the repository have a
+                    <a href="" ng-click="stepInfo('CodemetaResponseStep')" class="learn-more">
+                        CodeMeta
+                    </a>
+                    file?  If so, suggest a citation based on its contents.
+                </li>
+                <li>
+                    Does the repository have a
+                    <a href="" ng-click="stepInfo('GithubCitationFileStep')" class="learn-more">
+                        CITATION
+                    </a>
+                    file?  If so, suggest a citation based on its contents.
+                </li>
+                <li>
+                    Does the repository have a
+                    <a href="" ng-click="stepInfo('GithubReadmeFileStep')" class="learn-more">
+                        README
+                    </a>
+                    file?  If so,
+                    <ul>
+                        <li>
+                            Does the README file include a
+                                <a href="" ng-click="stepInfo('CrossrefResponseStep')" class="learn-more">
+                                    DOI
+                                </a>
+                            ?  If so, suggest a citation based on the DOI metadata.
+                        </li>
+                        <li>
+                            Does the README file include
+                                <a href="" ng-click="stepInfo('BibtexStep')" class="learn-more">
+                                    BibTeX
+                                </a>
+                            ?  If so, suggest a citation based on the BibTex.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Does the repository have an
+                    <a href="" ng-click="stepInfo('GithubDescriptionFileStep')" class="learn-more">
+                        R DESCRIPTION
+                    </a>
+                    file?  If so, suggest a citation base on its contents.
+                </li>
+                <li>
+                    Suggest a citation based on the metadata of the
+                    <a href="" ng-click="stepInfo('GithubRepoStep')" class="learn-more">
+                        GitHub repository.
+                    </a>
+                </li>
+            </ul>
+            <h3>
+                Does the input look like the url for a software library repository on
+                <a href="" ng-click="stepInfo('CranLibraryStep')" class="learn-more">
+                    CRAN
+                </a>
+                or
+                <a href="" ng-click="stepInfo('PypiLibraryStep')" class="learn-more">
+                    PyPI
+                </a>
+                , or the url for a
+                <a href="" ng-click="stepInfo('WebpageStep')" class="learn-more">
+                    project webpage
+                </a>
+                ?
+            </h3>
+            <ul>
+                <li>
+                    Does the webpage include a
+                        <a href="" ng-click="stepInfo('CrossrefResponseStep')" class="learn-more">
+                            DOI
+                        </a>
+                    ?  If so, suggest a citation based on the DOI metadata.
+                </li>
+                <li>
+                    Does the webpage include
+                        <a href="" ng-click="stepInfo('BibtexStep')" class="learn-more">
+                            BibTeX
+                        </a>
+                    ?  If so, suggest a citation based on the BibTex.
+                </li>
+                <li>
+                    Does the webpage include a link to a
+                    <a href="" ng-click="stepInfo('GithubRepoStep')" class="learn-more">
+                        GitHub repository.
+                    </a>
+                    ?  If so, follow the steps above as if the user had given the GitHub repository URL as the initial input.
+                </li>
+            </ul>
 
+            <p>
+                If none of these paths work, we suggest a citation based on the metadata we can extract from the title and url.
+            </p>
 
         </div>
     </div>

@@ -975,9 +975,123 @@ angular.module("sources.tpl.html", []).run(["$templateCache", function($template
     "                CiteAs uses a pattern of web-based searches to try to discover and represent the best way to cite a given scholarly artifact.\n" +
     "            </p>\n" +
     "\n" +
+    "            <p>\n" +
+    "                We start by examining the input.\n" +
+    "            </p>\n" +
     "\n" +
+    "            <h3>\n" +
+    "                Does the input look like a\n" +
+    "                <a href=\"\" ng-click=\"stepInfo('CrossrefResponseStep')\" class=\"learn-more\">\n" +
+    "                    DOI\n" +
+    "                </a>\n" +
+    "                ?\n" +
     "\n" +
+    "            </h3>\n" +
+    "            <ul>\n" +
+    "                <li>\n" +
+    "                    Suggest a citation using the DOI metadata.\n" +
+    "                </li>\n" +
+    "            </ul>\n" +
+    "            <h3>Does the input look like the URL for a\n" +
+    "                <a href=\"\" ng-click=\"stepInfo('GithubRepoStep')\" class=\"learn-more\">\n" +
+    "                    GitHub repository\n" +
+    "                </a>\n" +
+    "                ?\n" +
+    "            </h3>\n" +
+    "            <ul>\n" +
+    "                <li>\n" +
+    "                    Does the repository have a\n" +
+    "                    <a href=\"\" ng-click=\"stepInfo('CodemetaResponseStep')\" class=\"learn-more\">\n" +
+    "                        CodeMeta\n" +
+    "                    </a>\n" +
+    "                    file?  If so, suggest a citation based on its contents.\n" +
+    "                </li>\n" +
+    "                <li>\n" +
+    "                    Does the repository have a\n" +
+    "                    <a href=\"\" ng-click=\"stepInfo('GithubCitationFileStep')\" class=\"learn-more\">\n" +
+    "                        CITATION\n" +
+    "                    </a>\n" +
+    "                    file?  If so, suggest a citation based on its contents.\n" +
+    "                </li>\n" +
+    "                <li>\n" +
+    "                    Does the repository have a\n" +
+    "                    <a href=\"\" ng-click=\"stepInfo('GithubReadmeFileStep')\" class=\"learn-more\">\n" +
+    "                        README\n" +
+    "                    </a>\n" +
+    "                    file?  If so,\n" +
+    "                    <ul>\n" +
+    "                        <li>\n" +
+    "                            Does the README file include a\n" +
+    "                                <a href=\"\" ng-click=\"stepInfo('CrossrefResponseStep')\" class=\"learn-more\">\n" +
+    "                                    DOI\n" +
+    "                                </a>\n" +
+    "                            ?  If so, suggest a citation based on the DOI metadata.\n" +
+    "                        </li>\n" +
+    "                        <li>\n" +
+    "                            Does the README file include\n" +
+    "                                <a href=\"\" ng-click=\"stepInfo('BibtexStep')\" class=\"learn-more\">\n" +
+    "                                    BibTeX\n" +
+    "                                </a>\n" +
+    "                            ?  If so, suggest a citation based on the BibTex.\n" +
+    "                        </li>\n" +
+    "                    </ul>\n" +
+    "                </li>\n" +
+    "                <li>\n" +
+    "                    Does the repository have an\n" +
+    "                    <a href=\"\" ng-click=\"stepInfo('GithubDescriptionFileStep')\" class=\"learn-more\">\n" +
+    "                        R DESCRIPTION\n" +
+    "                    </a>\n" +
+    "                    file?  If so, suggest a citation base on its contents.\n" +
+    "                </li>\n" +
+    "                <li>\n" +
+    "                    Suggest a citation based on the metadata of the\n" +
+    "                    <a href=\"\" ng-click=\"stepInfo('GithubRepoStep')\" class=\"learn-more\">\n" +
+    "                        GitHub repository.\n" +
+    "                    </a>\n" +
+    "                </li>\n" +
+    "            </ul>\n" +
+    "            <h3>\n" +
+    "                Does the input look like the url for a software library repository on\n" +
+    "                <a href=\"\" ng-click=\"stepInfo('CranLibraryStep')\" class=\"learn-more\">\n" +
+    "                    CRAN\n" +
+    "                </a>\n" +
+    "                or\n" +
+    "                <a href=\"\" ng-click=\"stepInfo('PypiLibraryStep')\" class=\"learn-more\">\n" +
+    "                    PyPI\n" +
+    "                </a>\n" +
+    "                , or the url for a\n" +
+    "                <a href=\"\" ng-click=\"stepInfo('WebpageStep')\" class=\"learn-more\">\n" +
+    "                    project webpage\n" +
+    "                </a>\n" +
+    "                ?\n" +
+    "            </h3>\n" +
+    "            <ul>\n" +
+    "                <li>\n" +
+    "                    Does the webpage include a\n" +
+    "                        <a href=\"\" ng-click=\"stepInfo('CrossrefResponseStep')\" class=\"learn-more\">\n" +
+    "                            DOI\n" +
+    "                        </a>\n" +
+    "                    ?  If so, suggest a citation based on the DOI metadata.\n" +
+    "                </li>\n" +
+    "                <li>\n" +
+    "                    Does the webpage include\n" +
+    "                        <a href=\"\" ng-click=\"stepInfo('BibtexStep')\" class=\"learn-more\">\n" +
+    "                            BibTeX\n" +
+    "                        </a>\n" +
+    "                    ?  If so, suggest a citation based on the BibTex.\n" +
+    "                </li>\n" +
+    "                <li>\n" +
+    "                    Does the webpage include a link to a\n" +
+    "                    <a href=\"\" ng-click=\"stepInfo('GithubRepoStep')\" class=\"learn-more\">\n" +
+    "                        GitHub repository.\n" +
+    "                    </a>\n" +
+    "                    ?  If so, follow the steps above as if the user had given the GitHub repository URL as the initial input.\n" +
+    "                </li>\n" +
+    "            </ul>\n" +
     "\n" +
+    "            <p>\n" +
+    "                If none of these paths work, we suggest a citation based on the metadata we can extract from the title and url.\n" +
+    "            </p>\n" +
     "\n" +
     "        </div>\n" +
     "    </div>\n" +
