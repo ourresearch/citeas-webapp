@@ -43,9 +43,44 @@
     </div>
 </div>
 <div class="main-view container-fluid" ng-view></div>
+
+<script type="text/ng-template" id="step-info.tpl.html">
+    <md-dialog>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{ stepInfo.name }}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <i class="fa fa-times"></i>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <p class="intro">
+                    {{ stepInfo.step_intro }}
+                </p>
+                <p class="more">
+                    {{ stepInfo.step_more }}
+                </p>
+                <h3>Additional resources:</h3>
+                <ul>
+                    <li ng-repeat="link in stepInfo.step_links">
+                        <a href="{{ link[1] }}">{{ link[0] }}</a>
+                    </li>
+                </ul>
+
+            </div>
+        </md-dialog-content>
+
+
+
+    </md-dialog>
+
+</script>
+
 {% endraw %}
-
-
 
 
 <!-- Angular and Angular-ecosystem dependencies  -->

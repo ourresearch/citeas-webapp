@@ -104,6 +104,12 @@ angular.module('app').controller('AppCtrl', function(
     }
 
 
+    $http.get("http://api.citeas.org/steps").success(function(resp){
+        console.log("success from /steps", resp)
+        $rootScope.steps = resp
+    })
+
+
     $scope.productMetadata = {}
     $scope.setCitationMetaTags = function(metadata){
 
@@ -291,6 +297,7 @@ angular.module('citePage', [
                                           $mdDialog,
                                           $mdToast,
                                           $routeParams,
+                                          $rootScope,
                                           $location,
                                           $http) {
 
@@ -342,6 +349,35 @@ angular.module('citePage', [
             originatorEv = ev;
             console.log("open menu")
             $mdOpenMenu(ev);
+        }
+
+        $scope.stepInfo = function(stepName){
+            var stepInfo = $rootScope.steps[stepName]
+            console.log("stepInfo!", stepName, stepInfo)
+
+            $mdDialog.show({
+                controller: DialogController,
+                templateUrl: "step-info.tpl.html",
+                clickOutsideToClose:true
+            })
+
+
+            function DialogController($scope, $mdDialog) {
+                $scope.stepInfo = stepInfo
+
+                $scope.hide = function() {
+                    $mdDialog.hide();
+                };
+
+                $scope.cancel = function() {
+                    $mdDialog.cancel();
+                };
+
+                $scope.answer = function(answer) {
+                    $mdDialog.hide(answer);
+                };
+            }
+
         }
 
         $scope.modify = function(){
@@ -739,7 +775,7 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                                        <span class=\"name\">\n" +
     "                                            {{ step.subject }}\n" +
     "                                        </span>\n" +
-    "                                        <a href=\"{{ step.more_info_url }}\" class=\"learn-more\">\n" +
+    "                                        <a href=\"\" ng-click=\"stepInfo(step.name)\" class=\"learn-more\">\n" +
     "                                            <i class=\"fa fa-question-circle\"></i>\n" +
     "                                        </a>\n" +
     "                                    </div>\n" +

@@ -113,6 +113,7 @@ angular.module('citePage', [
                                           $mdDialog,
                                           $mdToast,
                                           $routeParams,
+                                          $rootScope,
                                           $location,
                                           $http) {
 
@@ -164,6 +165,35 @@ angular.module('citePage', [
             originatorEv = ev;
             console.log("open menu")
             $mdOpenMenu(ev);
+        }
+
+        $scope.stepInfo = function(stepName){
+            var stepInfo = $rootScope.steps[stepName]
+            console.log("stepInfo!", stepName, stepInfo)
+
+            $mdDialog.show({
+                controller: DialogController,
+                templateUrl: "step-info.tpl.html",
+                clickOutsideToClose:true
+            })
+
+
+            function DialogController($scope, $mdDialog) {
+                $scope.stepInfo = stepInfo
+
+                $scope.hide = function() {
+                    $mdDialog.hide();
+                };
+
+                $scope.cancel = function() {
+                    $mdDialog.cancel();
+                };
+
+                $scope.answer = function(answer) {
+                    $mdDialog.hide(answer);
+                };
+            }
+
         }
 
         $scope.modify = function(){

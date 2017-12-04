@@ -183,7 +183,7 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                                        <span class=\"name\">\n" +
     "                                            {{ step.subject }}\n" +
     "                                        </span>\n" +
-    "                                        <a href=\"{{ step.more_info_url }}\" class=\"learn-more\">\n" +
+    "                                        <a href=\"\" ng-click=\"stepInfo(step.name)\" class=\"learn-more\">\n" +
     "                                            <i class=\"fa fa-question-circle\"></i>\n" +
     "                                        </a>\n" +
     "                                    </div>\n" +
