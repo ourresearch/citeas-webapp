@@ -217,6 +217,10 @@ div.page.sources {
   font-weight: bold;
   font-size: 18px;
 }
+.page.cite-page .content .citation div.provenance h2 .more {
+  font-weight: normal;
+  font-size: 75%;
+}
 .page.cite-page .content .citation div.provenance .steps .step.success-false {
   opacity: .5;
 }

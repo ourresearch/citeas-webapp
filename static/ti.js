@@ -601,19 +601,31 @@ angular.module("about.tpl.html", []).run(["$templateCache", function($templateCa
     "        <div class=\"text\">\n" +
     "            <p>\n" +
     "                CiteAs is a way to\n" +
-    "                help get the correct citation for diverse research products,\n" +
-    "                from software and datasets to preprints and articles.\n" +
+    "                 get the correct citation for diverse research products including,\n" +
+    "                software, datasets, preprints, and traditional articles. By making it easier\n" +
+    "                to cite software and other \"alternative\" scholarly products, we aim to help\n" +
+    "                the creators of such products get full credit for their work.\n" +
     "            </p>\n" +
     "            <p>\n" +
-    "                It's part of a larger grant, funded by the Alfred P. Sloan Foundation,\n" +
-    "                to help scholars who share reusable\n" +
-    "                research software get credit for their work.\n" +
-    "            </p>\n" +
-    "            <p>\n" +
-    "                CiteAs is a collaboration between\n" +
+    "                CiteAs is a small part of <a href=\"http://blog.impactstory.org/collaborating-635k-grant-improve-credit-research-software/\">\n" +
+    "                    a collaborative grant\n" +
+    "                </a> we're doing with\n" +
     "                <a href=\"http://james.howison.name/\">James Howison</a> at the\n" +
-    "                University of Texas-Austin, and\n" +
-    "                <a href=\"http://impactstory.org/about\">Impactstory.</a>\n" +
+    "                University of Texas-Austin. Funded by the Alfred P. Sloan Foundation,\n" +
+    "                the focus of this grant is to create a big database of research software, automatically extracted\n" +
+    "                from millions of open-access scholarly articles using machine-learning techniques.\n" +
+    "                Along with the database, we'll also make three small prototype applications to show\n" +
+    "                off how the data can be used in cool ways. CiteAs is one of these applications.\n" +
+    "            </p>\n" +
+    "            <p>\n" +
+    "                We're still working on creating the database. But while that's in progress,\n" +
+    "                we thought it'd be cool to release CiteAs, even though it still is missing the majority\n" +
+    "                of data it will ultimately use. Feel free to kick the tires, and let us know what you think!\n" +
+    "            </p>\n" +
+    "\n" +
+    "            <p>\n" +
+    "                And stay tuned! We'll be building the database in 2018, and expect to have that data live in\n" +
+    "                CiteAs by 2019.\n" +
     "            </p>\n" +
     "\n" +
     "\n" +
@@ -743,7 +755,12 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "\n" +
     "\n" +
     "                <div class=\"provenance\">\n" +
-    "                    <h2>Citation Provenance</h2>\n" +
+    "                    <h2>\n" +
+    "                        Citation Provenance\n" +
+    "                        <a href=\"sources\" class=\"more\">\n" +
+    "                            (learn more)\n" +
+    "                        </a>\n" +
+    "                    </h2>\n" +
     "                    <div class=\"steps\">\n" +
     "                        <div class=\"step success-{{ step.has_content }}\"\n" +
     "                             ng-hide=\"(step.parent_step_name == 'UserInputStep' && !step.has_content)\"\n" +
