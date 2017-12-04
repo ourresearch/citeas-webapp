@@ -648,7 +648,7 @@ angular.module("about.tpl.html", []).run(["$templateCache", function($templateCa
     "            <p>\n" +
     "                CiteAs is a small part of <a href=\"http://blog.impactstory.org/collaborating-635k-grant-improve-credit-research-software/\">\n" +
     "                    a collaborative grant\n" +
-    "                </a> we're doing with\n" +
+    "                </a> between <a href=\"http://impactstory.org\">Impactstory</a> and\n" +
     "                <a href=\"http://james.howison.name/\">James Howison</a> at the\n" +
     "                University of Texas-Austin. Funded by the Alfred P. Sloan Foundation,\n" +
     "                the focus of this grant is to create a big database of research software, automatically extracted\n" +
@@ -664,12 +664,30 @@ angular.module("about.tpl.html", []).run(["$templateCache", function($templateCa
     "            </p>\n" +
     "\n" +
     "            <p>\n" +
-    "                You can learn more about how CiteAs works on our <a href=\"sources\">sources page,</a> and\n" +
-    "                you can learn how fix a wrong citation to one of your own projects on\n" +
-    "                <a href=\"modify-your-citation\">this page.</a>\n" +
     "                And stay tuned! We'll be building the database in 2018, and expect to have that data live in\n" +
     "                CiteAs by 2019.\n" +
     "            </p>\n" +
+    "            \n" +
+    "\n" +
+    "            <h3>But wait there's more!</h3>\n" +
+    "            <ul>\n" +
+    "                <li>Learn more about <a href=\"sources\">how CiteAs finds citation information</a></li>\n" +
+    "                <li>Want to change how CiteAs lists your project?\n" +
+    "                    <a href=\"modify-your-citation\">Here's how.</a></li>\n" +
+    "                <li>Check out the\n" +
+    "                    <a href=\"https://github.com/Impactstory/citeas-webapp\">\n" +
+    "                        source code for this website\n" +
+    "                    </a>\n" +
+    "                </li>\n" +
+    "                <li>Check out the\n" +
+    "                    <a href=\"https://github.com/Impactstory/citeas-webapp\">\n" +
+    "                        source code for the CiteAs API\n" +
+    "                    </a>\n" +
+    "                </li>\n" +
+    "                <li>Report bugs or request features via the project's <a\n" +
+    "                        href=\"https://github.com/Impactstory/citeas-api/issues\">GitHub Issues</a>\n" +
+    "                </li>\n" +
+    "            </ul>\n" +
     "\n" +
     "\n" +
     "        </div>\n" +
@@ -684,7 +702,25 @@ angular.module("api.tpl.html", []).run(["$templateCache", function($templateCach
     "        <h2>API</h2>\n" +
     "        <div class=\"text\">\n" +
     "            <p>\n" +
-    "                This is where the API docs will go.\n" +
+    "                The CiteAs API powers this website, and is also available for\n" +
+    "                use in your own projects. Soon we'll have documentation for the API\n" +
+    "                here.\n" +
+    "            </p>\n" +
+    "            <p>\n" +
+    "                In the meantime, though, feel free to play around with it. There's just one main endpoint, which\n" +
+    "                gets citation information for a project given a DOI or URL. Here's\n" +
+    "                an example:\n" +
+    "            </p>\n" +
+    "            <code>\n" +
+    "                <a href=\"http://api.citeas.org/product/http://yt-project.org\">\n" +
+    "                    http://api.citeas.org/product/http://yt-project.org\n" +
+    "                </a>\n" +
+    "            </code>\n" +
+    "\n" +
+    "            <p>\n" +
+    "                The returned data is pretty self-documenting,\n" +
+    "                but feel free to drop us a line if you run into any trouble. We'll have more\n" +
+    "                docs up here before too long. Happy coding!\n" +
     "            </p>\n" +
     "        </div>\n" +
     "    </div>\n" +
