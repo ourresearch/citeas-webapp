@@ -167,6 +167,7 @@ angular.module('citePage', [
             $mdOpenMenu(ev);
         }
 
+
         $scope.stepInfo = function(stepName){
             var stepInfo = $rootScope.steps[stepName]
             console.log("stepInfo!", stepName, stepInfo)
@@ -176,7 +177,6 @@ angular.module('citePage', [
                 templateUrl: "step-info.tpl.html",
                 clickOutsideToClose:true
             })
-
 
             function DialogController($scope, $mdDialog) {
                 $scope.stepInfo = stepInfo
@@ -193,8 +193,9 @@ angular.module('citePage', [
                     $mdDialog.hide(answer);
                 };
             }
-
         }
+
+
 
         $scope.modify = function(){
             console.log("modify!")
