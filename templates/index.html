@@ -64,12 +64,15 @@
                 <p class="more">
                     {{ stepInfo.step_more }}
                 </p>
-                <h3>Additional resources:</h3>
-                <ul>
-                    <li ng-repeat="link in stepInfo.step_links">
-                        <a href="{{ link[1] }}">{{ link[0] }}</a>
-                    </li>
-                </ul>
+                <div class="more-resources" ng-show="stepInfo.step_links.length">
+                    <h3>Additional resources:</h3>
+                    <ul>
+                        <li ng-repeat="link in stepInfo.step_links">
+                            <a href="{{ link[1] }}">{{ link[0] }}</a>
+                        </li>
+                    </ul>
+                </div>
+
 
             </div>
         </md-dialog-content>

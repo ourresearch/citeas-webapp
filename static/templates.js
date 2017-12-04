@@ -379,7 +379,8 @@ angular.module("sources.tpl.html", []).run(["$templateCache", function($template
     "        <h2>Sources for citation data</h2>\n" +
     "        <div class=\"text\">\n" +
     "            <p>\n" +
-    "                CiteAs uses a pattern of web-based searches to try to discover and represent the best way to cite a given scholarly artifact.\n" +
+    "                CiteAs uses a pattern of web-based searches to try to discover and represent the best way to cite a given scholarly artifact. Here's a simplified description of the steps we follow in order to figure out the best citation (for the full details, see the\n" +
+    "                <a href=\"https://github.com/Impactstory/citeas-api\">source code</a>).\n" +
     "            </p>\n" +
     "\n" +
     "            <p>\n" +
@@ -405,6 +406,9 @@ angular.module("sources.tpl.html", []).run(["$templateCache", function($template
     "                </a>\n" +
     "                ?\n" +
     "            </h3>\n" +
+    "            <p>\n" +
+    "                If so, we fetch the contents of the GitHub repo and look for clues there:\n" +
+    "            </p>\n" +
     "            <ul>\n" +
     "                <li>\n" +
     "                    Does the repository have a\n" +
@@ -469,9 +473,11 @@ angular.module("sources.tpl.html", []).run(["$templateCache", function($template
     "                , or the url for a\n" +
     "                <a href=\"\" ng-click=\"stepInfo('WebpageStep')\" class=\"learn-more\">\n" +
     "                    project webpage\n" +
-    "                </a>\n" +
-    "                ?\n" +
+    "                </a>?\n" +
     "            </h3>\n" +
+    "            <p>\n" +
+    "                If so, we fetch the contents of the webpage or repository page, and look for clues in the content of that page:\n" +
+    "            </p>\n" +
     "            <ul>\n" +
     "                <li>\n" +
     "                    Does the webpage include a\n" +
@@ -497,7 +503,7 @@ angular.module("sources.tpl.html", []).run(["$templateCache", function($template
     "            </ul>\n" +
     "\n" +
     "            <p>\n" +
-    "                If none of these paths work, we suggest a citation based on the metadata we can extract from the title and url.\n" +
+    "                If none of these paths work, we suggest a citation based on whatever metadata we can extract from the title and url of the page.\n" +
     "            </p>\n" +
     "\n" +
     "        </div>\n" +

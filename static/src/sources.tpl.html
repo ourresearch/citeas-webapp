@@ -3,7 +3,8 @@
         <h2>Sources for citation data</h2>
         <div class="text">
             <p>
-                CiteAs uses a pattern of web-based searches to try to discover and represent the best way to cite a given scholarly artifact.
+                CiteAs uses a pattern of web-based searches to try to discover and represent the best way to cite a given scholarly artifact. Here's a simplified description of the steps we follow in order to figure out the best citation (for the full details, see the
+                <a href="https://github.com/Impactstory/citeas-api">source code</a>).
             </p>
 
             <p>
@@ -29,6 +30,9 @@
                 </a>
                 ?
             </h3>
+            <p>
+                If so, we fetch the contents of the GitHub repo and look for clues there:
+            </p>
             <ul>
                 <li>
                     Does the repository have a
@@ -93,9 +97,11 @@
                 , or the url for a
                 <a href="" ng-click="stepInfo('WebpageStep')" class="learn-more">
                     project webpage
-                </a>
-                ?
+                </a>?
             </h3>
+            <p>
+                If so, we fetch the contents of the webpage or repository page, and look for clues in the content of that page:
+            </p>
             <ul>
                 <li>
                     Does the webpage include a
@@ -121,7 +127,7 @@
             </ul>
 
             <p>
-                If none of these paths work, we suggest a citation based on the metadata we can extract from the title and url.
+                If none of these paths work, we suggest a citation based on whatever metadata we can extract from the title and url of the page.
             </p>
 
         </div>

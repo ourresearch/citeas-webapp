@@ -28,14 +28,27 @@ div.page.landing div.top-screen {
   background: #fff;
 }
 div.page.modify-your-citation {
-  padding-top: 100px;
+  padding: 150px 0;
   max-width: 800px;
   margin: 0 auto;
 }
 div.page.sources {
-  padding-top: 100px;
+  padding: 150px 0;
   max-width: 800px;
   margin: 0 auto;
+}
+.page.about {
+  padding: 150px 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.page.about .content {
+  max-width: 800px;
+}
+.page.api {
+  margin: 0 auto;
+  padding: 150px 0;
+  max-width: 800px;
 }
 .nav {
   position: fixed;
@@ -259,16 +272,4 @@ div.page.sources {
 }
 .page.cite-page .content .citation div.provenance .steps .step .step-container .step-info .url {
   font-size: 12px;
-}
-.page.about {
-  height: 100vh;
-}
-.page.about .content {
-  max-width: 800px;
-}
-.page.api {
-  height: 100vh;
-}
-.page.api .content {
-  max-width: 800px;
 }

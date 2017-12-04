@@ -71,8 +71,8 @@ angular.module('landing', [
 
 
     .controller("SourcesPageCtrl", function ($scope,
-                                             $location,
-                                             $timeout) {
+                                             $rootScope,
+                                             $mdDialog) {
 
         $scope.main = {}
 
