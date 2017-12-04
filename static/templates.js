@@ -28,9 +28,13 @@ angular.module("about.tpl.html", []).run(["$templateCache", function($templateCa
     "                We're still working on creating the database. But while that's in progress,\n" +
     "                we thought it'd be cool to release CiteAs, even though it still is missing the majority\n" +
     "                of data it will ultimately use. Feel free to kick the tires, and let us know what you think!\n" +
+    "\n" +
     "            </p>\n" +
     "\n" +
     "            <p>\n" +
+    "                You can learn more about how CiteAs works on our <a href=\"sources\">sources page,</a> and\n" +
+    "                you can learn how fix a wrong citation to one of your own projects on\n" +
+    "                <a href=\"modify-your-citation\">this page.</a>\n" +
     "                And stay tuned! We'll be building the database in 2018, and expect to have that data live in\n" +
     "                CiteAs by 2019.\n" +
     "            </p>\n" +
