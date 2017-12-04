@@ -31,6 +31,11 @@ angular.module('landing', [
             templateUrl: "modify-your-citation.tpl.html"
         })
     })
+    .config(function ($routeProvider) {
+        $routeProvider.when('/sources', {
+            templateUrl: "sources.tpl.html"
+        })
+    })
 
 
 

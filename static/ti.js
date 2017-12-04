@@ -428,6 +428,11 @@ angular.module('landing', [
             templateUrl: "modify-your-citation.tpl.html"
         })
     })
+    .config(function ($routeProvider) {
+        $routeProvider.when('/sources', {
+            templateUrl: "sources.tpl.html"
+        })
+    })
 
 
 
@@ -549,7 +554,7 @@ angular.module("numFormat", [])
 
         }
     });
-angular.module('templates.app', ['about.tpl.html', 'api.tpl.html', 'cite-page.tpl.html', 'landing.tpl.html', 'modify-your-citation.tpl.html', 'page-not-found.tpl.html']);
+angular.module('templates.app', ['about.tpl.html', 'api.tpl.html', 'cite-page.tpl.html', 'landing.tpl.html', 'modify-your-citation.tpl.html', 'page-not-found.tpl.html', 'sources.tpl.html']);
 
 angular.module("about.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("about.tpl.html",
@@ -834,7 +839,7 @@ angular.module("landing.tpl.html", []).run(["$templateCache", function($template
     "                                <a href=\"/cite/https://cran.r-project.org/web/packages/stringr\">https://cran.r-project.org/web/packages/stringr</a>\n" +
     "                            </li>\n" +
     "                            <li>\n" +
-    "                                <a href=\"/cite/10.5281/zenodo.160400\">10.5281/zenodo.160400</a>\n" +
+    "                                <a href=\"sources\">More examples</a>\n" +
     "                            </li>\n" +
     "                        </ul>\n" +
     "                    </div>\n" +
@@ -903,5 +908,24 @@ angular.module("page-not-found.tpl.html", []).run(["$templateCache", function($t
     "<div class=\"landing static-page\">\n" +
     "    <h1>Sorry, we couldn't find that page!</h1>\n" +
     "\n" +
+    "</div>");
+}]);
+
+angular.module("sources.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("sources.tpl.html",
+    "<div class=\"page sources\">\n" +
+    "    <div class=\"content\">\n" +
+    "        <h2>Sources for citation data</h2>\n" +
+    "        <div class=\"text\">\n" +
+    "            <p>\n" +
+    "                CiteAs uses a pattern of web-based searches to try to discover and represent the best way to cite a given scholarly artifact.\n" +
+    "            </p>\n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "        </div>\n" +
+    "    </div>\n" +
     "</div>");
 }]);
