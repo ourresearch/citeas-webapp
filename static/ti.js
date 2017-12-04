@@ -467,7 +467,8 @@ angular.module('landing', [
     })
     .config(function ($routeProvider) {
         $routeProvider.when('/sources', {
-            templateUrl: "sources.tpl.html"
+            templateUrl: "sources.tpl.html",
+            controller: "SourcesPageCtrl"
         })
     })
 
@@ -500,6 +501,44 @@ angular.module('landing', [
             $location.path("/cite/" + $scope.main.id)
         }
 
+    })
+
+
+    .controller("SourcesPageCtrl", function ($scope,
+                                             $location,
+                                             $timeout) {
+
+        $scope.main = {}
+
+        console.log("i am the sources page ctrl")
+
+        // copy/pasted from citePage controller...
+        $scope.stepInfo = function(stepName){
+            var stepInfo = $rootScope.steps[stepName]
+            console.log("stepInfo!", stepName, stepInfo)
+
+            $mdDialog.show({
+                controller: DialogController,
+                templateUrl: "step-info.tpl.html",
+                clickOutsideToClose:true
+            })
+
+            function DialogController($scope, $mdDialog) {
+                $scope.stepInfo = stepInfo
+
+                $scope.hide = function() {
+                    $mdDialog.hide();
+                };
+
+                $scope.cancel = function() {
+                    $mdDialog.cancel();
+                };
+
+                $scope.answer = function(answer) {
+                    $mdDialog.hide(answer);
+                };
+            }
+        }
     })
 
 
