@@ -1025,7 +1025,8 @@ angular.module("modify-your-citation.tpl.html", []).run(["$templateCache", funct
     "                </li>\n" +
     "                <li>\n" +
     "                    If your project is an R package, put your preferred citation information in an <a\n" +
-    "                        href=\"http://r-pkgs.had.co.nz/inst.html#inst-citation\">R CITATION file</a>\n" +
+    "                        href=\"http://r-pkgs.had.co.nz/inst.html#inst-citation\">CITATION file</a> so it will be picked up by the\n" +
+    "                        <a href=\"http://astrostatistics.psu.edu/su07/R/library/utils/html/citation.html\">R citation()</a> function.\n" +
     "                </li>\n" +
     "            </ul>\n" +
     "\n" +
