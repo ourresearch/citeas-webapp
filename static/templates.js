@@ -340,7 +340,7 @@ angular.module("landing.tpl.html", []).run(["$templateCache", function($template
     "                                <a href=\"/cite/https://cran.r-project.org/web/packages/stringr\">https://cran.r-project.org/web/packages/stringr</a>\n" +
     "                            </li>\n" +
     "                            <li>\n" +
-    "                                <a href=\"sources\">More examples</a>\n" +
+    "                                <a href=\"https://github.com/Impactstory/citeas-api/blob/master/README.md\">More examples</a>\n" +
     "                            </li>\n" +
     "                        </ul>\n" +
     "                    </div>\n" +
