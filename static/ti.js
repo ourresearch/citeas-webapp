@@ -814,7 +814,7 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                                \n" +
     "                                <md-menu-item>\n" +
     "                                    <md-button ng-click=\"\">\n" +
-    "                                        <a href=\"https://chrome.google.com/webstore/detail/zotero-connector/ekhagklcjbdpajgpjgmbionohlpdbjgc?hl=en\">Install the \"Zotero Connection\" extension</a>\n" +
+    "                                        <a href=\"https://chrome.google.com/webstore/detail/zotero-connector/ekhagklcjbdpajgpjgmbionohlpdbjgc?hl=en\">Install the \"Zotero Connector\" extension</a>\n" +
     "                                    </md-button>\n" +
     "                                </md-menu-item>\n" +
     "\n" +
