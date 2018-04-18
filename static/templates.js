@@ -366,7 +366,7 @@ angular.module("modify-your-citation.tpl.html", []).run(["$templateCache", funct
     "        <div class=\"text\">\n" +
     "            <p>\n" +
     "                The CiteAs system uses a variety of web-based searches to try to discover the best way to cite a given software project (or, in due time, datasets and articles as well). We search lots of places including GitHub, CRAN, the project source code, project web pages; eventually, we'll also search the scholarly itself. You can learn more about the algorithms and sources on our\n" +
-    "                <a href=\"how-we-seearch\">page about how we search.</a>\n" +
+    "                <a href=\"sources\">page about how we search.</a>\n" +
     "            </p>\n" +
     "\n" +
     "            <p>\n" +
