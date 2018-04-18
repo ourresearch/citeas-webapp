@@ -311,7 +311,7 @@ angular.module("landing.tpl.html", []).run(["$templateCache", function($template
     "                    <md-input-container md-no-float\n" +
     "                                        class=\"md-block example-selected-{{ main.exampleSelected }}\"\n" +
     "                                        flex-gt-sm=\"\">\n" +
-    "                        <label>Paste a URL or DOI</label>\n" +
+    "                        <label>Paste a URL, DOI, or arXiv ID</label>\n" +
     "                        <input ng-model=\"main.id\">\n" +
     "\n" +
     "                        <md-button ng-show=\"main.id\"\n" +
@@ -386,13 +386,21 @@ angular.module("modify-your-citation.tpl.html", []).run(["$templateCache", funct
     "\n" +
     "            <ul>\n" +
     "                <li>\n" +
-    "                   Mint a DOI for your project <a href=\"https://guides.github.com/activities/citable-code/\">using Zenodo</a> or a similar service. Assign the citation metadata you want used to that record. You can then paste your DOI somewhere associated with your project (a README file, your project web page) and CiteAs will use the DOI metadata in creating the preferred citation.\n" +
+    "                   If you have a paper you'd like people to cite, add DOI of the paper on your project webpage.  CiteAs will pick it it up from the HTML source of the webpage.\n" +
     "                </li>\n" +
     "                <li>\n" +
-    "                    Create a <a href=\"https://github.com/codemeta/codemeta\">CodeMeta</a> file for your project and put your preferred citation information in that.\n" +
+    "                   Add a link from your project webpage to your GitHub repo.  From there we'll find your README, CITATION files, and CodeMeta files.  Then:\n" +
+    "                    <ul>\n" +
+    "                        <li>\n" +
+    "                           Mint a DOI for your project <a href=\"https://guides.github.com/activities/citable-code/\">using Zenodo</a> or a similar service. Assign the citation metadata you want used to that record. You can then paste your DOI somewhere associated with your project (a README file, your project web page) and CiteAs will use the software DOI metadata in creating the preferred citation.\n" +
+    "                        </li>\n" +
+    "                        <li>\n" +
+    "                            Or, create a <a href=\"https://github.com/codemeta/codemeta\">CodeMeta</a> file for your project and put the preferred citation information in that.\n" +
+    "                        </li>\n" +
+    "                    </ul>\n" +
     "                </li>\n" +
     "                <li>\n" +
-    "                    If your project is an R package, put your preferred citation information in a <a\n" +
+    "                    If your project is an R package, you can instead put your preferred citation information in a <a\n" +
     "                        href=\"http://r-pkgs.had.co.nz/inst.html#inst-citation\">CITATION file</a> so it will be picked up by the\n" +
     "                        <a href=\"http://astrostatistics.psu.edu/su07/R/library/utils/html/citation.html\">R citation()</a> function.\n" +
     "                </li>\n" +
