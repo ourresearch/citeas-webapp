@@ -811,6 +811,12 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                                        BibTeX\n" +
     "                                    </md-button>\n" +
     "                                </md-menu-item>\n" +
+    "                                \n" +
+    "                                <md-menu-item>\n" +
+    "                                    <md-button ng-click=\"\">\n" +
+    "                                        <a href=\"https://chrome.google.com/webstore/detail/zotero-connector/ekhagklcjbdpajgpjgmbionohlpdbjgc?hl=en\">Or use the \"Zotero Connection\" extension</a>\n" +
+    "                                    </md-button>\n" +
+    "                                </md-menu-item>\n" +
     "\n" +
     "                            </md-menu-content>\n" +
     "                        </md-menu>\n" +
@@ -912,8 +918,6 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "\n" +
     "\n" +
     "\n" +
-    "\n" +
-    "\n" +
     "            </div>\n" +
     "\n" +
     "        </div>\n" +
@@ -921,7 +925,8 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "\n" +
     "    </div>\n" +
     "\n" +
-    "</div>");
+    "</div>\n" +
+    "");
 }]);
 
 angular.module("landing.tpl.html", []).run(["$templateCache", function($templateCache) {
@@ -1042,7 +1047,8 @@ angular.module("modify-your-citation.tpl.html", []).run(["$templateCache", funct
     "\n" +
     "        </div>\n" +
     "    </div>\n" +
-    "</div>");
+    "</div>\n" +
+    "");
 }]);
 
 angular.module("page-not-found.tpl.html", []).run(["$templateCache", function($templateCache) {
