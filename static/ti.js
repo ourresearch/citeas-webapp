@@ -744,15 +744,17 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                <h2>Sorry!</h2>\n" +
     "                <div class=\"text\">\n" +
     "                    <p>\n" +
-    "                    We weren't able to figure out a citation for this research product.\n" +
+    "                        We weren't able to figure out a citation for this research product.\n" +
     "                    </p>\n" +
     "                    <p>\n" +
-    "                    Here is more information on <a href=\"sources\">where we look</a>, and here are some tips on\n" +
+    "                        Here is more information on <a href=\"sources\">where we look</a>, and some tips on\n" +
     "                    <a href=\"/modify-your-citation\">how to modify the citation suggestions</a> for your software projects.\n" +
     "                    </p>\n" +
-    "                    Please\n" +
+    "                    <p>\n" +
+    "                        Please\n" +
     "                    <a href=\"https://github.com/Impactstory/citeas-api/issues\">let us know</a> about any bugs and we'll\n" +
-    "                    look into them!\n" +
+    "                    get them fixed!\n" +
+    "                    </p>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "\n" +
