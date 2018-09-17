@@ -1,25 +1,28 @@
-blog on CiteAs
+# CiteAs.org: Discovering and Improving software requests for citation
 
-problem
-inadequate citation
-unclear practices.  A research paper always contains its own citation information, usually in the top corner of the PDF.
+> **tl;dr**: [CiteAs.org](https://citeas.org) links between pieces of software and their requested citations. Go from the name of a piece of software, it's language page URL, or a DOI directly to the machine-readable meta (e.g. BibTex, Zotero auto-import) for the citation the author wants you to use. Funded by the Digital Science program at the Sloan Foundation (Grant Number 8028), conceived and developed by Heather Piwowar and Jason Priem at [ImpactStory](https://impactstory.org), together with [James Howison](http://james.howison.name) from the Information School at the University of Texas at Austin.
 
-image: a citation.
+**Great software work ⟶ Clear requests for citation ⟶ More visibility in publications ⟶ More credit ⟶ Better Software ⟶ Better Science**
 
-Software very rarely contains citation information, and when it does it is certainly not as obvious as it is in a paper. In part this is because there is no standard place to "write" the information, but it's also because authors sometimes want their users to cite something other than the piece of software directly. Examples include citing a paper that introduces the software (or demonstrated its potential), a published software manual or book, a "software paper" created specifically as a citation target, or a benchmarking paper. Great work is being done to guide best practices towards always including a direct citation to the software itself, including version numbers---something key for reproducibility---in addition to papers, but we think it's important to let the authors decide how their contribution should be acknowledged.
+Software very rarely contains citation information, and when it does it is certainly not as obvious as it is in a paper. With a paper if you have the paper you have the metadata right there in front of you. Take the first page of [Howison and Bullard, 2013](http://doi.org/10.1002/asi.23538), which found that less than half of the times in which publications actually mentioned software were formal, traceable, citations.
 
-So if we are going to better reward the software work that drives science forward there are many things that need to change. In the CiteAs project we're tackling one: making a clear link from software to the author's preferred citation.
+![image: a citation.](an_article_citation.png)
 
-One approach is to create a new standard format and location to make clear requests, such as including a free text request in a CITATION file or a machine readable set of requests in a CITATION.ccf file. (cite https://github.com/citation-file-format/citation-file-format). These have the advantage of being easy to locate and read, but the disadvantage of requiring everyone to adopt a new practice before this approach can work.
+But if you have a piece of software, you very likely don't have the metadata needed to cite it. In part this is because with software there is no standard place to "write" the information, but it's also because authors sometimes want their users to cite something other than the piece of software directly. Examples include citing a paper that introduces the software (or demonstrated its potential), a published software manual or book, a "software paper" created specifically as a citation target, or a benchmarking paper.
+
+Great work is being done to guide best practices (including the [FORCE11 Working Group on Software Citation](https://www.force11.org/group/software-citation-working-group)) which recommends always including a direct citation to the software itself, including version numbers---something key for reproducibility---in addition to papers. We don't disagree, but we think it's important to let the authors decide how their contribution should be acknowledged and to link users with those requests.
+
+One approach to making this link is to create a new standard format and location to make clear requests, such as including a free text request in a [https://www.software.ac.uk/blog/2016-10-06-encouraging-citation-software-introducing-citation-files](CITATION file) or a machine readable set of requests in a [CodeMeta](https://codemeta.github.io/) or [CITATION.ccf](https://github.com/citation-file-format/citation-file-format) file. These have the advantage of being easy to locate and read, but the disadvantage of requiring everyone to adopt a new practice before this approach can work.
 
 We know that people already make requests for citation in a whole range of places, including requests on project web-pages that provide `bibtex` or DOIs, metadata associated with DOIs or repositories (such as Github and Gitlab), and in language specific formats (such as R's `citation()` method which reads from a `DESCRIPTION` file).
 
-CiteAs includes a web-scraper which seeks out requests wherever they might be, following a set of logical rules. We ask users to start with something they know about the software, such as the project name, a project "landing page", or a project's repository URL. We then have plugins arranged in a sequence that obtain data from out on the web and seek the best citation request, prioritizing metadata by its imputed intentionality, such as `CITATION.ccf`, `CITATION`, `citation()` calls, `DOAP` metadata, and metadata registered associated with a DOI (e.g., [Zenodo's software DOIs](http://about.zenodo.org/principles/)). Of medium priority is metadata discovered through natural language requests on webpages (such as `bibtex` or other formats on landing pages). Finally we fall back to creating a simple citation to a repository or even web-page.
+CiteAs includes a web-scraper which seeks out requests wherever they might be, following a set of logical rules based on how we've seen people ask for a citation. We ask users to start with something they know about the software, such as the project name, a project "landing page" (e.g., [SciPy's requests for citations](https://www.scipy.org/citing.html)), or a project's repository URL. We then have plugins arranged in a sequence that obtain data from out on the web and seek the best citation request, prioritizing metadata by its imputed intentionality, such as `CITATION.ccf`, `CITATION`, `citation()` calls, `DOAP` metadata, and metadata registered associated with a DOI (e.g., [Zenodo's software DOIs](http://about.zenodo.org/principles/)). Of medium priority is metadata discovered through natural language requests on webpages (such as `bibtex` or other formats on landing pages). Finally we fall back to creating a simple citation to a repository or even web-page.
 
-We want to discover and honor author's requests and simultaneously educate authors about how to make clearer or more specific citation requests, encouraging them to make use of more expressive formats. We do that by showing our discovery process and highlighting missing, higher intentiality, opportunities to make requests.
-
+We want to discover and honor author's requests and simultaneously educate authors about how to make clearer or more specific citation requests, encouraging them to make use of more expressive formats. We do that by showing our discovery process and highlighting missing, higher intentionality, opportunities to make requests.
 
 ## Examples
+
+TBD: use examples at
 
 ## Challenges and next steps
 
