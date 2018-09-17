@@ -1,10 +1,12 @@
 # CiteAs.org: Discovering and Improving software requests for citation
 
-> **tl;dr**: [CiteAs.org](https://citeas.org) links between pieces of software and their requested citations. Go from the name of a piece of software, it's language page URL, or a DOI directly to the machine-readable meta (e.g. BibTex, Zotero auto-import) for the citation the author wants you to use. Funded by the Digital Science program at the Sloan Foundation (Grant Number 8028), conceived and developed by Heather Piwowar and Jason Priem at [ImpactStory](https://impactstory.org), together with [James Howison](http://james.howison.name) from the Information School at the University of Texas at Austin.
+**_please add: Authors (affiliations)_**
 
-**Great software work ⟶ Clear requests for citation ⟶ More visibility in publications ⟶ More credit ⟶ Better Software ⟶ Better Science**
+[CiteAs.org](https://citeas.org) links between pieces of software and their requested citations. Go from the name of a piece of software, its language page URL **_I don't know what a language page URL is_**, or a DOI directly to the machine-readable metadata (e.g., BibTex, Zotero auto-import) for the citation the author wants you to use. CiteAs.org is funded by the Digital Science program at the Sloan Foundation (Grant Number 8028), and conceived and developed by Heather Piwowar and Jason Priem at [ImpactStory](https://impactstory.org), together with [James Howison](http://james.howison.name) from the Information School at the University of Texas at Austin.
 
-Software very rarely contains citation information, and when it does it is certainly not as obvious as it is in a paper. With a paper if you have the paper you have the metadata right there in front of you. Take the first page of [Howison and Bullard, 2013](http://doi.org/10.1002/asi.23538), which found that less than half of the times in which publications actually mentioned software were formal, traceable, citations.
+**Great software work ⟶ Clear requests for citation ⟶ More visibility in publications ⟶ More credit ⟶ Better Software ⟶ Better Research**
+
+Software very rarely contains citation information, and when it does it is certainly not as obvious as it is in a paper. With a paper, if you have the paper you have the metadata right there in front of you. [Howison and Bullard, 2013](http://doi.org/10.1002/asi.23538) found that less than half of the times in which publications actually mentioned software were formal, traceable, citations.
 
 ![image: a citation.](an_article_citation.png)
 
@@ -14,9 +16,9 @@ Great work is being done to guide best practices (including the [FORCE11 Working
 
 One approach to making this link is to create a new standard format and location to make clear requests, such as including a free text request in a [https://www.software.ac.uk/blog/2016-10-06-encouraging-citation-software-introducing-citation-files](CITATION file) or a machine readable set of requests in a [CodeMeta](https://codemeta.github.io/) or [CITATION.ccf](https://github.com/citation-file-format/citation-file-format) file. These have the advantage of being easy to locate and read, but the disadvantage of requiring everyone to adopt a new practice before this approach can work.
 
-We know that people already make requests for citation in a whole range of places, including requests on project web-pages that provide `bibtex` or DOIs, metadata associated with DOIs or repositories (such as Github and Gitlab), and in language specific formats (such as R's `citation()` method which reads from a `DESCRIPTION` file).
+We know that people already make requests for citation in a whole range of places, including requests on project web-pages that provide `bibtex` or DOIs, metadata associated with DOIs or repositories (such as Github and Gitlab), and in language specific formats (such as R's `citation()` method, which reads from a `DESCRIPTION` file).
 
-CiteAs includes a web-scraper which seeks out requests wherever they might be, following a set of logical rules based on how we've seen people ask for a citation. We ask users to start with something they know about the software, such as the project name, a project "landing page" (e.g., [SciPy's requests for citations](https://www.scipy.org/citing.html)), or a project's repository URL. We then have plugins arranged in a sequence that obtain data from out on the web and seek the best citation request, prioritizing metadata by its imputed intentionality, such as `CITATION.ccf`, `CITATION`, `citation()` calls, `DOAP` metadata, and metadata registered associated with a DOI (e.g., [Zenodo's software DOIs](http://about.zenodo.org/principles/)). Of medium priority is metadata discovered through natural language requests on webpages (such as `bibtex` or other formats on landing pages). Finally we fall back to creating a simple citation to a repository or even web-page.
+CiteAs includes a web-scraper that seeks out requests wherever they might be, following a set of logical rules based on how we've seen people ask for a citation. We ask users to start with something they know about the software, such as the project name, a project "landing page" (e.g., [SciPy's requests for citations](https://www.scipy.org/citing.html)), or a project's repository URL. We then have plugins arranged in a sequence that obtain data from out on the web and seek the best citation request, prioritizing metadata by its imputed intentionality, such as `CITATION.ccf`, `CITATION`, `citation()` calls, `DOAP` metadata, and metadata registered associated with a DOI (e.g., [Zenodo's software DOIs](http://about.zenodo.org/principles/)). Of medium priority is metadata discovered through natural language requests on webpages (such as `bibtex` or other formats on landing pages). Finally we fall back to creating a simple citation to a repository or even web-page.
 
 We want to discover and honor author's requests and simultaneously educate authors about how to make clearer or more specific citation requests, encouraging them to make use of more expressive formats. We do that by showing our discovery process and highlighting missing, higher intentionality, opportunities to make requests.
 
@@ -28,7 +30,7 @@ TBD: use examples at
 
 ### Locating requests
 
-Eventually we plan to incorporate an additional source: the manner in which packages are already being mentioned in publications. We plan to obtain this through machine learning of the literature ("entity recognition" for software). Towards this at [Softcite Dataset](https://github.com/howisonlab/softcite-dataset) we have trained content analytic coders labeling a randomly chosen set of publications. Using that system we plan to add "Here's your current request and here's how we see your software mentioned in the literature. If you'd like to change those practices you could start with a clear, standardized, machine-readable request".
+Eventually we plan to incorporate an additional source: the manner in which packages are already being mentioned in publications. We plan to obtain this through machine learning of the literature ("entity recognition" for software). Towards this at [Softcite Dataset](https://github.com/howisonlab/softcite-dataset), we have trained content analytic coders labeling a randomly chosen set of publications. Using that system we plan to add "Here's your current request and here's how we see your software mentioned in the literature. If you'd like to change those practices you could start with a clear, standardized, machine-readable request".
 
 ### Presenting information
 
@@ -40,6 +42,6 @@ CiteAs faces a key challenges that any grant-funded piece of software faces: how
 
 ## Please try CiteAs and report issues
 
-We would love to hear your experiences with the service. We are especially interested in hearing about requests that CiteAs is not currently finding, as well as feedback on the presentation of the results, and the position of CiteAs within the ecosystem of related services.  Report issues on our [github issues page](https://github.com/Impactstory/citeas-webapp/issues).
+We would love to hear your experiences with the service. We are especially interested in hearing about requests that CiteAs is not currently finding, as well as feedback on the presentation of the results, and the position of CiteAs within the ecosystem of related services.  Report issues on our [GitHub issues page](https://github.com/Impactstory/citeas-webapp/issues).
 
-**Great software work ⟶ Clear requests for citation ⟶ More visibility in publications ⟶ More credit ⟶ Better Software ⟶ Better Science**
+**Great software work ⟶ Clear requests for citation ⟶ More visibility in publications ⟶ More credit ⟶ Better Software ⟶ Better Research**
