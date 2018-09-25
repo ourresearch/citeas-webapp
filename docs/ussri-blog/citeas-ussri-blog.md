@@ -25,7 +25,26 @@ We want to discover and honor author's requests and simultaneously educate autho
 
 ## Examples
 
-TBD: use examples at https://github.com/Impactstory/citeas-api/blob/master/README.md
+### Example 1: YT
+
+YT is a python package for analyzing and visualizing volumetric data. Entering the YT webpage URL into CiteAs' search field retrieves the correct citation in a variety of different common citation formats as well as in structured data that can be imported into Zotero in one click:
+
+![image: CiteAs result for YT.](https://i.imgur.com/7mZOrCK.png)
+
+Since a key goal of CiteAs is education, the **process used**  to find this citation is also highlighted on the results page:
+
+![image: provenance of yt citation.](https://i.imgur.com/wUnQLSy.png)
+
+From this list we can see the steps the application took to find the citation--which both helps establish provenance and also educate users about best-practice ways (or at least **better-**practice ways) to register and discover software citation metadata.
+
+
+### Example 2: Stringr
+
+The Stringr package provides wrappers for common string operations in R. Given the URL for the package's CRAN page, CiteAs finds and displays the correct citation for this package. CiteAs takes quite a few hops to finally figure out where the canonical citation metadata is, but it does eventually find it in the R DESCRIPTION file. Again, the display of all these steps helps users understand more about the possible approaches to software citation. The (?) icon next to each step links users to additional documentation.
+
+![image: provenance of stringr citation.](https://i.imgur.com/WWOO8IT.png)
+
+
 
 ## Challenges and next steps
 
