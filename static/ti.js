@@ -743,11 +743,18 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "            <div class=\"error\" ng-show=\"apiResp=='error'\">\n" +
     "                <h2>Sorry!</h2>\n" +
     "                <div class=\"text\">\n" +
-    "                    We weren't able to figure out a citation for this research product.\n" +
-    "                    We're in active development and hopefully this particular case will\n" +
-    "                    be working soon. Feel free to\n" +
-    "                    <a href=\"mailto:team@impactstory.org\">let us know</a> and we'll\n" +
-    "                    look into it.\n" +
+    "                    <p>\n" +
+    "                        We weren't able to figure out a citation for this research product.\n" +
+    "                    </p>\n" +
+    "                    <p>\n" +
+    "                        Here is more information on <a href=\"sources\">where we look</a>, and some tips on\n" +
+    "                    <a href=\"/modify-your-citation\">how to modify the citation suggestions</a> for your software projects.\n" +
+    "                    </p>\n" +
+    "                    <p>\n" +
+    "                        Please\n" +
+    "                    <a href=\"https://github.com/Impactstory/citeas-api/issues\">let us know</a> about any bugs and we'll\n" +
+    "                    get them fixed!\n" +
+    "                    </p>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "\n" +
@@ -809,6 +816,12 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                                <md-menu-item>\n" +
     "                                    <md-button ng-click=\"saveAs('bibtex')\">\n" +
     "                                        BibTeX\n" +
+    "                                    </md-button>\n" +
+    "                                </md-menu-item>\n" +
+    "                                \n" +
+    "                                <md-menu-item>\n" +
+    "                                    <md-button ng-click=\"\">\n" +
+    "                                        <a href=\"https://chrome.google.com/webstore/detail/zotero-connector/ekhagklcjbdpajgpjgmbionohlpdbjgc?hl=en\">Install the \"Zotero Connector\" extension</a>\n" +
     "                                    </md-button>\n" +
     "                                </md-menu-item>\n" +
     "\n" +
@@ -912,8 +925,6 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "\n" +
     "\n" +
     "\n" +
-    "\n" +
-    "\n" +
     "            </div>\n" +
     "\n" +
     "        </div>\n" +
@@ -921,7 +932,8 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "\n" +
     "    </div>\n" +
     "\n" +
-    "</div>");
+    "</div>\n" +
+    "");
 }]);
 
 angular.module("landing.tpl.html", []).run(["$templateCache", function($templateCache) {
@@ -998,7 +1010,7 @@ angular.module("modify-your-citation.tpl.html", []).run(["$templateCache", funct
     "        <div class=\"text\">\n" +
     "            <p>\n" +
     "                The CiteAs system uses a variety of web-based searches to try to discover the best way to cite a given software project (or, in due time, datasets and articles as well). We search lots of places including GitHub, CRAN, the project source code, project web pages; eventually, we'll also search the scholarly itself. You can learn more about the algorithms and sources on our\n" +
-    "                <a href=\"how-we-seearch\">page about how we search.</a>\n" +
+    "                <a href=\"sources\">page about how we search.</a>\n" +
     "            </p>\n" +
     "\n" +
     "            <p>\n" +
@@ -1032,7 +1044,7 @@ angular.module("modify-your-citation.tpl.html", []).run(["$templateCache", funct
     "                    </ul>\n" +
     "                </li>\n" +
     "                <li>\n" +
-    "                    If your project is an R package, you can instead put your preferred citation information in an <a\n" +
+    "                    If your project is an R package, you can instead put your preferred citation information in a <a\n" +
     "                        href=\"http://r-pkgs.had.co.nz/inst.html#inst-citation\">CITATION file</a> so it will be picked up by the\n" +
     "                        <a href=\"http://astrostatistics.psu.edu/su07/R/library/utils/html/citation.html\">R citation()</a> function.\n" +
     "                </li>\n" +
@@ -1042,7 +1054,8 @@ angular.module("modify-your-citation.tpl.html", []).run(["$templateCache", funct
     "\n" +
     "        </div>\n" +
     "    </div>\n" +
-    "</div>");
+    "</div>\n" +
+    "");
 }]);
 
 angular.module("page-not-found.tpl.html", []).run(["$templateCache", function($templateCache) {

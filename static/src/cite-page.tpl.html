@@ -11,11 +11,18 @@
             <div class="error" ng-show="apiResp=='error'">
                 <h2>Sorry!</h2>
                 <div class="text">
-                    We weren't able to figure out a citation for this research product.
-                    We're in active development and hopefully this particular case will
-                    be working soon. Feel free to
-                    <a href="mailto:team@impactstory.org">let us know</a> and we'll
-                    look into it.
+                    <p>
+                        We weren't able to figure out a citation for this research product.
+                    </p>
+                    <p>
+                        Here is more information on <a href="sources">where we look</a>, and some tips on
+                    <a href="/modify-your-citation">how to modify the citation suggestions</a> for your software projects.
+                    </p>
+                    <p>
+                        Please
+                    <a href="https://github.com/Impactstory/citeas-api/issues">let us know</a> about any bugs and we'll
+                    get them fixed!
+                    </p>
                 </div>
             </div>
 
@@ -77,6 +84,12 @@
                                 <md-menu-item>
                                     <md-button ng-click="saveAs('bibtex')">
                                         BibTeX
+                                    </md-button>
+                                </md-menu-item>
+                                
+                                <md-menu-item>
+                                    <md-button ng-click="">
+                                        <a href="https://chrome.google.com/webstore/detail/zotero-connector/ekhagklcjbdpajgpjgmbionohlpdbjgc?hl=en">Install the "Zotero Connector" extension</a>
                                     </md-button>
                                 </md-menu-item>
 
@@ -177,8 +190,6 @@
 
 
                 </div>
-
-
 
 
 
