@@ -304,10 +304,12 @@ angular.module('citePage', [
         // define stuff
         var apiResp
         var url = "http://api.citeas.org/product/" + $routeParams.projectId
+        var errorurl = "http://api.citeas.org/error/" + $routeParams.projectId
         $scope.apiUrl = url
         $scope.apiResp = "loading"
         $scope.user = {}
-
+        $scope.error = {}
+        $scope.ShowLightBox =false;
         // load the data from the API
         load()
 
@@ -351,7 +353,11 @@ angular.module('citePage', [
             $mdOpenMenu(ev);
         }
 
+        $scope.HideLightBox = function(e){
 
+            if(e.target.classList.contains('lightbox'))
+                $scope.ShowLightBox =false;
+        }
         $scope.stepInfo = function(stepName){
             var stepInfo = $rootScope.steps[stepName]
             console.log("stepInfo!", stepName, stepInfo)
@@ -378,8 +384,22 @@ angular.module('citePage', [
                 };
             }
         }
+        $scope.NotExpected = function(){
+            console.log("NotExpected!")
+            $scope.ShowLightBox =true;
+        }
+        $scope.SubmitError = function(){
+            console.log($scope.error)
+            $http.post(errorurl,$scope.error).success(function(resp){
+                console.log("response from api yay", resp)
 
-
+            }).error(function(resp){
+                console.log("bad response from api", resp)
+                $scope.apiResp = "error"
+            })
+            $scope.ShowLightBox =false;
+            console.log($scope.error);
+        }
 
         $scope.modify = function(){
             console.log("modify!")
@@ -630,7 +650,7 @@ angular.module("numFormat", [])
 
         }
     });
-angular.module('templates.app', ['about.tpl.html', 'api.tpl.html', 'cite-page.tpl.html', 'landing.tpl.html', 'modify-your-citation.tpl.html', 'page-not-found.tpl.html', 'sources.tpl.html']);
+angular.module("templates.app", ["about.tpl.html", "api.tpl.html", "cite-page.tpl.html", "landing.tpl.html", "modify-your-citation.tpl.html", "page-not-found.tpl.html", "sources.tpl.html"]);
 
 angular.module("about.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("about.tpl.html",
@@ -748,12 +768,14 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                    </p>\n" +
     "                    <p>\n" +
     "                        Here is more information on <a href=\"sources\">where we look</a>, and some tips on\n" +
-    "                    <a href=\"/modify-your-citation\">how to modify the citation suggestions</a> for your software projects.\n" +
+    "                        <a href=\"/modify-your-citation\">how to modify the citation suggestions</a> for your software\n" +
+    "                        projects.\n" +
     "                    </p>\n" +
     "                    <p>\n" +
     "                        Please\n" +
-    "                    <a href=\"https://github.com/Impactstory/citeas-api/issues\">let us know</a> about any bugs and we'll\n" +
-    "                    get them fixed!\n" +
+    "                        <a class=\"action\" ng-click=\"NotExpected()\">let us know</a> about any bugs and\n" +
+    "                        we'll\n" +
+    "                        get them fixed!\n" +
     "                    </p>\n" +
     "                </div>\n" +
     "            </div>\n" +
@@ -775,7 +797,7 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                        <md-select ng-model=\"user.selectedCitation\">\n" +
     "                            <md-option ng-repeat=\"myCitationObj in apiResp.citations\"\n" +
     "                                       ng-value=\"myCitationObj\">\n" +
-    "                            {{ myCitationObj.style_fullname }}\n" +
+    "                                {{ myCitationObj.style_fullname }}\n" +
     "                            </md-option>\n" +
     "                        </md-select>\n" +
     "                    </md-input-container>\n" +
@@ -818,10 +840,11 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                                        BibTeX\n" +
     "                                    </md-button>\n" +
     "                                </md-menu-item>\n" +
-    "                                \n" +
+    "\n" +
     "                                <md-menu-item>\n" +
     "                                    <md-button ng-click=\"\">\n" +
-    "                                        <a href=\"https://chrome.google.com/webstore/detail/zotero-connector/ekhagklcjbdpajgpjgmbionohlpdbjgc?hl=en\">Install the \"Zotero Connector\" extension</a>\n" +
+    "                                        <a href=\"https://chrome.google.com/webstore/detail/zotero-connector/ekhagklcjbdpajgpjgmbionohlpdbjgc?hl=en\">Install\n" +
+    "                                            the \"Zotero Connector\" extension</a>\n" +
     "                                    </md-button>\n" +
     "                                </md-menu-item>\n" +
     "\n" +
@@ -829,7 +852,6 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                        </md-menu>\n" +
     "\n" +
     "                    </div>\n" +
-    "\n" +
     "\n" +
     "\n" +
     "                    <div class=\"more-actions\">\n" +
@@ -841,6 +863,9 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                        </span>\n" +
     "                        <a class=\"action\" href=\"http://api.citeas.org/product/{{ apiResp.url }}\">\n" +
     "                            <i class=\"fa fa-cog\"></i> view in API\n" +
+    "                        </a>\n" +
+    "                        <a class=\"action\" ng-click=\"NotExpected()\">\n" +
+    "                            <i class=\"fa fa-bell\"></i> Results not as Expected\n" +
     "                        </a>\n" +
     "                    </div>\n" +
     "                </div>\n" +
@@ -924,7 +949,6 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                </div>\n" +
     "\n" +
     "\n" +
-    "\n" +
     "            </div>\n" +
     "\n" +
     "        </div>\n" +
@@ -932,6 +956,35 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "\n" +
     "    </div>\n" +
     "\n" +
+    "    <div class=\"lightbox\" ng-click=\"HideLightBox($event)\" ng-show=\"ShowLightBox\">\n" +
+    "        <div style=\"background-color:white\">\n" +
+    "            <form class=\"input-row\" ng-submit=\"submit()\">\n" +
+    "                <md-input-container md-no-float\n" +
+    "                                    class=\"md-block\"\n" +
+    "                                    flex-gt-sm=\"\">\n" +
+    "                    <label>Name</label>\n" +
+    "                    <input ng-model=\"error.id\">\n" +
+    "                </md-input-container>\n" +
+    "                <md-input-container md-no-float\n" +
+    "                                    class=\"md-block\"\n" +
+    "                                    flex-gt-sm=\"\">\n" +
+    "                    <label>Email</label>\n" +
+    "                    <input ng-model=\"error.email\">\n" +
+    "                </md-input-container>\n" +
+    "                <md-input-container md-no-float\n" +
+    "                                    class=\"md-block\"\n" +
+    "                                    flex-gt-sm=\"\">\n" +
+    "                    <label>Message</label>\n" +
+    "                    <textarea ng-model=\"error.message\"></textarea>\n" +
+    "                </md-input-container>\n" +
+    "                    <md-button class=\"md-raised md-primary submit\" ng-click=\"SubmitError()\">\n" +
+    "                        Submit\n" +
+    "                    </md-button>\n" +
+    "\n" +
+    "\n" +
+    "            </form>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
     "</div>\n" +
     "");
 }]);

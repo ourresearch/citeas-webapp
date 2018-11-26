@@ -16,12 +16,14 @@
                     </p>
                     <p>
                         Here is more information on <a href="sources">where we look</a>, and some tips on
-                    <a href="/modify-your-citation">how to modify the citation suggestions</a> for your software projects.
+                        <a href="/modify-your-citation">how to modify the citation suggestions</a> for your software
+                        projects.
                     </p>
                     <p>
                         Please
-                    <a href="https://github.com/Impactstory/citeas-api/issues">let us know</a> about any bugs and we'll
-                    get them fixed!
+                        <a class="action" ng-click="NotExpected()">let us know</a> about any bugs and
+                        we'll
+                        get them fixed!
                     </p>
                 </div>
             </div>
@@ -43,7 +45,7 @@
                         <md-select ng-model="user.selectedCitation">
                             <md-option ng-repeat="myCitationObj in apiResp.citations"
                                        ng-value="myCitationObj">
-                            {{ myCitationObj.style_fullname }}
+                                {{ myCitationObj.style_fullname }}
                             </md-option>
                         </md-select>
                     </md-input-container>
@@ -86,10 +88,11 @@
                                         BibTeX
                                     </md-button>
                                 </md-menu-item>
-                                
+
                                 <md-menu-item>
                                     <md-button ng-click="">
-                                        <a href="https://chrome.google.com/webstore/detail/zotero-connector/ekhagklcjbdpajgpjgmbionohlpdbjgc?hl=en">Install the "Zotero Connector" extension</a>
+                                        <a href="https://chrome.google.com/webstore/detail/zotero-connector/ekhagklcjbdpajgpjgmbionohlpdbjgc?hl=en">Install
+                                            the "Zotero Connector" extension</a>
                                     </md-button>
                                 </md-menu-item>
 
@@ -97,7 +100,6 @@
                         </md-menu>
 
                     </div>
-
 
 
                     <div class="more-actions">
@@ -109,6 +111,9 @@
                         </span>
                         <a class="action" href="http://api.citeas.org/product/{{ apiResp.url }}">
                             <i class="fa fa-cog"></i> view in API
+                        </a>
+                        <a class="action" ng-click="NotExpected()">
+                            <i class="fa fa-bell"></i> Results not as Expected
                         </a>
                     </div>
                 </div>
@@ -192,7 +197,6 @@
                 </div>
 
 
-
             </div>
 
         </div>
@@ -200,4 +204,33 @@
 
     </div>
 
+    <div class="lightbox" ng-click="HideLightBox($event)" ng-show="ShowLightBox">
+        <div style="background-color:white">
+            <form class="input-row" ng-submit="submit()">
+                <md-input-container md-no-float
+                                    class="md-block"
+                                    flex-gt-sm="">
+                    <label>Name</label>
+                    <input ng-model="error.id">
+                </md-input-container>
+                <md-input-container md-no-float
+                                    class="md-block"
+                                    flex-gt-sm="">
+                    <label>Email</label>
+                    <input ng-model="error.email">
+                </md-input-container>
+                <md-input-container md-no-float
+                                    class="md-block"
+                                    flex-gt-sm="">
+                    <label>Message</label>
+                    <textarea ng-model="error.message"></textarea>
+                </md-input-container>
+                    <md-button class="md-raised md-primary submit" ng-click="SubmitError()">
+                        Submit
+                    </md-button>
+
+
+            </form>
+        </div>
+    </div>
 </div>
