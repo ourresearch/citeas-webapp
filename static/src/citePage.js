@@ -120,10 +120,12 @@ angular.module('citePage', [
         // define stuff
         var apiResp
         var url = "http://api.citeas.org/product/" + $routeParams.projectId
+        var errorurl = "http://api.citeas.org/error/" + $routeParams.projectId
         $scope.apiUrl = url
         $scope.apiResp = "loading"
         $scope.user = {}
-
+        $scope.error = {}
+        $scope.ShowLightBox =false;
         // load the data from the API
         load()
 
@@ -167,7 +169,11 @@ angular.module('citePage', [
             $mdOpenMenu(ev);
         }
 
+        $scope.HideLightBox = function(e){
 
+            if(e.target.classList.contains('lightbox'))
+                $scope.ShowLightBox =false;
+        }
         $scope.stepInfo = function(stepName){
             var stepInfo = $rootScope.steps[stepName]
             console.log("stepInfo!", stepName, stepInfo)
@@ -194,8 +200,22 @@ angular.module('citePage', [
                 };
             }
         }
+        $scope.NotExpected = function(){
+            console.log("NotExpected!")
+            $scope.ShowLightBox =true;
+        }
+        $scope.SubmitError = function(){
+            console.log($scope.error)
+            $http.post(errorurl,$scope.error).success(function(resp){
+                console.log("response from api yay", resp)
 
-
+            }).error(function(resp){
+                console.log("bad response from api", resp)
+                $scope.apiResp = "error"
+            })
+            $scope.ShowLightBox =false;
+            console.log($scope.error);
+        }
 
         $scope.modify = function(){
             console.log("modify!")
@@ -237,13 +257,3 @@ angular.module('citePage', [
         }
 
     })
-
-
-
-
-
-
-
-
-
-
