@@ -172,8 +172,16 @@ angular.module('citePage', [
         $scope.HideLightBox = function(e){
 
             if(e.target.classList.contains('lightbox'))
-                $scope.ShowLightBox =false;
+                $scope.ShowLightBox = false;
+
+            if(e.target.classList.contains('close'))
+                $scope.ShowLightBox = false;
         }
+
+        $scope.CloseLightBox = function(){
+            $scope.ShowLightBox = false;
+        }
+
         $scope.stepInfo = function(stepName){
             var stepInfo = $rootScope.steps[stepName]
             console.log("stepInfo!", stepName, stepInfo)

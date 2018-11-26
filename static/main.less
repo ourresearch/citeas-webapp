@@ -321,7 +321,6 @@ div.page.sources {
 
 
 .lightbox {
-
   position: fixed;
   z-index: 999;
   width: 100%;
@@ -331,16 +330,21 @@ div.page.sources {
   left: 0;
   background: rgba(0,0,0,0.8);
   form {
-    min-width: 90%;
-    min-height: 80%;
-    margin-top: 2%;
+    background-color: white;
+    margin: 0 auto;
+    padding: 10px;
+    max-width: 60%;
+    max-height: 80%;
+    margin-top: 10%;
+  }
+  label {
+    text-align: left;
   }
   &:target {
     outline: none;
     display: block;
   }
 }
-
 
 
 

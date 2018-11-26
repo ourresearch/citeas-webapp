@@ -205,14 +205,8 @@
     </div>
 
     <div class="lightbox" ng-click="HideLightBox($event)" ng-show="ShowLightBox">
-        <div style="background-color:white">
             <form class="input-row" ng-submit="submit()">
-                <md-input-container md-no-float
-                                    class="md-block"
-                                    flex-gt-sm="">
-                    <label>Name</label>
-                    <input ng-model="error.id">
-                </md-input-container>
+                <p><strong>Fill out this form to help us improve citation results</strong></p>
                 <md-input-container md-no-float
                                     class="md-block"
                                     flex-gt-sm="">
@@ -222,15 +216,21 @@
                 <md-input-container md-no-float
                                     class="md-block"
                                     flex-gt-sm="">
-                    <label>Message</label>
+                    <label>Citation DOI or URL</label>
+                    <input ng-model="error.url">
+                </md-input-container>
+                <md-input-container md-no-float
+                                    class="md-block"
+                                    flex-gt-sm="">
+                    <label>Issue</label>
                     <textarea ng-model="error.message"></textarea>
                 </md-input-container>
+                    <md-button class="close" ng-click="CloseLightBox()">
+                        Cancel
+                    </md-button>
                     <md-button class="md-raised md-primary submit" ng-click="SubmitError()">
                         Submit
                     </md-button>
-
-
             </form>
-        </div>
     </div>
 </div>
