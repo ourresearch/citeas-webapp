@@ -109,11 +109,13 @@
                                 Modify
                             </a>
                         </span>
-                        <a class="action" href="http://api.citeas.org/product/{{ apiResp.url }}">
-                            <i class="fa fa-cog"></i> view in API
-                        </a>
-                        <a class="action" ng-click="NotExpected()">
-                            <i class="fa fa-bell"></i> Results not as Expected
+                        <span class="action modify">
+                            <a class="action" href="http://api.citeas.org/product/{{ apiResp.url }}">
+                                <i class="fa fa-cog"></i> view in API
+                            </a>
+                        </span>
+                        <a href="" class="action" ng-click="NotExpected()">
+                            <i class="fa fa-envelope"></i> Results not as expected?
                         </a>
                     </div>
                 </div>

@@ -209,11 +209,13 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                                Modify\n" +
     "                            </a>\n" +
     "                        </span>\n" +
-    "                        <a class=\"action\" href=\"http://api.citeas.org/product/{{ apiResp.url }}\">\n" +
-    "                            <i class=\"fa fa-cog\"></i> view in API\n" +
-    "                        </a>\n" +
-    "                        <a class=\"action\" ng-click=\"NotExpected()\">\n" +
-    "                            <i class=\"fa fa-bell\"></i> Results not as Expected\n" +
+    "                        <span class=\"action modify\">\n" +
+    "                            <a class=\"action\" href=\"http://api.citeas.org/product/{{ apiResp.url }}\">\n" +
+    "                                <i class=\"fa fa-cog\"></i> view in API\n" +
+    "                            </a>\n" +
+    "                        </span>\n" +
+    "                        <a href=\"\" class=\"action\" ng-click=\"NotExpected()\">\n" +
+    "                            <i class=\"fa fa-envelope\"></i> Results not as expected?\n" +
     "                        </a>\n" +
     "                    </div>\n" +
     "                </div>\n" +
