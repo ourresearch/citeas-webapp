@@ -6,7 +6,7 @@ This is the front-end application for displaying citations
 [installing the back-end API](https://github.com/Impactstory/citeas-api/blob/master/installation.md) may be enough,
 as results will appear in JSON format.
 
-#### To install the front-end web application:
+### To install the front-end web application:
 
 Install the back-end API using instructions found [here](https://github.com/Impactstory/citeas-api/blob/master/installation.md). 
 The app should be running on your local machine with address [http://0.0.0.0:5000]().
