@@ -20,9 +20,9 @@
                         projects.
                     </p>
                     <p>
-                        Please
-                        <a class="action" ng-click="NotExpected()">let us know</a> about any bugs and
-                        we'll
+                        Please let us know about any bugs by submitting feedback through
+                        <a href="" class="action" ng-click="NotExpected()">our form</a> or our
+                        <a href="https://github.com/Impactstory/citeas-api">GitHub issues page</a>. We'll
                         get them fixed!
                     </p>
                 </div>
@@ -213,24 +213,24 @@
                                     class="md-block"
                                     flex-gt-sm="">
                     <label>Email</label>
-                    <input ng-model="error.email">
+                    <input ng-model="feedback.email">
                 </md-input-container>
                 <md-input-container md-no-float
                                     class="md-block"
                                     flex-gt-sm="">
                     <label>Citation DOI or URL</label>
-                    <input ng-model="error.url">
+                    <input ng-model="feedback.project_id">
                 </md-input-container>
                 <md-input-container md-no-float
                                     class="md-block"
                                     flex-gt-sm="">
                     <label>Issue</label>
-                    <textarea ng-model="error.message"></textarea>
+                    <textarea ng-model="feedback.issue"></textarea>
                 </md-input-container>
                     <md-button class="close" ng-click="CloseLightBox()">
                         Cancel
                     </md-button>
-                    <md-button class="md-raised md-primary submit" ng-click="SubmitError()">
+                    <md-button class="md-raised md-primary submit" ng-click="SubmitFeedback()">
                         Submit
                     </md-button>
             </form>

@@ -5,9 +5,11 @@ from flask import abort
 from flask import render_template
 from flask import jsonify
 from flask import g
+from sendgrid.helpers.mail import *
 
 import json
 import os
+import sendgrid
 import sys
 
 from app import app
@@ -51,6 +53,30 @@ def index_endpoint(path="index", page=""):
         'index.html'
     )
 
+@app.route("/feedback", methods=['POST'])
+def feedback_endpoint():
+    sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
+
+    from_email = Email("noreply@citeas.org")
+    to_email = Email(os.environ.get('FEEDBACK_EMAIL'))
+    subject = "CiteAs API Feedback"
+
+    # set content
+    data = json.loads(request.data.decode())
+    content = Content(
+        "text/plain",
+        "Email: {} \nProject ID: {} \nIssue: {}".format(data["email"], data["project_id"], data["issue"])
+    )
+
+    # send the email
+    mail = Mail(from_email, subject, to_email, content)
+    response = sg.client.mail.send.post(request_body=mail.get())
+
+    # return status
+    if response.status_code == 202:
+        return jsonify(success=True)
+    else:
+        return jsonify('Something went wrong'), 400
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5010))

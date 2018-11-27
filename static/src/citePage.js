@@ -120,12 +120,12 @@ angular.module('citePage', [
         // define stuff
         var apiResp
         var url = "http://api.citeas.org/product/" + $routeParams.projectId
-        var errorurl = "http://api.citeas.org/error/" + $routeParams.projectId
+        var feedbackurl = "/feedback"
         $scope.apiUrl = url
         $scope.apiResp = "loading"
         $scope.user = {}
         $scope.error = {}
-        $scope.ShowLightBox =false;
+        $scope.ShowLightBox = false;
         // load the data from the API
         load()
 
@@ -212,9 +212,9 @@ angular.module('citePage', [
             console.log("NotExpected!")
             $scope.ShowLightBox =true;
         }
-        $scope.SubmitError = function(){
-            console.log($scope.error)
-            $http.post(errorurl,$scope.error).success(function(resp){
+        $scope.SubmitFeedback = function(){
+            console.log($scope.feedback)
+            $http.post(feedbackurl,$scope.feedback).success(function(resp){
                 console.log("response from api yay", resp)
 
             }).error(function(resp){
@@ -222,7 +222,7 @@ angular.module('citePage', [
                 $scope.apiResp = "error"
             })
             $scope.ShowLightBox =false;
-            console.log($scope.error);
+            console.log($scope.feedback);
         }
 
         $scope.modify = function(){

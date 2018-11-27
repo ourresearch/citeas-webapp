@@ -304,12 +304,12 @@ angular.module('citePage', [
         // define stuff
         var apiResp
         var url = "http://api.citeas.org/product/" + $routeParams.projectId
-        var errorurl = "http://api.citeas.org/error/" + $routeParams.projectId
+        var feedbackurl = "/feedback"
         $scope.apiUrl = url
         $scope.apiResp = "loading"
         $scope.user = {}
         $scope.error = {}
-        $scope.ShowLightBox =false;
+        $scope.ShowLightBox = false;
         // load the data from the API
         load()
 
@@ -396,9 +396,9 @@ angular.module('citePage', [
             console.log("NotExpected!")
             $scope.ShowLightBox =true;
         }
-        $scope.SubmitError = function(){
-            console.log($scope.error)
-            $http.post(errorurl,$scope.error).success(function(resp){
+        $scope.SubmitFeedback = function(){
+            console.log($scope.feedback)
+            $http.post(feedbackurl,$scope.feedback).success(function(resp){
                 console.log("response from api yay", resp)
 
             }).error(function(resp){
@@ -406,7 +406,7 @@ angular.module('citePage', [
                 $scope.apiResp = "error"
             })
             $scope.ShowLightBox =false;
-            console.log($scope.error);
+            console.log($scope.feedback);
         }
 
         $scope.modify = function(){
@@ -769,9 +769,9 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                        projects.\n" +
     "                    </p>\n" +
     "                    <p>\n" +
-    "                        Please\n" +
-    "                        <a class=\"action\" ng-click=\"NotExpected()\">let us know</a> about any bugs and\n" +
-    "                        we'll\n" +
+    "                        Please let us know about any bugs by submitting feedback through\n" +
+    "                        <a href=\"\" class=\"action\" ng-click=\"NotExpected()\">our form</a> or our\n" +
+    "                        <a href=\"https://github.com/Impactstory/citeas-api\">GitHub issues page</a>. We'll\n" +
     "                        get them fixed!\n" +
     "                    </p>\n" +
     "                </div>\n" +
@@ -962,24 +962,24 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                                    class=\"md-block\"\n" +
     "                                    flex-gt-sm=\"\">\n" +
     "                    <label>Email</label>\n" +
-    "                    <input ng-model=\"error.email\">\n" +
+    "                    <input ng-model=\"feedback.email\">\n" +
     "                </md-input-container>\n" +
     "                <md-input-container md-no-float\n" +
     "                                    class=\"md-block\"\n" +
     "                                    flex-gt-sm=\"\">\n" +
     "                    <label>Citation DOI or URL</label>\n" +
-    "                    <input ng-model=\"error.url\">\n" +
+    "                    <input ng-model=\"feedback.project_id\">\n" +
     "                </md-input-container>\n" +
     "                <md-input-container md-no-float\n" +
     "                                    class=\"md-block\"\n" +
     "                                    flex-gt-sm=\"\">\n" +
     "                    <label>Issue</label>\n" +
-    "                    <textarea ng-model=\"error.message\"></textarea>\n" +
+    "                    <textarea ng-model=\"feedback.issue\"></textarea>\n" +
     "                </md-input-container>\n" +
     "                    <md-button class=\"close\" ng-click=\"CloseLightBox()\">\n" +
     "                        Cancel\n" +
     "                    </md-button>\n" +
-    "                    <md-button class=\"md-raised md-primary submit\" ng-click=\"SubmitError()\">\n" +
+    "                    <md-button class=\"md-raised md-primary submit\" ng-click=\"SubmitFeedback()\">\n" +
     "                        Submit\n" +
     "                    </md-button>\n" +
     "            </form>\n" +
