@@ -1,1 +1,1 @@
-More documention coming soon.
+Installation instructions can be found [here](install.md).
