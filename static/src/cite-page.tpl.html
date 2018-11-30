@@ -16,12 +16,14 @@
                     </p>
                     <p>
                         Here is more information on <a href="sources">where we look</a>, and some tips on
-                    <a href="/modify-your-citation">how to modify the citation suggestions</a> for your software projects.
+                        <a href="/modify-your-citation">how to modify the citation suggestions</a> for your software
+                        projects.
                     </p>
                     <p>
-                        Please
-                    <a href="https://github.com/Impactstory/citeas-api/issues">let us know</a> about any bugs and we'll
-                    get them fixed!
+                        Please let us know about any bugs by submitting feedback through
+                        <a href="" class="action" ng-click="NotExpected()">our form</a> or our
+                        <a href="https://github.com/Impactstory/citeas-api">GitHub issues page</a>. We'll
+                        get them fixed!
                     </p>
                 </div>
             </div>
@@ -43,7 +45,7 @@
                         <md-select ng-model="user.selectedCitation">
                             <md-option ng-repeat="myCitationObj in apiResp.citations"
                                        ng-value="myCitationObj">
-                            {{ myCitationObj.style_fullname }}
+                                {{ myCitationObj.style_fullname }}
                             </md-option>
                         </md-select>
                     </md-input-container>
@@ -86,10 +88,11 @@
                                         BibTeX
                                     </md-button>
                                 </md-menu-item>
-                                
+
                                 <md-menu-item>
                                     <md-button ng-click="">
-                                        <a href="https://chrome.google.com/webstore/detail/zotero-connector/ekhagklcjbdpajgpjgmbionohlpdbjgc?hl=en">Install the "Zotero Connector" extension</a>
+                                        <a href="https://chrome.google.com/webstore/detail/zotero-connector/ekhagklcjbdpajgpjgmbionohlpdbjgc?hl=en">Install
+                                            the "Zotero Connector" extension</a>
                                     </md-button>
                                 </md-menu-item>
 
@@ -99,7 +102,6 @@
                     </div>
 
 
-
                     <div class="more-actions">
                         <span class="action modify">
                             <a href="" class="action" ng-click="modify()">
@@ -107,8 +109,13 @@
                                 Modify
                             </a>
                         </span>
-                        <a class="action" href="http://api.citeas.org/product/{{ apiResp.url }}">
-                            <i class="fa fa-cog"></i> view in API
+                        <span class="action modify">
+                            <a class="action" href="http://api.citeas.org/product/{{ apiResp.url }}">
+                                <i class="fa fa-cog"></i> view in API
+                            </a>
+                        </span>
+                        <a href="" class="action" ng-click="NotExpected()">
+                            <i class="fa fa-envelope"></i> Results not as expected?
                         </a>
                     </div>
                 </div>
@@ -192,7 +199,6 @@
                 </div>
 
 
-
             </div>
 
         </div>
@@ -200,4 +206,33 @@
 
     </div>
 
+    <div class="lightbox" ng-click="HideLightBox($event)" ng-show="ShowLightBox">
+            <form class="input-row" ng-submit="submit()">
+                <p><strong>Fill out this form to help us improve citation results</strong></p>
+                <md-input-container md-no-float
+                                    class="md-block"
+                                    flex-gt-sm="">
+                    <label>Email</label>
+                    <input ng-model="feedback.email">
+                </md-input-container>
+                <md-input-container md-no-float
+                                    class="md-block"
+                                    flex-gt-sm="">
+                    <label>Citation DOI or URL</label>
+                    <input ng-model="feedback.project_id">
+                </md-input-container>
+                <md-input-container md-no-float
+                                    class="md-block"
+                                    flex-gt-sm="">
+                    <label>Issue</label>
+                    <textarea ng-model="feedback.issue"></textarea>
+                </md-input-container>
+                    <md-button class="close" ng-click="CloseLightBox()">
+                        Cancel
+                    </md-button>
+                    <md-button class="md-raised md-primary submit" ng-click="SubmitFeedback()">
+                        Submit
+                    </md-button>
+            </form>
+    </div>
 </div>

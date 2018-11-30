@@ -120,10 +120,12 @@ angular.module('citePage', [
         // define stuff
         var apiResp
         var url = "http://api.citeas.org/product/" + $routeParams.projectId
+        var feedbackurl = "/feedback"
         $scope.apiUrl = url
         $scope.apiResp = "loading"
         $scope.user = {}
-
+        $scope.error = {}
+        $scope.ShowLightBox = false;
         // load the data from the API
         load()
 
@@ -167,6 +169,18 @@ angular.module('citePage', [
             $mdOpenMenu(ev);
         }
 
+        $scope.HideLightBox = function(e){
+
+            if(e.target.classList.contains('lightbox'))
+                $scope.ShowLightBox = false;
+
+            if(e.target.classList.contains('close'))
+                $scope.ShowLightBox = false;
+        }
+
+        $scope.CloseLightBox = function(){
+            $scope.ShowLightBox = false;
+        }
 
         $scope.stepInfo = function(stepName){
             var stepInfo = $rootScope.steps[stepName]
@@ -194,8 +208,22 @@ angular.module('citePage', [
                 };
             }
         }
+        $scope.NotExpected = function(){
+            console.log("NotExpected!")
+            $scope.ShowLightBox =true;
+        }
+        $scope.SubmitFeedback = function(){
+            console.log($scope.feedback)
+            $http.post(feedbackurl,$scope.feedback).success(function(resp){
+                console.log("response from api yay", resp)
 
-
+            }).error(function(resp){
+                console.log("bad response from api", resp)
+                $scope.apiResp = "error"
+            })
+            $scope.ShowLightBox =false;
+            console.log($scope.feedback);
+        }
 
         $scope.modify = function(){
             console.log("modify!")
@@ -237,13 +265,3 @@ angular.module('citePage', [
         }
 
     })
-
-
-
-
-
-
-
-
-
-

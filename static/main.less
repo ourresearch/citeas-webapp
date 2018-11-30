@@ -320,7 +320,31 @@ div.page.sources {
 }
 
 
-
+.lightbox {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.8);
+  form {
+    background-color: white;
+    margin: 0 auto;
+    padding: 15px;
+    max-width: 50%;
+    max-height: 80%;
+    margin-top: 10%;
+  }
+  label {
+    text-align: left;
+  }
+  &:target {
+    outline: none;
+    display: block;
+  }
+}
 
 
 

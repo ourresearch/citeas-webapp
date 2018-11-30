@@ -116,12 +116,14 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                    </p>\n" +
     "                    <p>\n" +
     "                        Here is more information on <a href=\"sources\">where we look</a>, and some tips on\n" +
-    "                    <a href=\"/modify-your-citation\">how to modify the citation suggestions</a> for your software projects.\n" +
+    "                        <a href=\"/modify-your-citation\">how to modify the citation suggestions</a> for your software\n" +
+    "                        projects.\n" +
     "                    </p>\n" +
     "                    <p>\n" +
-    "                        Please\n" +
-    "                    <a href=\"https://github.com/Impactstory/citeas-api/issues\">let us know</a> about any bugs and we'll\n" +
-    "                    get them fixed!\n" +
+    "                        Please let us know about any bugs by submitting feedback through\n" +
+    "                        <a href=\"\" class=\"action\" ng-click=\"NotExpected()\">our form</a> or our\n" +
+    "                        <a href=\"https://github.com/Impactstory/citeas-api\">GitHub issues page</a>. We'll\n" +
+    "                        get them fixed!\n" +
     "                    </p>\n" +
     "                </div>\n" +
     "            </div>\n" +
@@ -143,7 +145,7 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                        <md-select ng-model=\"user.selectedCitation\">\n" +
     "                            <md-option ng-repeat=\"myCitationObj in apiResp.citations\"\n" +
     "                                       ng-value=\"myCitationObj\">\n" +
-    "                            {{ myCitationObj.style_fullname }}\n" +
+    "                                {{ myCitationObj.style_fullname }}\n" +
     "                            </md-option>\n" +
     "                        </md-select>\n" +
     "                    </md-input-container>\n" +
@@ -186,10 +188,11 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                                        BibTeX\n" +
     "                                    </md-button>\n" +
     "                                </md-menu-item>\n" +
-    "                                \n" +
+    "\n" +
     "                                <md-menu-item>\n" +
     "                                    <md-button ng-click=\"\">\n" +
-    "                                        <a href=\"https://chrome.google.com/webstore/detail/zotero-connector/ekhagklcjbdpajgpjgmbionohlpdbjgc?hl=en\">Install the \"Zotero Connector\" extension</a>\n" +
+    "                                        <a href=\"https://chrome.google.com/webstore/detail/zotero-connector/ekhagklcjbdpajgpjgmbionohlpdbjgc?hl=en\">Install\n" +
+    "                                            the \"Zotero Connector\" extension</a>\n" +
     "                                    </md-button>\n" +
     "                                </md-menu-item>\n" +
     "\n" +
@@ -199,7 +202,6 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                    </div>\n" +
     "\n" +
     "\n" +
-    "\n" +
     "                    <div class=\"more-actions\">\n" +
     "                        <span class=\"action modify\">\n" +
     "                            <a href=\"\" class=\"action\" ng-click=\"modify()\">\n" +
@@ -207,8 +209,13 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                                Modify\n" +
     "                            </a>\n" +
     "                        </span>\n" +
-    "                        <a class=\"action\" href=\"http://api.citeas.org/product/{{ apiResp.url }}\">\n" +
-    "                            <i class=\"fa fa-cog\"></i> view in API\n" +
+    "                        <span class=\"action modify\">\n" +
+    "                            <a class=\"action\" href=\"http://api.citeas.org/product/{{ apiResp.url }}\">\n" +
+    "                                <i class=\"fa fa-cog\"></i> view in API\n" +
+    "                            </a>\n" +
+    "                        </span>\n" +
+    "                        <a href=\"\" class=\"action\" ng-click=\"NotExpected()\">\n" +
+    "                            <i class=\"fa fa-envelope\"></i> Results not as expected?\n" +
     "                        </a>\n" +
     "                    </div>\n" +
     "                </div>\n" +
@@ -292,7 +299,6 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                </div>\n" +
     "\n" +
     "\n" +
-    "\n" +
     "            </div>\n" +
     "\n" +
     "        </div>\n" +
@@ -300,8 +306,36 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "\n" +
     "    </div>\n" +
     "\n" +
-    "</div>\n" +
-    "");
+    "    <div class=\"lightbox\" ng-click=\"HideLightBox($event)\" ng-show=\"ShowLightBox\">\n" +
+    "            <form class=\"input-row\" ng-submit=\"submit()\">\n" +
+    "                <p><strong>Fill out this form to help us improve citation results</strong></p>\n" +
+    "                <md-input-container md-no-float\n" +
+    "                                    class=\"md-block\"\n" +
+    "                                    flex-gt-sm=\"\">\n" +
+    "                    <label>Email</label>\n" +
+    "                    <input ng-model=\"feedback.email\">\n" +
+    "                </md-input-container>\n" +
+    "                <md-input-container md-no-float\n" +
+    "                                    class=\"md-block\"\n" +
+    "                                    flex-gt-sm=\"\">\n" +
+    "                    <label>Citation DOI or URL</label>\n" +
+    "                    <input ng-model=\"feedback.project_id\">\n" +
+    "                </md-input-container>\n" +
+    "                <md-input-container md-no-float\n" +
+    "                                    class=\"md-block\"\n" +
+    "                                    flex-gt-sm=\"\">\n" +
+    "                    <label>Issue</label>\n" +
+    "                    <textarea ng-model=\"feedback.issue\"></textarea>\n" +
+    "                </md-input-container>\n" +
+    "                    <md-button class=\"close\" ng-click=\"CloseLightBox()\">\n" +
+    "                        Cancel\n" +
+    "                    </md-button>\n" +
+    "                    <md-button class=\"md-raised md-primary submit\" ng-click=\"SubmitFeedback()\">\n" +
+    "                        Submit\n" +
+    "                    </md-button>\n" +
+    "            </form>\n" +
+    "    </div>\n" +
+    "</div>");
 }]);
 
 angular.module("landing.tpl.html", []).run(["$templateCache", function($templateCache) {
