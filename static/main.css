@@ -3,7 +3,7 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
 }
 html {
   background: #fff;
@@ -302,4 +302,74 @@ div.page.sources {
 .lightbox:target {
   outline: none;
   display: block;
+}
+.page.api h2.anchor,
+.page.api h3.anchor {
+  padding-top: 20px;
+}
+.page.api .version-warning {
+  background: lightpink;
+  padding: 20px;
+  border-radius: 3px;
+}
+.page.api .version-good {
+  background: lightgreen;
+  padding: 20px;
+  border-radius: 3px;
+}
+.page.api .version-good code {
+  background: none;
+  border-color: #333;
+}
+.page.api .toc {
+  margin-top: 40px;
+  font-size: 18px;
+}
+.page.api div.endpoint {
+  margin-bottom: 40px;
+}
+.page.api div.endpoint table {
+  margin-top: 20px;
+}
+.page.api div.endpoint table td {
+  padding: 2px 7px;
+}
+.page.api div.endpoint table td.k {
+  text-align: right;
+}
+.page.api table.api-responses {
+  margin-bottom: 50px;
+}
+.page.api table.api-responses tr {
+  vertical-align: top;
+}
+.page.api table.api-responses tr td {
+  border-top: 1px solid #ddd;
+  padding: 10px;
+}
+.page.api table.api-responses tr td.key {
+  text-align: right;
+  min-width: 150px;
+  padding: 10px 10px 0 0;
+}
+.page.api table.api-responses tr td.key .name {
+  font-weight: bold;
+}
+.page.api table.api-responses tr td.key .type {
+  font-size: 70%;
+  display: block;
+}
+.page.api table.api-responses tr td.contents {
+  min-width: 150px;
+}
+.page.api table.api-responses tr td.notes p {
+  margin-top: 0;
+}
+.page.api table.api-responses tr td.notes h4 {
+  margin: 0;
+  font-weight: normal;
+}
+.page.api table.api-responses tr td.notes ul {
+  padding: 0 0 0 20px;
+  margin: 0;
 }

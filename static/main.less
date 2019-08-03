@@ -346,16 +346,89 @@ div.page.sources {
   }
 }
 
+.page.api {
+  h2.anchor, h3.anchor {
+      padding-top: 20px;
+  }
+  .version-warning {
+    background: lightpink;
+    padding: 20px;
+    border-radius: 3px;
+  }
+  .version-good {
+    background: lightgreen;
+    padding: 20px;
+    border-radius: 3px;
+    code {
+      background: none;
+      border-color: #333;
+    }
+  }
 
+  .toc {
+    margin-top: 40px;
+    font-size: 18px;
+  }
 
+  div.endpoint {
+    margin-bottom: 40px;
+    code {
+      //font-size: 120%;
+    }
+    table {
+      margin-top: 20px;
+      td {
+        padding: 2px 7px;
+      }
+      td.k{
+        text-align: right;
+      }
+    }
+  }
 
+  table.api-responses {
+    margin-bottom: 50px;
 
+    tr {
+      vertical-align: top;
+      //&:nth-child(odd) {
+      //  background: #fafafa;
+      //}
+      td {
+        border-top: 1px solid #ddd;
+        padding: 10px;
+        &.key {
+          text-align: right;
+          min-width: 150px;
+          padding: 10px 10px 0 0;
+          .name {
+            font-weight: bold;
+          }
+          .type {
+            font-size: 70%;
+            display: block;
+          }
+        }
 
+        &.contents {
+          min-width: 150px;
+        }
 
+        &.notes {
+          p {
+            margin-top: 0;
+          }
+          h4 {
+            margin: 0;
+            font-weight: normal;
+          }
+          ul {
+            padding: 0 0 0 20px;
+            margin:0;
+          }
+        }
 
-
-
-
-
-
-
+      }
+    }
+  }
+}
