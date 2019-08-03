@@ -1,7 +1,7 @@
-Flask==0.10.1
+Flask==1.1.1
 gunicorn==19.4.5
 itsdangerous==0.24
-Jinja2==2.8
+Jinja2==2.10.1
 psycopg2==2.8.3
 sendgrid-python==0.1.1
 Werkzeug==0.11.2
