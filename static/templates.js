@@ -374,7 +374,6 @@ angular.module("api.tpl.html", []).run(["$templateCache", function($templateCach
     "                Citation export.\n" +
     "            </td>\n" +
     "            <td class=\"notes\">\n" +
-    "                May include CSV, enw, RIS, and BibTeX.\n" +
     "            </td>\n" +
     "        </tr>\n" +
     "\n" +
@@ -387,6 +386,7 @@ angular.module("api.tpl.html", []).run(["$templateCache", function($templateCach
     "                Export format.\n" +
     "            </td>\n" +
     "            <td class=\"notes\">\n" +
+    "                May include CSV, enw, RIS, and BibTeX.\n" +
     "            </td>\n" +
     "        </tr>\n" +
     "    </table>\n" +
