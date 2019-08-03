@@ -65,35 +65,514 @@ angular.module("about.tpl.html", []).run(["$templateCache", function($templateCa
 
 angular.module("api.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("api.tpl.html",
-    "<div class=\"page api\" layout=\"row\" layout-align=\"center center\">\n" +
-    "    <div class=\"content\">\n" +
-    "        <h2>API</h2>\n" +
-    "        <div class=\"text\">\n" +
-    "            <p>\n" +
-    "                The CiteAs API powers this website, and is also available for\n" +
-    "                use in your own projects. Soon we'll have documentation for the API\n" +
-    "                here.\n" +
-    "            </p>\n" +
-    "            <p>\n" +
-    "                In the meantime, though, feel free to play around with it. There's just one main endpoint, which\n" +
-    "                gets citation information for a project given a DOI or URL. Here's\n" +
-    "                an example:\n" +
-    "            </p>\n" +
-    "            <code>\n" +
-    "                <a href=\"http://api.citeas.org/product/http://yt-project.org\">\n" +
-    "                    http://api.citeas.org/product/http://yt-project.org\n" +
-    "                </a>\n" +
-    "            </code>\n" +
+    "<div class=\"page api\">\n" +
+    "    <h2>API Documentation</h2>\n" +
     "\n" +
-    "            <p>\n" +
-    "                The returned data is pretty self-documenting,\n" +
-    "                but feel free to drop us a line if you run into any trouble. We'll have more\n" +
-    "                docs up here before too long. Happy coding!\n" +
-    "            </p>\n" +
-    "        </div>\n" +
+    "     <p>\n" +
+    "            The CiteAs API powers this website, and is also available for\n" +
+    "            use in your own projects.\n" +
+    "     </p>\n" +
+    "    <div class=\"decimal-ol toc\">\n" +
+    "        <ol>\n" +
+    "            <li><a href=\"#overview\">Overview</a></li>\n" +
+    "            <li>\n" +
+    "                <a href=\"#endpoints\">Endpoints</a>\n" +
+    "                <ol>\n" +
+    "                    <li>GET /</li>\n" +
+    "                    <li>GET /product/{resource}</li>\n" +
+    "                </ol>\n" +
+    "            </li>\n" +
+    "            <li>\n" +
+    "                <a href=\"#response-objects\">Response objects</a>\n" +
+    "                <ol>\n" +
+    "                    <li><a href=\"#api-status-object\">ApiStatus object</a></li>\n" +
+    "                    <li><a href=\"#citations-object\">Citations object</a></li>\n" +
+    "                </ol>\n" +
+    "            </li>\n" +
+    "        </ol>\n" +
     "    </div>\n" +
-    "</div>\n" +
-    "");
+    "\n" +
+    "    <h2 class=\"anchor\"  id=\"overview\">1. Overview</h2>\n" +
+    "    <p>\n" +
+    "        The REST API is public and gives anyone free, programmatic access to the data.\n" +
+    "    </p>\n" +
+    "    <p>\n" +
+    "       Include your email so we can track API usage, by adding\n" +
+    "         a parameter at the end of the URL like this:\n" +
+    "        <code>?email=YOUR_EMAIL</code>.\n" +
+    "    </p>\n" +
+    "\n" +
+    "    <h2 class=\"anchor\"  id=\"endpoints\">2. Endpoints</h2>\n" +
+    "\n" +
+    "\n" +
+    "    <div class=\"endpoint\" id=\"get-base\">\n" +
+    "        <code class=\"endpoint\">GET /</code>\n" +
+    "\n" +
+    "        <table class=\"endpoint\">\n" +
+    "            <tr>\n" +
+    "                <td class=\"k\">\n" +
+    "                    Description\n" +
+    "                </td>\n" +
+    "                <td class=\"v\">\n" +
+    "                    Gets an API status object that describes this API.\n" +
+    "                </td>\n" +
+    "            </tr>\n" +
+    "            <tr>\n" +
+    "                <td class=\"k\">\n" +
+    "                    Returns\n" +
+    "                </td>\n" +
+    "                <td class=\"v\">\n" +
+    "                    <a href=\"#api-status-object\">API Status object</a>\n" +
+    "                </td>\n" +
+    "            </tr>\n" +
+    "            <tr>\n" +
+    "                <td class=\"k\">\n" +
+    "                    Example\n" +
+    "                </td>\n" +
+    "                <td class=\"v\">\n" +
+    "                    <code><a href=\"https://api.citeas.org?email=test@example.com\">https://api.citeas.org?email=test@example.com</a></code>\n" +
+    "                </td>\n" +
+    "            </tr>\n" +
+    "        </table>\n" +
+    "\n" +
+    "    </div>\n" +
+    "\n" +
+    "    <div class=\"endpoint\" id=\"get-citation\">\n" +
+    "        <code class=\"endpoint\">GET /product/{resource}</code>\n" +
+    "        <table class=\"endpoint\">\n" +
+    "            <tr>\n" +
+    "                <td class=\"k\">\n" +
+    "                    Description\n" +
+    "                </td>\n" +
+    "                <td class=\"v\">\n" +
+    "                    Gets citations for a given resource.\n" +
+    "                </td>\n" +
+    "            </tr>\n" +
+    "            <tr>\n" +
+    "                <td class=\"k\">\n" +
+    "                    Accepts\n" +
+    "                </td>\n" +
+    "                <td class=\"v\">\n" +
+    "                    A DOI, URL, or keyword.\n" +
+    "                </td>\n" +
+    "            </tr>\n" +
+    "            <tr>\n" +
+    "                <td class=\"k\">\n" +
+    "                    Returns\n" +
+    "                </td>\n" +
+    "                <td class=\"v\">\n" +
+    "                    <a href=\"#citations-object\">Citations object</a>\n" +
+    "                </td>\n" +
+    "            </tr>\n" +
+    "            <tr>\n" +
+    "                <td class=\"k\">\n" +
+    "                    Example\n" +
+    "                </td>\n" +
+    "                <td class=\"v\">\n" +
+    "                    <code><a href=\"https://api.citeas.org/product/http://api.citeas.org/product/https://github.com/datacite/maremma?email=test@example.com\">\n" +
+    "                        https://api.citeas.org/product/https://github.com/datacite/maremma?email=test@example.com</a></code>\n" +
+    "                </td>\n" +
+    "            </tr>\n" +
+    "        </table>\n" +
+    "\n" +
+    "    </div>\n" +
+    "\n" +
+    "    <!-------------------------------------------------------------------------\n" +
+    "    RESPONSE OBJECTS\n" +
+    "    --------------------------------------------------------------------------->\n" +
+    "\n" +
+    "    <h2 class=\"anchor\"  id=\"response-objects\">3. Response objects</h2>\n" +
+    "\n" +
+    "    <p>\n" +
+    "        These are the JSON objects returned by the API.\n" +
+    "    </p>\n" +
+    "\n" +
+    "    <h3 class=\"anchor\" id=\"api-status-object\">3.1 API Status object</h3>\n" +
+    "    <p>Describes status of this API.</p>\n" +
+    "    <table class=\"api-responses\">\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">documentation_url</span>\n" +
+    "                <span class=\"type\">String</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                Where you can find documentation for this version.\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">msg</span>\n" +
+    "                <span class=\"type\">String</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                Relevant messages.\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">version</span>\n" +
+    "                <span class=\"type\">String</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                Version string.\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "                Example: <code>0.0.1</code>\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "    </table>\n" +
+    "\n" +
+    "    <h3 class=\"anchor\" id=\"citations-object\">3.2 Citations object</h3>\n" +
+    "    <p>This is the main response object for the API, returning citations for a given input.\n" +
+    "    </p>\n" +
+    "<table class=\"api-responses\">\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">citations</span>\n" +
+    "                <span class=\"type\">List</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                List of <a href=\"#citation-object\">citation objects</a>.\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "                <p>\n" +
+    "\n" +
+    "                </p>\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">exports</span>\n" +
+    "                <span class=\"type\">List</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                List of citation <a href=\"export-object\">export objects</a>.\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "                <p>\n" +
+    "                </p>\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">metadata</span>\n" +
+    "                <span class=\"type\">Object</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                A <a href=\"#metadata-object\">metadata object</a> listing all metadata found for a given resource.\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "                <p>Varies by source.</p>\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">name</span>\n" +
+    "                <span class=\"type\">String</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                Name of the referenced resource.\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">provenance</span>\n" +
+    "                <span class=\"type\">List</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                A list of <a href=\"#provenance-object\">provenance objects</a> describing sources\n" +
+    "                 utilized to find and build citation data.\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">url</span>\n" +
+    "                <span class=\"type\">String</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                URL for the given resource.\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "                <p>If input is a keyword, the URL is the first Google search result for the given keyword.</p>\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "    </table>\n" +
+    "\n" +
+    "<h3 class=\"anchor\" id=\"citation-object\">3.2.1 Citation object</h3>\n" +
+    "    <p>\n" +
+    "        Provides a citation in a particular format.\n" +
+    "    </p>\n" +
+    "    <table class=\"api-responses\">\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">citation</span>\n" +
+    "                <span class=\"type\">String</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                A citation.\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "                <p>\n" +
+    "\n" +
+    "                </p>\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">style_fullname</span>\n" +
+    "                <span class=\"type\">String</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                Full name of the citation style., e.g. \"American Psychological Association 6th edition\".\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "                <p>\n" +
+    "\n" +
+    "                </p>\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">style_shortname</span>\n" +
+    "                <span class=\"type\">String</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "               Short name of the citation style, e.g. \"APA\".\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "    </table>\n" +
+    "\n" +
+    "    <h3 class=\"anchor\" id=\"export-object\">3.2.2 Export object</h3>\n" +
+    "    <p>\n" +
+    "        Exported citation data.\n" +
+    "    </p>\n" +
+    "    <table class=\"api-responses\">\n" +
+    "\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">export</span>\n" +
+    "                <span class=\"type\">String</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                Citation export.\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "                May include CSV, enw, RIS, and BibTeX.\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">export_name</span>\n" +
+    "                <span class=\"type\">String</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                Export format.\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "    </table>\n" +
+    "\n" +
+    "    <h3 class=\"anchor\" id=\"metadata-object\">3.2.3 Metadata object</h3>\n" +
+    "    <p>\n" +
+    "        Metadata varies by source, but typically includes the below fields.\n" +
+    "    </p>\n" +
+    "    <table class=\"api-responses\">\n" +
+    "\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">DOI</span>\n" +
+    "                <span class=\"type\">String</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                Valid DOI.\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">URL</span>\n" +
+    "                <span class=\"type\">String</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                URL of the resource.\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">author</span>\n" +
+    "                <span class=\"type\">List</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                Author objects in format: <code>\"family\":\"Smith\", \"given\":\"Michael\"</code>\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">id</span>\n" +
+    "                <span class=\"type\">String</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                ID for the resource, always \"ITEM-1\"\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "\n" +
+    "         <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">title</span>\n" +
+    "                <span class=\"type\">String</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                Title of the resource.\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">year</span>\n" +
+    "                <span class=\"type\">Integer</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                Year of publication.\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "    </table>\n" +
+    "\n" +
+    "    <h3 class=\"anchor\" id=\"provenance-object\">3.2.4 Provenance object</h3>\n" +
+    "    <p>\n" +
+    "        Describes steps the software took to try and find citation data, and whether citation data was found.\n" +
+    "    </p>\n" +
+    "    <table class=\"api-responses\">\n" +
+    "\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">content_url</span>\n" +
+    "                <span class=\"type\">String</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                URL utilized to discover citation data.\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">found_via_proxy_type</span>\n" +
+    "                <span class=\"type\">String</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                Returns \"doi\" or \"arXiv ID\" if found via DOI or arXiv, else \"null\".\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">has_content</span>\n" +
+    "                <span class=\"type\">Boolean</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                Returns true if content was found at the URL.\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">host</span>\n" +
+    "                <span class=\"type\">String</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                Host of the resource, such as crossref, github or pypi.\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">name</span>\n" +
+    "                <span class=\"type\">String</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                Name of the step taken to find citation data.\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">parent_step_name</span>\n" +
+    "                <span class=\"type\">String</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                Name of the parent step.\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">parent_subject</span>\n" +
+    "                <span class=\"type\">String</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                Name of the parent subject.\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "\n" +
+    "        <tr>\n" +
+    "            <td class=\"key\">\n" +
+    "                <span class=\"name\">subject</span>\n" +
+    "                <span class=\"type\">String</span>\n" +
+    "            </td>\n" +
+    "            <td class=\"contents\">\n" +
+    "                Subject of the current step, such as \"GitHub repository main page\".\n" +
+    "            </td>\n" +
+    "            <td class=\"notes\">\n" +
+    "            </td>\n" +
+    "        </tr>\n" +
+    "    </table>\n" +
+    "</div>");
 }]);
 
 angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templateCache) {
