@@ -1385,7 +1385,7 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                                    </div>\n" +
     "\n" +
     "                                    <div class=\"main\">\n" +
-    "                                        <span class=\"name\">\n" +
+    "                                        <span class=\"name\" ng-class=\"{strong: $index==apiResp.provenance.length-2}\">\n" +
     "                                            {{ step.subject }}\n" +
     "                                        </span>\n" +
     "                                        <a href=\"\" ng-click=\"stepInfo(step.name)\" class=\"learn-more\">\n" +
@@ -1412,7 +1412,7 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                                    </div>\n" +
     "\n" +
     "                                    <div class=\"main\">\n" +
-    "                                        <span class=\"name\">\n" +
+    "                                        <span class=\"name strong\">\n" +
     "                                            The citation metadata\n" +
     "                                        </span>\n" +
     "                                    </div>\n" +

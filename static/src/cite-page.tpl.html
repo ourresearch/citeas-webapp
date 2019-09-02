@@ -157,7 +157,7 @@
                                     </div>
 
                                     <div class="main">
-                                        <span class="name">
+                                        <span class="name" ng-class="{strong: $index==apiResp.provenance.length-2}">
                                             {{ step.subject }}
                                         </span>
                                         <a href="" ng-click="stepInfo(step.name)" class="learn-more">
@@ -184,7 +184,7 @@
                                     </div>
 
                                     <div class="main">
-                                        <span class="name">
+                                        <span class="name strong">
                                             The citation metadata
                                         </span>
                                     </div>

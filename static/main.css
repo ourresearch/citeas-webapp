@@ -263,7 +263,7 @@ div.page.sources {
   font-size: 14px;
 }
 .page.cite-page .content .citation div.provenance .steps .step .step-container .step-info .main {
-  font-weight: bold;
+  font-weight: normal;
 }
 .page.cite-page .content .citation div.provenance .steps .step .step-container .step-info .main a {
   font-weight: normal;
@@ -372,4 +372,7 @@ div.page.sources {
 .page.api table.api-responses tr td.notes ul {
   padding: 0 0 0 20px;
   margin: 0;
+}
+.strong {
+  font-weight: bold;
 }
