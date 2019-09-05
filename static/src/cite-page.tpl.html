@@ -165,9 +165,11 @@
                                         </a>
                                     </div>
                                     <div class="url">
-                                        <a href="{{ step.content_url }}" ng-show="step.has_content" class="learn-more">
-                                            {{ step.content_url }}
-                                        </a>
+                                        <a href="{{ step.content_url }}" ng-show="step.has_content" class="learn-more">{{ step.content_url }}</a>
+                                        <span ng-show="step.additional_content_url != null">(primary source),
+                                            <a href="{{ step.additional_content_url.url }}">
+                                            {{ step.additional_content_url.url }}</a> ({{ step.additional_content_url.description }})
+                                        </span>
                                     </div>
                                 </div>
                             </div>

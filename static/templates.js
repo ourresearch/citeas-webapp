@@ -744,9 +744,11 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                                        </a>\n" +
     "                                    </div>\n" +
     "                                    <div class=\"url\">\n" +
-    "                                        <a href=\"{{ step.content_url }}\" ng-show=\"step.has_content\" class=\"learn-more\">\n" +
-    "                                            {{ step.content_url }}\n" +
-    "                                        </a>\n" +
+    "                                        <a href=\"{{ step.content_url }}\" ng-show=\"step.has_content\" class=\"learn-more\">{{ step.content_url }}</a>\n" +
+    "                                        <span ng-show=\"step.additional_content_url != null\">(primary source),\n" +
+    "                                            <a href=\"{{ step.additional_content_url.url }}\">\n" +
+    "                                            {{ step.additional_content_url.url }}</a> ({{ step.additional_content_url.description }})\n" +
+    "                                        </span>\n" +
     "                                    </div>\n" +
     "                                </div>\n" +
     "                            </div>\n" +
