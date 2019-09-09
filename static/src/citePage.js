@@ -227,10 +227,19 @@ angular.module('citePage', [
 
         $scope.modify = function(){
             console.log("modify!")
+            var myInput = $scope.apiResp.url;
+            var sourceIndex = $scope.apiResp.provenance.length - 2;
+            var sourceURL = $scope.apiResp.provenance[sourceIndex].content_url;
+            var secondaryURL = $scope.apiResp.provenance[sourceIndex].additional_content_url;
+            var secondaryMessage = (secondaryURL ? ` and <a href="${secondaryURL.url}">${secondaryURL.url}</a>` : '');
             var myAlert = $mdDialog.confirm()
                     .clickOutsideToClose(true)
                     .title("Are you the owner of this software project?")
-                    .textContent("If so, you can modify this citation by editing metadata associated with the project.")
+                    .htmlContent(
+                        `The citation for <a href="${myInput}">${myInput}</a> was ultimately built from data at 
+                        <a href="${sourceURL}">${sourceURL}</a>${secondaryMessage}. 
+                        You can modify this citation by editing metadata associated with the project.`
+                    )
                     .ok("Learn more")
                     .cancel("Dismiss")
 
