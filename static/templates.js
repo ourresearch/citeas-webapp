@@ -766,7 +766,7 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "\n" +
     "                                    <div class=\"main\">\n" +
     "                                        <span class=\"name strong\">\n" +
-    "                                            The citation metadata\n" +
+    "                                            The citation metadata with {{ productMetadataSentence }}.\n" +
     "                                        </span>\n" +
     "                                    </div>\n" +
     "                                </div>\n" +

@@ -117,6 +117,17 @@ angular.module('app').controller('AppCtrl', function(
 
         $scope.productMetadata = metadata
 
+        // sources found
+        const citationParts = ['DOI', 'author', 'year', 'title'];
+        var results = [];
+        for (let key in metadata) {
+            if (citationParts.includes(key)) {
+                results.push(key);
+            }
+        }
+        var productMetadataSentence = joinSentence(results);
+        $scope.productMetadataSentence = productMetadataSentence;
+
         // force Zotero to check the page for metadata
         var ev = document.createEvent('HTMLEvents');
         ev.initEvent('ZoteroItemUpdated', true, true);
@@ -169,6 +180,15 @@ function copyText(element) {
     document.execCommand('copy');
     selection.removeAllRanges();
 
+}
+
+function joinSentence(array){
+  if( array.length > 1 ){
+    var lastWord = ", and " + array.pop();
+  } else {
+    var lastWord = "";
+  }
+  return array.join(", ") + lastWord;
 }
 
 
@@ -1424,7 +1444,7 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "\n" +
     "                                    <div class=\"main\">\n" +
     "                                        <span class=\"name strong\">\n" +
-    "                                            The citation metadata\n" +
+    "                                            The citation metadata with {{ productMetadataSentence }}.\n" +
     "                                        </span>\n" +
     "                                    </div>\n" +
     "                                </div>\n" +
