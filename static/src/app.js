@@ -8,6 +8,7 @@ angular.module('app', [
     'ngSanitize',
     'ngMaterial',
     'ngProgress',
+    'ui.bootstrap',
 
     // this is how it accesses the cached templates in ti.js
     'templates.app',

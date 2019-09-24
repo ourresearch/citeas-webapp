@@ -766,7 +766,7 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "\n" +
     "                                    <div class=\"main\">\n" +
     "                                        <span class=\"name strong\">\n" +
-    "                                            The citation metadata with {{ productMetadataSentence }}.\n" +
+    "                                            The citation metadata with {{ productMetadataSentence }}. <a href=\"#\" uib-popover-html=\"'I <b>appeared</b> on mouse enter!'\" popover-trigger=\"'mouseenter'\">Mouseenter</a>\n" +
     "                                        </span>\n" +
     "                                    </div>\n" +
     "                                </div>\n" +
@@ -784,9 +784,7 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "\n" +
     "        </div>\n" +
     "\n" +
-    "\n" +
     "    </div>\n" +
-    "\n" +
     "    <div class=\"lightbox\" ng-click=\"HideLightBox($event)\" ng-show=\"ShowLightBox\">\n" +
     "            <form class=\"input-row\" ng-submit=\"submit()\">\n" +
     "                <p><strong>Fill out this form to help us improve citation results</strong></p>\n" +
