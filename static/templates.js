@@ -766,7 +766,10 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "\n" +
     "                                    <div class=\"main\">\n" +
     "                                        <span class=\"name strong\">\n" +
-    "                                            The citation metadata with {{ productMetadataSentence }}. <a href=\"#\" uib-popover-html=\"'I <b>appeared</b> on mouse enter!'\" popover-trigger=\"'mouseenter'\">Mouseenter</a>\n" +
+    "                                            The citation metadata\n" +
+    "                                            <span data-ng-repeat=\"(key, data) in step.source_preview\" ng-show=\"data\">\n" +
+    "                                                <span ng-if=\"$first\">with </span><a href=\"#\" uib-popover-html=\"'{{data}}'\" class=\"final-link\" popover-class=\"popover-content\" popover-trigger=\"'mouseenter'\">{{ key }}</a>{{$last ? '' : ($index==step.source_preview.length-1) ? ' and ' : ', '}}\n" +
+    "                                            </span>\n" +
     "                                        </span>\n" +
     "                                    </div>\n" +
     "                                </div>\n" +

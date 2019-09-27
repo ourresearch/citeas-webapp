@@ -187,7 +187,10 @@
 
                                     <div class="main">
                                         <span class="name strong">
-                                            The citation metadata with {{ productMetadataSentence }}. <a href="#" uib-popover-html="'I <b>appeared</b> on mouse enter!'" popover-trigger="'mouseenter'">Mouseenter</a>
+                                            The citation metadata
+                                            <span data-ng-repeat="(key, data) in step.source_preview" ng-show="data">
+                                                <span ng-if="$first">with </span><a href="#" uib-popover-html="'{{data}}'" class="final-link" popover-class="popover-content" popover-trigger="'mouseenter'">{{ key }}</a>{{$last ? '' : ($index==step.source_preview.length-1) ? ' and ' : ', '}}
+                                            </span>
                                         </span>
                                     </div>
                                 </div>

@@ -17,6 +17,7 @@ body {
 }
 body a {
   text-decoration: none;
+  color: -webkit-link;
 }
 body a:hover {
   text-decoration: underline;
@@ -375,4 +376,14 @@ div.page.sources {
 }
 .strong {
   font-weight: bold;
+}
+.popover-content {
+  max-width: 500px;
+}
+.highlight {
+  background: yellow;
+}
+.final-link {
+  font-size: 18px!important;
+  font-weight: bold!important;
 }
