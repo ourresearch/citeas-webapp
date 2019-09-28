@@ -1499,7 +1499,8 @@ angular.module("landing.tpl.html", []).run(["$templateCache", function($template
     "                    <md-input-container md-no-float\n" +
     "                                        class=\"md-block example-selected-{{ main.exampleSelected }}\"\n" +
     "                                        flex-gt-sm=\"\">\n" +
-    "                        <label>Paste a URL, DOI, arXiv ID, or keyword</label>\n" +
+    "                        <label>Paste a URL, DOI, arXiv ID, or any search term (e.g. software\n" +
+    "name/abbreviation)</label>\n" +
     "                        <input ng-model=\"main.id\">\n" +
     "\n" +
     "                        <md-button ng-show=\"main.id\"\n" +
