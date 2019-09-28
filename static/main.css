@@ -163,8 +163,9 @@ div.page.sources {
   height: 20px;
   font-size: 14px;
 }
-.page.landing .content .user-input .example div.content div.label {
-  font-weight: 300;
+.page.landing .content .user-input .example div.content div.example-label {
+  font-weight: 400;
+  font-color: black;
   display: inline;
 }
 .page.landing .content .user-input .example div.content ul.examples {

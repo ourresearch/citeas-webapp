@@ -839,7 +839,7 @@ angular.module("landing.tpl.html", []).run(["$templateCache", function($template
     "                    <md-input-container md-no-float\n" +
     "                                        class=\"md-block example-selected-{{ main.exampleSelected }}\"\n" +
     "                                        flex-gt-sm=\"\">\n" +
-    "                        <label>Paste a URL, DOI, or arXiv ID</label>\n" +
+    "                        <label>Paste a URL, DOI, arXiv ID, or keyword</label>\n" +
     "                        <input ng-model=\"main.id\">\n" +
     "\n" +
     "                        <md-button ng-show=\"main.id\"\n" +
@@ -859,7 +859,7 @@ angular.module("landing.tpl.html", []).run(["$templateCache", function($template
     "\n" +
     "                <div class=\"example\">\n" +
     "                    <div class=\"content\">\n" +
-    "                        <div class=\"label\">Examples:</div>\n" +
+    "                        <div class=\"example-label\">Examples:</div>\n" +
     "                        <ul class=\"examples\">\n" +
     "                            <li>\n" +
     "                                <a href=\"/cite/http://yt-project.org\">http://yt-project.org</a>\n" +
