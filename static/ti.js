@@ -105,7 +105,7 @@ angular.module('app').controller('AppCtrl', function(
     }
 
 
-    $http.get("http://api.citeas.org/steps").success(function(resp){
+    $http.get("https://api.citeas.org/steps").success(function(resp){
         console.log("success from /steps", resp)
         $rootScope.steps = resp
     })
@@ -305,7 +305,7 @@ angular.module('citePage', [
 
         // define stuff
         var apiResp
-        var url = "http://api.citeas.org/product/" + $routeParams.projectId
+        var url = "https://api.citeas.org/product/" + $routeParams.projectId
         var feedbackurl = "/feedback"
         $scope.apiUrl = url
         $scope.apiResp = "loading"

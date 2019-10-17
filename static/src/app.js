@@ -105,7 +105,7 @@ angular.module('app').controller('AppCtrl', function(
     }
 
 
-    $http.get("http://api.citeas.org/steps").success(function(resp){
+    $http.get("https://api.citeas.org/steps").success(function(resp){
         console.log("success from /steps", resp)
         $rootScope.steps = resp
     })

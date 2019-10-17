@@ -119,7 +119,7 @@ angular.module('citePage', [
 
         // define stuff
         var apiResp
-        var url = "http://api.citeas.org/product/" + $routeParams.projectId
+        var url = "https://api.citeas.org/product/" + $routeParams.projectId
         var feedbackurl = "/feedback"
         $scope.apiUrl = url
         $scope.apiResp = "loading"
