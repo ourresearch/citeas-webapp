@@ -165,7 +165,13 @@
                                         </a>
                                     </div>
                                     <div class="url">
+
                                         <span ng-show="step.name=='WebpageStep' && apiResp.provenance[0].forwarded_via_link_relation">
+                                            <a href="{{ apiResp.provenance[0].original_url }}">{{ apiResp.provenance[0].original_url }}</a><br>
+                                            <strong><i>with a <a href="https://tools.ietf.org/html/rfc8574" target="_blank">cite-as link relation header</a> that points to:</i></strong>
+                                            <br>
+                                        </span>
+                                        <span ng-show="step.found_via_proxy_type=='doi' && step.parent_subject=='user input' && apiResp.provenance[0].forwarded_via_link_relation">
                                             <a href="{{ apiResp.provenance[0].original_url }}">{{ apiResp.provenance[0].original_url }}</a><br>
                                             <strong><i>with a <a href="https://tools.ietf.org/html/rfc8574" target="_blank">cite-as link relation header</a> that points to:</i></strong>
                                             <br>

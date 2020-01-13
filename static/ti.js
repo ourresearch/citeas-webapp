@@ -1404,7 +1404,13 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                                        </a>\n" +
     "                                    </div>\n" +
     "                                    <div class=\"url\">\n" +
+    "\n" +
     "                                        <span ng-show=\"step.name=='WebpageStep' && apiResp.provenance[0].forwarded_via_link_relation\">\n" +
+    "                                            <a href=\"{{ apiResp.provenance[0].original_url }}\">{{ apiResp.provenance[0].original_url }}</a><br>\n" +
+    "                                            <strong><i>with a <a href=\"https://tools.ietf.org/html/rfc8574\" target=\"_blank\">cite-as link relation header</a> that points to:</i></strong>\n" +
+    "                                            <br>\n" +
+    "                                        </span>\n" +
+    "                                        <span ng-show=\"step.found_via_proxy_type=='doi' && step.parent_subject=='user input' && apiResp.provenance[0].forwarded_via_link_relation\">\n" +
     "                                            <a href=\"{{ apiResp.provenance[0].original_url }}\">{{ apiResp.provenance[0].original_url }}</a><br>\n" +
     "                                            <strong><i>with a <a href=\"https://tools.ietf.org/html/rfc8574\" target=\"_blank\">cite-as link relation header</a> that points to:</i></strong>\n" +
     "                                            <br>\n" +
