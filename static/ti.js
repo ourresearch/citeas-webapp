@@ -690,11 +690,6 @@ angular.module("about.tpl.html", []).run(["$templateCache", function($templateCa
     "                of data it will ultimately use. Feel free to kick the tires, and let us know what you think!\n" +
     "\n" +
     "            </p>\n" +
-    "\n" +
-    "            <p>\n" +
-    "                And stay tuned! We'll be building the database in 2018, and expect to have that data live in\n" +
-    "                CiteAs by 2019.\n" +
-    "            </p>\n" +
     "            \n" +
     "\n" +
     "            <h3>But wait there's more!</h3>\n" +
