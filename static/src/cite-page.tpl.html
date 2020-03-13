@@ -28,6 +28,16 @@
                 </div>
             </div>
 
+            <div class="unsupported" ng-if="apiResp.error_message">
+                <h2>Sorry!</h2>
+                <div class="text">
+                    <br>
+                    <p>
+                        {{ apiResp.error_message }}
+                    </p>
+                </div>
+            </div>
+
             <div class="citation animated fadeIn" ng-show="apiResp.citations">
                 <div class="heading">
                     <h1>

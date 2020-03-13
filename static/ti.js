@@ -323,9 +323,12 @@ angular.module('citePage', [
         function onDataLoad(resp) {
             apiResp = resp
             $scope.apiResp = apiResp
-            $scope.user.selectedCitation = resp.citations[0]
-            $scope.setCitationMetaTags(apiResp.metadata)
-
+            if('error_message' in apiResp){
+                console.log('error message found')
+            } else {
+                $scope.user.selectedCitation = resp.citations[0]
+                $scope.setCitationMetaTags(apiResp.metadata)
+            }
         }
 
         function load(){
@@ -1258,6 +1261,16 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                        <a href=\"\" class=\"action\" ng-click=\"NotExpected()\">our form</a> or our\n" +
     "                        <a href=\"https://github.com/Impactstory/citeas-api\">GitHub issues page</a>. We'll\n" +
     "                        get them fixed!\n" +
+    "                    </p>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "\n" +
+    "            <div class=\"unsupported\" ng-if=\"apiResp.error_message\">\n" +
+    "                <h2>Sorry!</h2>\n" +
+    "                <div class=\"text\">\n" +
+    "                    <br>\n" +
+    "                    <p>\n" +
+    "                        {{ apiResp.error_message }}\n" +
     "                    </p>\n" +
     "                </div>\n" +
     "            </div>\n" +

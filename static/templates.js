@@ -602,6 +602,16 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                </div>\n" +
     "            </div>\n" +
     "\n" +
+    "            <div class=\"unsupported\" ng-if=\"apiResp.error_message\">\n" +
+    "                <h2>Sorry!</h2>\n" +
+    "                <div class=\"text\">\n" +
+    "                    <br>\n" +
+    "                    <p>\n" +
+    "                        {{ apiResp.error_message }}\n" +
+    "                    </p>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "\n" +
     "            <div class=\"citation animated fadeIn\" ng-show=\"apiResp.citations\">\n" +
     "                <div class=\"heading\">\n" +
     "                    <h1>\n" +
