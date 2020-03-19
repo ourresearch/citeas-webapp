@@ -30,11 +30,6 @@ angular.module("about.tpl.html", []).run(["$templateCache", function($templateCa
     "                of data it will ultimately use. Feel free to kick the tires, and let us know what you think!\n" +
     "\n" +
     "            </p>\n" +
-    "\n" +
-    "            <p>\n" +
-    "                And stay tuned! We'll be building the database in 2018, and expect to have that data live in\n" +
-    "                CiteAs by 2019.\n" +
-    "            </p>\n" +
     "            \n" +
     "\n" +
     "            <h3>But wait there's more!</h3>\n" +
@@ -607,6 +602,16 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                </div>\n" +
     "            </div>\n" +
     "\n" +
+    "            <div class=\"unsupported\" ng-if=\"apiResp.error_message\">\n" +
+    "                <h2>Sorry!</h2>\n" +
+    "                <div class=\"text\">\n" +
+    "                    <br>\n" +
+    "                    <p>\n" +
+    "                        {{ apiResp.error_message }}\n" +
+    "                    </p>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "\n" +
     "            <div class=\"citation animated fadeIn\" ng-show=\"apiResp.citations\">\n" +
     "                <div class=\"heading\">\n" +
     "                    <h1>\n" +
@@ -860,7 +865,7 @@ angular.module("landing.tpl.html", []).run(["$templateCache", function($template
     "\n" +
     "                <div class=\"example\">\n" +
     "                    <div class=\"content\">\n" +
-    "                        <div class=\"example-label\">Examples:</div>\n" +
+    "                        Examples:\n" +
     "                        <ul class=\"examples\">\n" +
     "                            <li>\n" +
     "                                <a href=\"/cite/http://yt-project.org\">http://yt-project.org</a>\n" +

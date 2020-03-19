@@ -137,9 +137,12 @@ angular.module('citePage', [
         function onDataLoad(resp) {
             apiResp = resp
             $scope.apiResp = apiResp
-            $scope.user.selectedCitation = resp.citations[0]
-            $scope.setCitationMetaTags(apiResp.metadata)
-
+            if('error_message' in apiResp){
+                console.log('error message found')
+            } else {
+                $scope.user.selectedCitation = resp.citations[0]
+                $scope.setCitationMetaTags(apiResp.metadata)
+            }
         }
 
         function load(){
