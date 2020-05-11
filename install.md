@@ -3,17 +3,17 @@ Installation and Usage
 
 This is the front-end application for displaying citations
  built by the CiteAs API. Depending on your use case, 
-[installing the back-end API](https://github.com/Impactstory/citeas-api/blob/master/installation.md) may be enough,
+[installing the back-end API](https://github.com/ourresearch/citeas-api/blob/master/installation.md) may be enough,
 as results will appear in JSON format.
 
 ### To install the front-end web application:
 
-Install the back-end API using instructions found [here](https://github.com/Impactstory/citeas-api/blob/master/installation.md). 
+Install the back-end API using instructions found [here](https://github.com/ourresearch/citeas-api/blob/master/installation.md). 
 The app should be running on your local machine with address [http://0.0.0.0:5000]().
 
 Clone the repo into a folder of your choice:
 
-`$ git clone https://github.com/Impactstory/citeas-webapp.git`
+`$ git clone https://github.com/ourresearch/citeas-webapp.git`
 
 Move into the folder
 

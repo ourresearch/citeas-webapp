@@ -14,7 +14,7 @@ angular.module("about.tpl.html", []).run(["$templateCache", function($templateCa
     "                the creators of such products get full credit for their work.\n" +
     "            </p>\n" +
     "            <p>\n" +
-    "                CiteAs is a small part of <a href=\"http://blog.impactstory.org/collaborating-635k-grant-improve-credit-research-software/\">\n" +
+    "                CiteAs is a small part of <a href=\"http://blog.ourresearch.org/collaborating-635k-grant-improve-credit-research-software/\">\n" +
     "                    a collaborative grant\n" +
     "                </a> between <a href=\"http://ourresearch.org/\">Our Research</a> and\n" +
     "                <a href=\"http://james.howison.name/\">James Howison</a> at the\n" +
@@ -38,24 +38,25 @@ angular.module("about.tpl.html", []).run(["$templateCache", function($templateCa
     "                <li>Want to change how CiteAs lists your project?\n" +
     "                    <a href=\"modify-your-citation\">Here's how.</a></li>\n" +
     "                <li>Check out the\n" +
-    "                    <a href=\"https://github.com/Impactstory/citeas-webapp\">\n" +
+    "                    <a href=\"https://github.com/ourresearch/citeas-webapp\">\n" +
     "                        source code for this website\n" +
     "                    </a>\n" +
     "                </li>\n" +
     "                <li>Check out the\n" +
-    "                    <a href=\"https://github.com/Impactstory/citeas-webapp\">\n" +
+    "                    <a href=\"https://github.com/ourresearch/citeas-api\">\n" +
     "                        source code for the CiteAs API\n" +
     "                    </a>\n" +
     "                </li>\n" +
     "                <li>Report bugs or request features via the project's <a\n" +
-    "                        href=\"https://github.com/Impactstory/citeas-api/issues\">GitHub Issues</a>\n" +
+    "                        href=\"https://github.com/ourresearch/citeas-api/issues\">GitHub Issues</a>\n" +
     "                </li>\n" +
     "            </ul>\n" +
     "\n" +
     "\n" +
     "        </div>\n" +
     "    </div>\n" +
-    "</div>");
+    "</div>\n" +
+    "");
 }]);
 
 angular.module("api.tpl.html", []).run(["$templateCache", function($templateCache) {
@@ -596,7 +597,7 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                    <p>\n" +
     "                        Please let us know about any bugs by submitting feedback through\n" +
     "                        <a href=\"\" class=\"action\" ng-click=\"NotExpected()\">our form</a> or our\n" +
-    "                        <a href=\"https://github.com/Impactstory/citeas-api\">GitHub issues page</a>. We'll\n" +
+    "                        <a href=\"https://github.com/ourresearch/citeas-api\">GitHub issues page</a>. We'll\n" +
     "                        get them fixed!\n" +
     "                    </p>\n" +
     "                </div>\n" +
@@ -874,7 +875,7 @@ angular.module("landing.tpl.html", []).run(["$templateCache", function($template
     "                                <a href=\"/cite/https://cran.r-project.org/web/packages/stringr\">https://cran.r-project.org/web/packages/stringr</a>\n" +
     "                            </li>\n" +
     "                            <li>\n" +
-    "                                <a href=\"https://github.com/Impactstory/citeas-api/blob/master/README.md\">More examples</a>\n" +
+    "                                <a href=\"https://github.com/ourresearch/citeas-api/blob/master/README.md\">More examples</a>\n" +
     "                            </li>\n" +
     "                        </ul>\n" +
     "                    </div>\n" +
@@ -964,7 +965,7 @@ angular.module("sources.tpl.html", []).run(["$templateCache", function($template
     "        <div class=\"text\">\n" +
     "            <p>\n" +
     "                CiteAs uses a pattern of web-based searches to try to discover and represent the best way to cite a given scholarly artifact. Here's a simplified description of the steps we follow in order to figure out the best citation (for the full details, see the\n" +
-    "                <a href=\"https://github.com/Impactstory/citeas-api\">source code</a>).\n" +
+    "                <a href=\"https://github.com/ourresearch/citeas-api\">source code</a>).\n" +
     "            </p>\n" +
     "\n" +
     "            <p>\n" +

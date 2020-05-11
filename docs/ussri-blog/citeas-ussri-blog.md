@@ -59,6 +59,6 @@ CiteAs faces a key challenges that any grant-funded piece of software faces: how
 
 ## Please try CiteAs and report issues
 
-We would love to hear your experiences with the [CiteAs.org](http://citeas.org) service. We are especially interested in hearing about requests that CiteAs is not currently finding, as well as feedback on the presentation of the results, and the position of CiteAs within the ecosystem of related services.  We are also very interested in efforts within software ecosystems or fields to provide requests for citation that we could collect. Report issues or opportunities on our [GitHub issues page](https://github.com/Impactstory/citeas-webapp/issues).
+We would love to hear your experiences with the [CiteAs.org](http://citeas.org) service. We are especially interested in hearing about requests that CiteAs is not currently finding, as well as feedback on the presentation of the results, and the position of CiteAs within the ecosystem of related services.  We are also very interested in efforts within software ecosystems or fields to provide requests for citation that we could collect. Report issues or opportunities on our [GitHub issues page](https://github.com/ourresearch/citeas-webapp/issues).
 
 **Great software work ⟶ Clear requests for citation ⟶ More visibility in publications ⟶ More credit ⟶ Better Software ⟶ Better Research**
