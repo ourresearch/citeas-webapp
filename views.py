@@ -34,7 +34,7 @@ def index_endpoint(path="index", page=""):
 
 @app.route("/feedback", methods=['POST'])
 def feedback_endpoint():
-    sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
+    sg = sendgrid.SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
 
     from_email = Email("noreply@citeas.org")
     to_email = Email(os.environ.get('FEEDBACK_EMAIL'))
