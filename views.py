@@ -1,12 +1,12 @@
+import os
+import json
+import sys
+
 from flask import request
 from flask import render_template
 from flask import jsonify
-from sendgrid.helpers.mail import *
-
-import json
-import os
 import sendgrid
-import sys
+from sendgrid.helpers.mail import *
 
 from app import app
 
