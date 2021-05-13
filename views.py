@@ -34,24 +34,19 @@ def index_endpoint(path="index", page=""):
 
 @app.route("/feedback", methods=['POST'])
 def feedback_endpoint():
-    sg = sendgrid.SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
-
-    from_email = Email("noreply@citeas.org")
-    to_email = Email(os.environ.get('FEEDBACK_EMAIL'))
-    subject = "CiteAs API Feedback"
-
     # set content
     data = json.loads(request.data.decode())
     content = Content(
         "text/plain",
         "Email: {} \nProject ID: {} \nIssue: {}".format(data["email"], data["project_id"], data["issue"])
     )
-
-    # send the email
-    mail = Mail(from_email, subject, to_email, content)
+    sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
+    from_email = Email("noreply@citeas.org")
+    to_email = To(os.environ.get('FEEDBACK_EMAIL'))
+    subject = "CiteAs API Feedback"
+    mail = Mail(from_email, to_email, subject, content)
     response = sg.client.mail.send.post(request_body=mail.get())
 
-    # return status
     if response.status_code == 202:
         return jsonify(success=True)
     else:
