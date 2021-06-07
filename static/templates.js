@@ -1,4 +1,4 @@
-angular.module('templates.app', ['about.tpl.html', 'api.tpl.html', 'cite-page.tpl.html', 'landing.tpl.html', 'modify-your-citation.tpl.html', 'page-not-found.tpl.html', 'sources.tpl.html']);
+angular.module("templates.app", ["about.tpl.html", "api.tpl.html", "cite-page.tpl.html", "landing.tpl.html", "modify-your-citation.tpl.html", "page-not-found.tpl.html", "sources.tpl.html"]);
 
 angular.module("about.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("about.tpl.html",
@@ -16,7 +16,7 @@ angular.module("about.tpl.html", []).run(["$templateCache", function($templateCa
     "            <p>\n" +
     "                CiteAs is a small part of <a href=\"http://blog.ourresearch.org/collaborating-635k-grant-improve-credit-research-software/\">\n" +
     "                    a collaborative grant\n" +
-    "                </a> between <a href=\"http://ourresearch.org/\">Our Research</a> and\n" +
+    "                </a> between <a href=\"http://ourresearch.org/\">OurResearch</a> and\n" +
     "                <a href=\"http://james.howison.name/\">James Howison</a> at the\n" +
     "                University of Texas-Austin. Funded by the Alfred P. Sloan Foundation,\n" +
     "                the focus of this grant is to create a big database of research software, automatically extracted\n" +

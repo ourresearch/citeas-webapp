@@ -1,9 +1,9 @@
 # CiteAs.org: Discovering and Improving software requests for citation
 
 - James Howison, [University of Texas at Austin](http://james.howison.name)
-- Heather Piwowar and Jason Priem, [Our Research](http://ourresearch.org/)
+- Heather Piwowar and Jason Priem, [OurResearch](http://ourresearch.org/)
 
-[CiteAs.org](https://citeas.org) links between pieces of software and their requested citations. It enables moving from the name of a piece of software, its webpage URL, or a DOI, directly to the machine-readable metadata (e.g., BibTex, Zotero auto-import) for the citation the author of the software package wants you to use. CiteAs.org is funded by the Digital Science program at the Sloan Foundation (Grant Number 8028), and conceived and developed by Heather Piwowar and Jason Priem at [Our Research](http://ourresearch.org/), together with [James Howison](http://james.howison.name) from the Information School at the University of Texas at Austin.
+[CiteAs.org](https://citeas.org) links between pieces of software and their requested citations. It enables moving from the name of a piece of software, its webpage URL, or a DOI, directly to the machine-readable metadata (e.g., BibTex, Zotero auto-import) for the citation the author of the software package wants you to use. CiteAs.org is funded by the Digital Science program at the Sloan Foundation (Grant Number 8028), and conceived and developed by Heather Piwowar and Jason Priem at [OurResearch](http://ourresearch.org/), together with [James Howison](http://james.howison.name) from the Information School at the University of Texas at Austin.
 
 **Great software work ⟶ Clear requests for citation ⟶ More visibility in publications ⟶ More credit ⟶ Better Software ⟶ Better Research**
 
