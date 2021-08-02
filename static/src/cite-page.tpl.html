@@ -156,6 +156,11 @@
                                         Looking in the
                                         <span class="parent-step">{{ step.parent_subject }},</span>
                                         we
+                                        <span ng-show="apiResp.provenance[0].key_word!=null && step.name=='WebpageStep'">
+                                            searched Google with the phrase
+                                            <a href="https://www.google.com/search?q={{ apiResp.provenance[0].key_word }} software citation" target="_blank">
+                                            {{ apiResp.provenance[0].key_word }} software citation</a> and
+                                        </span>
                                         <span ng-show="step.has_content">found</span>
                                         <span ng-show="!step.has_content">didn't find</span>
                                         <span class="proxy-found" ng-show="step.found_via_proxy_type=='link'">
