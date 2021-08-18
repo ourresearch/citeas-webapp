@@ -1394,13 +1394,16 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                                        Looking in the\n" +
     "                                        <span class=\"parent-step\">{{ step.parent_subject }},</span>\n" +
     "                                        we\n" +
-    "                                        <span ng-show=\"apiResp.provenance[0].key_word!=null && step.name=='WebpageStep'\">\n" +
+    "                                        <span ng-show=\"apiResp.provenance[0].key_word!=null && step.name=='GoogleStep'\">\n" +
     "                                            searched Google with the phrase\n" +
     "                                            <a href=\"https://www.google.com/search?q={{ apiResp.provenance[0].key_word }} software citation\" target=\"_blank\">\n" +
     "                                            {{ apiResp.provenance[0].key_word }} software citation</a> and\n" +
     "                                        </span>\n" +
     "                                        <span ng-show=\"step.has_content\">found</span>\n" +
     "                                        <span ng-show=\"!step.has_content\">didn't find</span>\n" +
+    "                                        <span class=\"proxy-found\" ng-show=\"step.found_via_proxy_type=='google'\">\n" +
+    "                                            a link\n" +
+    "                                        </span>\n" +
     "                                        <span class=\"proxy-found\" ng-show=\"step.found_via_proxy_type=='link'\">\n" +
     "                                            a link to a\n" +
     "                                        </span>\n" +
