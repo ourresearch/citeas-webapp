@@ -1407,6 +1407,9 @@ angular.module("cite-page.tpl.html", []).run(["$templateCache", function($templa
     "                                        <span class=\"proxy-found\" ng-show=\"step.found_via_proxy_type=='link'\">\n" +
     "                                            a link to a\n" +
     "                                        </span>\n" +
+    "                                        <span class=\"proxy-found\" ng-show=\"step.found_via_proxy_type=='pmid or pmcid'\">\n" +
+    "                                            a PMID or PMCID.\n" +
+    "                                        </span>\n" +
     "                                        <span class=\"proxy-found\" ng-show=\"step.found_via_proxy_type=='doi'\">\n" +
     "                                            a DOI.\n" +
     "                                        </span>\n" +
