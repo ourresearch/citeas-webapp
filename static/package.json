@@ -8,7 +8,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "grunt": "~1.4.1",
+    "grunt": "~1.5.2",
     "grunt-contrib-clean": "~2.0.0",
     "grunt-contrib-concat": "~1.0.1",
     "grunt-html2js": "~0.8.0",
